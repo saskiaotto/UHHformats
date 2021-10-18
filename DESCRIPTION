@@ -21,13 +21,13 @@ LazyData: true
 Imports: 
     bookdown,
     htmltools,
-    kableExtra,
     knitr,
     rmarkdown (>= 2.11),
     tinytex (>= 0.33),
     utils
 Suggests:
     jsonlite,
+    kableExtra,
     xtable
 SystemRequirements: GNU make
 Config/Needs/website: magick, pdftools, gifski, rstudio/quillt
