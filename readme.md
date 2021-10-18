@@ -32,9 +32,8 @@ Install the development version from Gitlab using devtools:
 
 ``` r
 # install.packages("remotes")
-remotes::install_git(
-  "https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats",
-  dependencies = TRUE, build_vignettes = TRUE)
+remotes::install_github("saskiaotto/uhhformats",
+  dependencies = TRUE, , build_vignettes = TRUE)
 ```
 
 ### Creating a new document and rendering it within R Studio
@@ -158,7 +157,7 @@ The current R Markdown template has in the YAML header:
     ---
     title: "Title"
     author: "Name"
-    date: "2021-10-15"
+    date: "2021-10-18"
     output:
       UHHformats::html_simple:
         highlight: kate

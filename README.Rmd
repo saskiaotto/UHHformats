@@ -34,9 +34,8 @@ Install the development version from Gitlab using devtools:
 
 ```{r, eval = FALSE}
 # install.packages("remotes")
-remotes::install_git(
-  "https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats",
-  dependencies = TRUE, build_vignettes = TRUE)
+remotes::install_github("saskiaotto/uhhformats",
+  dependencies = TRUE, , build_vignettes = TRUE)
 ```
 
 
