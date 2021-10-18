@@ -1,0 +1,119 @@
+---
+title: "Title"
+author: "Name"
+date: "`r Sys.Date()`"
+logo: "images/logo.svg"
+output:
+  UHHformats::html_simple:
+    highlight: kate
+    code_folding: show
+    number_sections: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(UHHformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(cache=FALSE, echo=TRUE,
+  message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{r load_libraries, echo=FALSE}
+library(tidyverse)
+# library(lubridate)
+# library(gridExtra)
+```
+
+# Introduction
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+
+Test reference to figure \@ref(fig:gghist). 
+
+Test reference to table \@ref(tab:irismeans).
+
+
+## Mathjax
+
+A little math formula :
+
+$$x = \sum_{i=1}^{n} \sqrt{\frac{y}{i}} $$
+
+# Analysis
+
+## Tables
+
+Here is a sample table output.
+
+```{r irismeans}
+tab <- iris %>%
+  group_by(Species) %>%
+  summarise_all(.funs = mean)
+kable(tab, caption = "Species-specific mean lengths and widths.")
+```
+
+
+## Figures: ggplot2
+
+An example histogram made with ggplot2:
+
+```{r gghist, fig.cap="A ggplot2 histogram"}
+d <- data.frame(x=rnorm(100))
+ggplot(data=d) + geom_histogram(aes(x=x), bins = 30)
+```
+
+
+## Tabbed sections
+
+Comparison between the classical tabs and the pill tabs:
+
+### Classical tabs {.tabset}
+
+Classical tabs without fading effect.
+
+#### First tab
+
+```{r hist-tab, fig.cap="Histogram made with the basic graphics package"}
+hist(rnorm(100))
+```
+
+#### Second tab
+
+Cum eaque dicta architecto culpa eius. Dignissimos officiis error exercitationem. Adipisci odit ad ea iusto fugiat laborum maiores. Dolore sunt et veritatis alias nesciunt maxime cumque. Culpa aut non ea. Culpa ex quia debitis sint eveniet cum.
+
+
+
+### Pill tabs {.tabset .tabset-fade .tabset-pills}
+
+Pill tabs with fading effect.
+
+#### First tab
+
+```{r hist-pillstab, fig.cap="Second histogram made with the basic graphics package"}
+hist(rnorm(100))
+```
+
+#### Second tab
+
+Cum eaque dicta architecto culpa eius. Dignissimos officiis error exercitationem. Adipisci odit ad ea iusto fugiat laborum maiores. Dolore sunt et veritatis alias nesciunt maxime cumque. Culpa aut non ea. Culpa ex quia debitis sint eveniet cum.
+Non eos ex aperiam dolor hic. Consectetur delectus placeat rerum consequuntur ducimus sed fugiat non. Aut voluptatem et et. Omnis sunt veniam omnis ullam.
+Dolorem eius perspiciatis et veniam hic reprehenderit ipsam ut. Exercitationem rem eius quo. Nemo quis in voluptatibus ex.
+
+
+
+## Plotly
+
+
+```{r plotly1, fig.cap="This is the interactive htmlwidget 'plotly'", fig.width=8}
+mtcars %>%
+  plotly::plot_ly(x = ~mpg, y = ~wt, color = ~cyl) %>%
+  plotly::add_markers()
+```
+
+# Conclusions
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   

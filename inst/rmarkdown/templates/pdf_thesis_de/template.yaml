@@ -1,0 +1,11 @@
+name: UHH thesis in German (PDF)
+description: >
+ Template for creating a Bachelor or Master thesis at the UHH
+ using R Markdown and the bookdown package in German. The template and and
+ underyling code and file strucutre is based on the 'thesisdown'
+ package and adjusted to meet the UHH requirements.
+ The Pandoc LaTeX template and the information provided in the R Markdown
+ chapter files were inspired by the templates of the Department of Informatics
+ and the Department of Socioeconomics.
+create_dir: true
+

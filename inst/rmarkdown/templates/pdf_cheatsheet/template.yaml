@@ -1,0 +1,8 @@
+name: Cheat sheet (PDF)
+description: >
+ Template for creating a simple cheat sheet in PDF format. The output
+ will be A4 sized and horizontal. The user can define whether the
+ cheat sheet should have 2 or more columns. The LaTeX template by Sarah
+ Lang served here as inspiration for the layout and code:
+ https://www.overleaf.com/latex/templates/colourful-cheatsheet-template/qdsshbjktndd
+create_dir: true

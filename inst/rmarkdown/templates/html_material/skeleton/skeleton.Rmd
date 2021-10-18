@@ -1,0 +1,154 @@
+---
+title: "Title"
+author: "Name"
+date: "`r Sys.Date()`"
+logo: "images/logo.svg"
+output:
+  UHHformats::html_material:
+    highlight: kate
+    code_folding: show
+    card: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(UHHformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(cache=FALSE, echo=TRUE,
+  message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{r load_libraries, echo=FALSE}
+library(tidyverse)
+# library(lubridate)
+# library(gridExtra)
+```
+
+# Code and verbatim
+
+Test reference to figure \@ref(fig:gghist). Test reference to table \@ref(tab:irismeans).
+
+Please note that in this template only the automatic numbering works, not the hyperlink!
+
+
+## Syntax highlighting
+
+Here is a sample code chunk, just to show that syntax highlighting works as expected.
+
+```{r sh, echo=TRUE, eval=TRUE}
+not_null <- function (v) {
+  if (!is.null(v)) return(paste(v, "not null"))
+}
+```
+
+```{r, echo=TRUE}
+iris %>%
+  filter(Species == "setosa") %>%
+  head()
+```
+
+## Verbatim
+
+Here is the structure of the `iris` dataset.
+
+```{r iris_str, echo=TRUE}
+str(iris)
+```
+
+## Mathjax
+
+A little math formula :
+
+$$x = \sum_{i=1}^{n} \sqrt{\frac{y}{i}} $$
+
+# Tables
+
+Here is a sample table output.
+
+```{r irismeans}
+tab <- iris %>%
+  group_by(Species) %>%
+  summarise_all(.funs = mean)
+kable(tab,
+  caption = "Species-specific mean lengths and widths.")
+```
+
+
+# Figures
+
+## Base graphics
+
+A base graphics histogram:
+
+```{r basehist, fig.cap="A Histogram made with the basic graphics package"}
+hist(rnorm(100))
+```
+
+## ggplot2
+
+Same with `ggplot2` :
+
+```{r gghist, fig.cap="A ggplot2 histogram"}
+d <- data.frame(x=rnorm(100))
+ggplot(data=d) + geom_histogram(aes(x=x), bins = 30)
+```
+
+
+
+# Tabbed sections
+
+Comparison between the classical tabs and the pill tabs:
+
+## Classical tabs {.tabset}
+
+Classical tabs without fading effect.
+
+### First tab
+
+Quisquam sunt fugit sed aut quis et rerum mollitia. Qui consectetur eius autem ut assumenda alias. Repudiandae aut deleniti quod saepe nihil ratione alias laborum. Quibusdam aspernatur autem omnis voluptatum. Delectus illo non aut. Perferendis sunt facilis sed quam velit.
+Veniam voluptates ut adipisci vel debitis deserunt rerum exercitationem. Accusamus quod eius occaecati voluptatem. Ut et qui veritatis. Nulla non eum id consectetur autem pariatur. Labore aperiam officiis molestiae sed ut perferendis ea. Aperiam aut ratione autem dolorem.
+Fuga reprehenderit tempora ut ipsam cumque officiis dolorum. Sapiente omnis rerum sint quibusdam et delectus ratione. Molestiae praesentium rerum debitis deleniti voluptates enim.
+Nihil aperiam velit provident accusamus suscipit voluptates. Aut sequi id debitis tempore. Qui atque quas sed illum officia maiores incidunt.
+Similique maxime aliquam corrupti aut provident eaque. Laudantium placeat cupiditate pariatur dolore perspiciatis expedita impedit nobis. Quaerat non temporibus tempora provident eligendi.
+
+### Second tab
+
+Cum eaque dicta architecto culpa eius. Dignissimos officiis error exercitationem. Adipisci odit ad ea iusto fugiat laborum maiores. Dolore sunt et veritatis alias nesciunt maxime cumque. Culpa aut non ea. Culpa ex quia debitis sint eveniet cum.
+Non eos ex aperiam dolor hic. Consectetur delectus placeat rerum consequuntur ducimus sed fugiat non. Aut voluptatem et et. Omnis sunt veniam omnis ullam.
+Dolorem eius perspiciatis et veniam hic reprehenderit ipsam ut. Exercitationem rem eius quo. Nemo quis in voluptatibus ex.
+Aut nihil quo iure quia. Error quam quidem inventore. Aut est est aut atque ipsum aut repellat. Eligendi delectus aut et quia voluptas dolores. Perspiciatis et reiciendis deleniti harum nihil officiis aperiam.
+Laborum necessitatibus beatae modi aut illo. Quaerat esse eum ipsa quisquam totam. Vitae nesciunt excepturi voluptate iusto molestiae qui animi corrupti. Voluptates et illum quia.
+
+
+## Pill tabs {.tabset .tabset-fade .tabset-pills}
+
+Pill tabs with fading effect.
+
+### First tab
+
+Quisquam sunt fugit sed aut quis et rerum mollitia. Qui consectetur eius autem ut assumenda alias. Repudiandae aut deleniti quod saepe nihil ratione alias laborum. Quibusdam aspernatur autem omnis voluptatum. Delectus illo non aut. Perferendis sunt facilis sed quam velit.
+Veniam voluptates ut adipisci vel debitis deserunt rerum exercitationem. Accusamus quod eius occaecati voluptatem. Ut et qui veritatis. Nulla non eum id consectetur autem pariatur. Labore aperiam officiis molestiae sed ut perferendis ea. Aperiam aut ratione autem dolorem.
+Fuga reprehenderit tempora ut ipsam cumque officiis dolorum. Sapiente omnis rerum sint quibusdam et delectus ratione. Molestiae praesentium rerum debitis deleniti voluptates enim.
+Nihil aperiam velit provident accusamus suscipit voluptates. Aut sequi id debitis tempore. Qui atque quas sed illum officia maiores incidunt.
+Similique maxime aliquam corrupti aut provident eaque. Laudantium placeat cupiditate pariatur dolore perspiciatis expedita impedit nobis. Quaerat non temporibus tempora provident eligendi.
+
+### Second tab
+
+Cum eaque dicta architecto culpa eius. Dignissimos officiis error exercitationem. Adipisci odit ad ea iusto fugiat laborum maiores. Dolore sunt et veritatis alias nesciunt maxime cumque. Culpa aut non ea. Culpa ex quia debitis sint eveniet cum.
+Non eos ex aperiam dolor hic. Consectetur delectus placeat rerum consequuntur ducimus sed fugiat non. Aut voluptatem et et. Omnis sunt veniam omnis ullam.
+Dolorem eius perspiciatis et veniam hic reprehenderit ipsam ut. Exercitationem rem eius quo. Nemo quis in voluptatibus ex.
+Aut nihil quo iure quia. Error quam quidem inventore. Aut est est aut atque ipsum aut repellat. Eligendi delectus aut et quia voluptas dolores. Perspiciatis et reiciendis deleniti harum nihil officiis aperiam.
+Laborum necessitatibus beatae modi aut illo. Quaerat esse eum ipsa quisquam totam. Vitae nesciunt excepturi voluptate iusto molestiae qui animi corrupti. Voluptates et illum quia.
+
+
+# Plotly
+
+```{r plotly1, fig.cap="This is the interactive htmlwidget 'plotly'", fig.width=8}
+mtcars %>%
+  plotly::plot_ly(x = ~mpg, y = ~wt, color = ~cyl) %>%
+  plotly::add_markers()
+```
