@@ -25,7 +25,9 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE,
 ```{r load-packages, include = FALSE}
 # packages
 library(knitr)
-library(tidyverse)
+library(kableExtra)
+library(xtable)
+# library(tidyverse)
 # library(lubridate)
 # library(gridExtra)
 ```
@@ -115,11 +117,6 @@ data("mtcars")
 summary(mtcars[,1:4])
 ```
 
-With the "kable" method set as default for printing data frames (see also the `rmarkdown::pdf_document` documentation) the following data frame is displayed in a nicer table layout:
-
-```{r }
-mtcars[1:10, ]
-```
 
 ## Tables
 
@@ -143,7 +140,6 @@ Table: Your Caption \label{tab:rmd_tab}
 Table \ref{tab:kable_tab} is an example when using `knitr::kable()` to generate the table and `kableExtra` to modify it:
 
 ```{r}
-library(kableExtra)
 df <- mtcars[1:5, 1:6]
 kable(df, "latex", booktabs = TRUE,
   caption = "A table produced with knitr and kableextra",
@@ -163,7 +159,6 @@ Table \ref{tab:xtable_tab} is an example when using this package. Note that the 
 Here, it is important that you add the chunk option `results = "asis"` inside `{r}` otherwise the PDF will contain the \LaTeX code of the table!
 
 ```{r, results = "asis"}
-library(xtable)
 xt <- xtable(head(cars), caption = "A table made with xtable",
   label = "tab:xtable_tab")
 print(xt, comment = FALSE, caption.placement = "top", booktabs = TRUE)
@@ -182,15 +177,12 @@ abline(lm(mpg ~ hp, data = mtcars), col = "red")
 
 Figures are supported from R code and can be referenced (see Figure \ref{fig:base-ref}) by including the `\\label{}` tag in the `fig.cap` attribute of the R chunk: `fig.cap = "Relationship between horsepower and fuel economy\\label{fig:base-ref}"`. It is a quirky hack at the moment, see [here](https://github.com/yihui/knitr/issues/323).
 
-Figure \ref{fig:ggplot-ref} is based on the  `ggplot2` package (automatically loaded above with `tidyverse`).
+Figure \ref{fig:boxplot-ref} shows a boxplot with just half the width and centered: 
 
-
-```{r, fig.cap = "Relationship between horsepower and fuel economy-made with ggplot\\label{fig:ggplot-ref}", out.width='70%', fig.align='center'}
-ggplot(mtcars, aes(x = hp, y = mpg)) +
-  geom_point() +
-  geom_smooth(method = "lm") +
-  xlab("Gross Horsepower") + ylab("Miles per Gallon")
+```{r, fig.cap = "Fuel differences between transmission types (0 = automatic, 1 = manual)\\label{fig:boxplot-ref}", out.width='50%', fig.height = 6, fig.align='center'}
+boxplot(mpg ~ am, mtcars)
 ```
+
 
 # Discussion
 

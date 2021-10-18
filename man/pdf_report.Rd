@@ -48,29 +48,29 @@ and report layout are inspired by INWTlab's
 \details{
 Possible arguments for the YAML header are:
 \itemize{
-  \item \code{title} Title of the manuscript.
-  \item \code{author} Character of single or multiple author(s).
-  \item \code{date} The date (automatically set).
-  \item \code{fontsize} The font size for the body text (default is 11pt).
-  \item \code{german} If option is set to 'true', the table and figure caption as
-             well as the abstract and reference header will be in German; default
-             is 'false' (i.e., English).
-  \item \code{linkcolor}, \code{filecolor}, \code{citecolor}, \code{urlcolor}
-             Colors for internal links (incl. ToC), external links, citation
-             links, and linked URLs.
-  \item \code{classoption} Options of the \code{article} class.
-  \item \code{bibliography} Path to the bibliography file to use for references
-             (BibTeX *.bib* file). This template uses the bibliography-related
-             package \href{https://ctan.org/pkg/natbib}{natbib}. The current file
-             includes 3 dummy references; either insert your references into
-             this file or replace the file with your own.
-  \item \code{bibliographystyle} The style is provided in the bibstyle.bst
-             file, which adopts the
-             \href{https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf}{SAGE Harvard}
-             reference style. Just leave the file as it is.
-  \item \code{header-includes} Custom additions to the header, before the
-             \code{\\begin\{document\}} statement.
-  \item \code{include-after} For including additional LaTeX code before the
-             \code{\\end\{document\}} statement.
- }
+\item \code{title} Title of the manuscript.
+\item \code{author} Character of single or multiple author(s).
+\item \code{date} The date (automatically set).
+\item \code{fontsize} The font size for the body text (default is 11pt).
+\item \code{german} If option is set to 'true', the table and figure caption as
+well as the abstract and reference header will be in German; default
+is 'false' (i.e., English).
+\item \code{linkcolor}, \code{filecolor}, \code{citecolor}, \code{urlcolor}
+Colors for internal links (incl. ToC), external links, citation
+links, and linked URLs.
+\item \code{classoption} Options of the \code{article} class.
+\item \code{bibliography} Path to the bibliography file to use for references
+(BibTeX \emph{.bib} file). This template uses the bibliography-related
+package \href{https://ctan.org/pkg/natbib}{natbib}. The current file
+includes 3 dummy references; either insert your references into
+this file or replace the file with your own.
+\item \code{bibliographystyle} The style is provided in the bibstyle.bst
+file, which adopts the
+\href{https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf}{SAGE Harvard}
+reference style. Just leave the file as it is.
+\item \code{header-includes} Custom additions to the header, before the
+\code{\\begin\{document\}} statement.
+\item \code{include-after} For including additional LaTeX code before the
+\code{\\end\{document\}} statement.
+}
 }

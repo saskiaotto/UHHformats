@@ -35,8 +35,8 @@ R Markdown output format to pass to \code{\link[bookdown]{render_book}}
 This function serves as wrapper to \code{\link[bookdown]{pdf_book}}, with different
 default values (e.g., \code{highlight = default}), a custom Pandoc \LaTeX template
 and different knitr default values (e.g., \code{fig.align = "center"}).
-It is called from the initial R Markdown template file, which should be named `index.Rmd`.
-The function is based on the `thesis_pdf` function of the
+It is called from the initial R Markdown template file, which should be named \code{index.Rmd}.
+The function is based on the \code{thesis_pdf} function of the
 \href{https://github.com/ismayc/thesisdown}{thesisdown} package.
 }
 \examples{

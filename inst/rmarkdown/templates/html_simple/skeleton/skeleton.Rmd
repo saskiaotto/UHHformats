@@ -14,8 +14,6 @@ editor_options:
 
 ```{r setup, include=FALSE}
 library(knitr)
-library(UHHformats)
-
 ## Global options
 options(max.print="75")
 opts_chunk$set(cache=FALSE, echo=TRUE,
@@ -23,16 +21,17 @@ opts_chunk$set(cache=FALSE, echo=TRUE,
 ```
 
 ```{r load_libraries, echo=FALSE}
-library(tidyverse)
+# library(tidyverse)
 # library(lubridate)
 # library(gridExtra)
+# ..
 ```
 
 # Introduction
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
 
-Test reference to figure \@ref(fig:gghist). 
+Test reference to figure \@ref(fig:basehist). 
 
 Test reference to table \@ref(tab:irismeans).
 
@@ -50,20 +49,18 @@ $$x = \sum_{i=1}^{n} \sqrt{\frac{y}{i}} $$
 Here is a sample table output.
 
 ```{r irismeans}
-tab <- iris %>%
-  group_by(Species) %>%
-  summarise_all(.funs = mean)
-kable(tab, caption = "Species-specific mean lengths and widths.")
+tab <- aggregate(. ~ Species, data = iris, mean)
+kable(tab,
+  caption = "Species-specific mean lengths and widths.")
 ```
 
 
-## Figures: ggplot2
+## Figures
 
-An example histogram made with ggplot2:
+A base graphics histogram (click on the figure to enlarge it):
 
-```{r gghist, fig.cap="A ggplot2 histogram"}
-d <- data.frame(x=rnorm(100))
-ggplot(data=d) + geom_histogram(aes(x=x), bins = 30)
+```{r basehist, fig.cap="A Histogram made with the basic graphics package"}
+hist(rnorm(100))
 ```
 
 
@@ -77,14 +74,13 @@ Classical tabs without fading effect.
 
 #### First tab
 
-```{r hist-tab, fig.cap="Histogram made with the basic graphics package"}
-hist(rnorm(100))
+```{r boxplot-tab, fig.cap="Boxplot made with the basic graphics package"}
+boxplot(rnorm(100), rnorm(100))
 ```
 
 #### Second tab
 
 Cum eaque dicta architecto culpa eius. Dignissimos officiis error exercitationem. Adipisci odit ad ea iusto fugiat laborum maiores. Dolore sunt et veritatis alias nesciunt maxime cumque. Culpa aut non ea. Culpa ex quia debitis sint eveniet cum.
-
 
 
 ### Pill tabs {.tabset .tabset-fade .tabset-pills}
@@ -93,8 +89,8 @@ Pill tabs with fading effect.
 
 #### First tab
 
-```{r hist-pillstab, fig.cap="Second histogram made with the basic graphics package"}
-hist(rnorm(100))
+```{r scatter-pillstab, fig.cap="Scatterplot made with the basic graphics package", out.width="50%", fig.align="center"}
+plot(rnorm(100), rnorm(100))
 ```
 
 #### Second tab
@@ -109,9 +105,9 @@ Dolorem eius perspiciatis et veniam hic reprehenderit ipsam ut. Exercitationem r
 
 
 ```{r plotly1, fig.cap="This is the interactive htmlwidget 'plotly'", fig.width=8}
-mtcars %>%
-  plotly::plot_ly(x = ~mpg, y = ~wt, color = ~cyl) %>%
-  plotly::add_markers()
+# If plotly is installed run:
+# p <- plotly::plot_ly(data = mtcars, x = ~mpg, y = ~wt, color = ~cyl)
+# plotly::add_markers(p)
 ```
 
 # Conclusions

@@ -17,11 +17,11 @@ Jupyter notebook output format
 \description{
 \code{rmd_to_jupyter} is a custom knit function to convert the R Markdown file into
 a Jupyter Notebook (formerly known as IPython Notebook, hence, the file extension
-`.ipynb`). Jupyter Notebook files are simple JSON documents, that contain text, source code,
+\code{.ipynb}). Jupyter Notebook files are simple JSON documents, that contain text, source code,
 rich media output, and metadata where each segment of the document is stored in a cell. This
 function converts the R Markdown code directly into a prettified JSON string using
 \code{\link[jsonlite]{toJSON}} and \code{\link[jsonlite]{prettify}} and saves it in an
-`.ipynb` file.
+\code{.ipynb} file.
 }
 \details{
 This code was adapted from the package \href{https://github.com/mkearney/rmd2jupyter}{rmd2jupyter}

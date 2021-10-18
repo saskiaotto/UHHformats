@@ -19,7 +19,7 @@ contain the ready-to-use R Markdown file and all associated files. It can be use
 all UHHformats templates, except for \code{rmd_to_jupyter}.
 }
 \details{
-The function is a modified version of the `create.doc` function in the
+The function is a modified version of the \code{create.doc} function in the
 \href{https://github.com/juba/rmdformats}{rmdformats} package.
 }
 \examples{

@@ -39,10 +39,11 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE,
 ```{r load-packages, include = FALSE}
 # Add all your packages here
 library(knitr)
-library(tidyverse)
+library(kableExtra)
+library(xtable)
+# library(tidyverse)
 # library(lubridate)
 # library(gridExtra)
-library(kableExtra)
 ```
 
 <!-- If you'd like to include a comment in the R Markdown file that won't be produced in your resulting file enclose it in a block like this (note that comments in code chunks and the YAML header are marked with a # instead-->

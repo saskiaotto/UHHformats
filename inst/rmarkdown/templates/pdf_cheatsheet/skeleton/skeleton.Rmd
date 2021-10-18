@@ -33,7 +33,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE,
 ```{r load-packages, include = FALSE}
 # packages
 library(knitr)
-library(tidyverse)
+# library(tidyverse)
 ```
 
 # A Cheatsheet Template
@@ -139,11 +139,8 @@ print(paste("This sample has a mean of",
 ```
 
 ### Plotting example with `mtcars`
-```{r eval=TRUE, echo=FALSE, out.width="80%", fig.align='left'}
-mtcars %>%
-  ggplot(aes(mpg, disp)) +
-  geom_point() +
-  theme_classic()
+```{r eval=TRUE, echo=FALSE, out.width="80%", fig.height=6, fig.align='left'}
+plot(mtcars$mpg, mtcars$disp, pch = 20, cex = 2)
 ```
 
 \newpage

@@ -19,27 +19,18 @@ Depends:
     R(>= 4.0.0)
 LazyData: true
 Imports: 
-    base64enc,
     bookdown,
     htmltools,
     kableExtra,
     knitr,
-    magrittr,
     rmarkdown (>= 2.11),
     tinytex (>= 0.33),
     utils
 Suggests:
-    ggplot2,
-    forcats,
-    lubridate,
-    gridExtra,
     jsonlite,
-    purrr,
-    stringr,
-    tidyr,
-    tidyverse,
-    plotly,
     xtable
-SystemRequirements: pandoc (>= 1.18) - http://pandoc.org
-RoxygenNote: 7.1.2
+SystemRequirements: GNU make
+Config/Needs/website: magick, pdftools, gifski, rstudio/quillt
+Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
+RoxygenNote: 7.1.2

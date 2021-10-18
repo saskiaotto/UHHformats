@@ -39,10 +39,11 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE,
 ```{r load-packages, include = FALSE}
 # Hier alle Pakete hinzufuegen, die spaeter benoetigt werden
 library(knitr)
-library(tidyverse)
+library(kableExtra)
+library(xtable)
+# library(tidyverse)
 # library(lubridate)
 # library(gridExtra)
-library(kableExtra)
 ```
 
 <!-- Texte die nicht in der Arbeit erscheinen sollen, koennen im R Markdown Dokument so

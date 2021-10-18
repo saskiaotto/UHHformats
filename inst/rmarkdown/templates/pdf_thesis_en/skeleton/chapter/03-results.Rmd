@@ -34,7 +34,6 @@ Table: This is a table written in R Markdown.\label{tab:rmd_tab}
 Table \@ref(tab:kable1) is an example when using `knitr::kable` to generate the table and `kableExtra` to modify it. `knitr::kable()` has an explicit argument named `caption` where you can place your caption text.
 
 ```{r kable1}
-library(kableExtra)
 df <- mtcars[1:5, 1:6]
 kable(df, booktabs = T, 
   caption = "This is a table produced with knitr and modified with kableextra.") %>%
@@ -53,7 +52,6 @@ footnote(general = "Your comments go here.")
 [xtable](https://cran.r-project.org/web/packages/xtable/vignettes/xtableGallery.pdf) has become increasingly popular but is not as easy to use as `knitr::kable`. For instance, when using the default settings the table caption is placed *below* the table (see Table \@ref(tab:xtable1)). Also, the label for cross-referencing has to be set inside the `xtable::xtable` function instead of the code chunk. And if you don't write `results='asis'` inside the chunk options, you get the \LaTeX code for the table instead of the actual table in your PDF output file!
 
 ```{r, results="asis"}
-library(xtable)
 xt <- xtable(head(cars), booktabs = TRUE,
   caption = "This is a table made with 'xtable'.",
   label = "tab:xtable1")
@@ -94,11 +92,10 @@ pch = 19)
 abline(lm(mpg ~ hp, data = mtcars), col = "red")
 ```
 
-Purely for demonstration purposes, figure \@ref(fig:ggplot-fig) shows the same relationship but with `ggplot2` (automatically loaded with tidyverse) and in a different figure size.
+Purely for demonstration purposes, figure \@ref(fig:boxplot-fig) shows a boxplot with just half the width and centered: 
 
-```{r ggplot-fig, fig.cap = "Relationship between horsepower and fuel economy - displayed with ggplot2.", fig.width=5, fig.height=3}
-ggplot(mtcars, aes(x = hp, y = mpg)) +
-  geom_point() +
-  geom_smooth(method = "lm") +
-  xlab("Gross Horsepower") + ylab("Miles Per Gallon")
+```{r, fig.cap = "Fuel differences between transmission types (0 = automatic, 1 = manual)\\label{fig:boxplot-fig}", out.width='50%', fig.height = 3, fig.align='center'}
+boxplot(mpg ~ am, mtcars)
 ```
+
+

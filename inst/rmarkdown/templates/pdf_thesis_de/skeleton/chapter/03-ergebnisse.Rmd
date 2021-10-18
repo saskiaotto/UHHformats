@@ -35,7 +35,6 @@ Table: Dies ist eine Tabelle, die direkt in Markdown geschrieben wurde. \label{t
 Tabelle \@ref(tab:kable1) ist ein Beispiel für eine mit `knitr::kable()` erzeugte Tabelle, die mit Funktionen aus `kableExtra` dann weiter modifiziert wird. Eines der Argumente von `knitr::kable()` ist `caption` - hier wird die Beschriftung der Tabelle festgelegt:
 
 ```{r kable1}
-library(kableExtra)
 df <- mtcars[1:5, 1:6]
 kable(df, booktabs = TRUE,
   caption = "Dies ist eine mit knitr::kable() erzeugte und mit kableextra modifizierte Tabelle.") %>%
@@ -54,7 +53,6 @@ footnote(general = "Hier kommen Deine Kommentare rein.")
 [xtable](https://cran.r-project.org/web/packages/xtable/vignettes/xtableGallery.pdf) erfreut sich großer Beliebtheit, hat allerdings auch seine Nachteile. Zum Beispiel erscheint die Tabellenbeschriftung in der Standardeinstellung unterhalb der Tabelle (siehe Tabelle \@ref(tab:xtable1)). Für den Querverweis muss bei `xtable` auch das Label in der Funktion selbst definiert werden, nicht bei den Codeschipsel bzw 'chunk' Optionen! Und wenn nicht als Codeschipsel Option `results='asis'` angegeben ist, ist der Output der \LaTeX Code der Tabelle zu sehen und nicht die Tabelle selbst.
 
 ```{r, results="asis"}
-library(xtable)
 xt <- xtable(head(cars), booktabs = TRUE,
   caption = "Dies ist eine 'xtable' Tabelle.",
   label = "tab:xtable1")
@@ -95,11 +93,8 @@ pch = 19)
 abline(lm(mpg ~ hp, data = mtcars), col = "red")
 ```
 
-Hier zum Vergleich in Abb. \@ref(fig:ggplot-fig) die gleiche Grafik nur mit `gglot2` erstellt und mit einer anderen Abbildungsgröße. 
+Hier zum Vergleich in Abb. \@ref(fig:boxplot-fig) ein Boxplot mit einer anderen Abbildungsgröße. 
 
-```{r ggplot-fig, fig.cap = "Beziehung zwischen Gesamtpferdestärke und der Reichweite verschiedener Autotypen - mit ggplot2 dargestellt.", fig.width=5, fig.height=3}
-ggplot(mtcars, aes(x = hp, y = mpg)) +
-  geom_point() +
-  geom_smooth(method = "lm") +
-  xlab("Pferdestärke") + ylab("Reichweite (in Meilen pro Gallone)")
+```{r, fig.cap = "Unterschiede der Reichweite zwischen den beiden Getriebearten (0 = automatisch, 1 = manuell)\\label{fig:boxplot-fig}", out.width='50%', fig.width=5, fig.height=3, fig.align='center'}
+boxplot(mpg ~ am, mtcars)
 ```

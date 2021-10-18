@@ -49,12 +49,12 @@ To run the following line of code make sure that you have `ggplot2` installed in
 Once it is installed, you can get started by loading it into your workspace as you would do in R or R Studio:
 
 ```{r}
-library(ggplot2)
+#library(ggplot2)
 ```
 
 Here comes the same plot now made with ggplot2:
 
 ```{r}
-ggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +
- geom_point()
+# ggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +
+#  geom_point()
 ```

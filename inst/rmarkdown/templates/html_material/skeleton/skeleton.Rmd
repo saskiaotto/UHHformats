@@ -13,24 +13,23 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-library(knitr)
-library(UHHformats)
-
 ## Global options
+library(knitr)
 options(max.print="75")
 opts_chunk$set(cache=FALSE, echo=TRUE,
   message=FALSE, warning=FALSE, error=FALSE)
 ```
 
 ```{r load_libraries, echo=FALSE}
-library(tidyverse)
+# library(tidyverse)
 # library(lubridate)
 # library(gridExtra)
+# ..
 ```
 
 # Code and verbatim
 
-Test reference to figure \@ref(fig:gghist). Test reference to table \@ref(tab:irismeans).
+Test reference to figure \@ref(fig:basehist). Test reference to table \@ref(tab:irismeans).
 
 Please note that in this template only the automatic numbering works, not the hyperlink!
 
@@ -46,9 +45,7 @@ not_null <- function (v) {
 ```
 
 ```{r, echo=TRUE}
-iris %>%
-  filter(Species == "setosa") %>%
-  head()
+head(iris)
 ```
 
 ## Verbatim
@@ -70,9 +67,7 @@ $$x = \sum_{i=1}^{n} \sqrt{\frac{y}{i}} $$
 Here is a sample table output.
 
 ```{r irismeans}
-tab <- iris %>%
-  group_by(Species) %>%
-  summarise_all(.funs = mean)
+tab <- aggregate(. ~ Species, data = iris, mean)
 kable(tab,
   caption = "Species-specific mean lengths and widths.")
 ```
@@ -84,19 +79,9 @@ kable(tab,
 
 A base graphics histogram:
 
-```{r basehist, fig.cap="A Histogram made with the basic graphics package"}
+```{r basehist, fig.cap="A Histogram made with the basic graphics package", out.width="50%", fig.align="center"}
 hist(rnorm(100))
 ```
-
-## ggplot2
-
-Same with `ggplot2` :
-
-```{r gghist, fig.cap="A ggplot2 histogram"}
-d <- data.frame(x=rnorm(100))
-ggplot(data=d) + geom_histogram(aes(x=x), bins = 30)
-```
-
 
 
 # Tabbed sections
@@ -148,7 +133,7 @@ Laborum necessitatibus beatae modi aut illo. Quaerat esse eum ipsa quisquam tota
 # Plotly
 
 ```{r plotly1, fig.cap="This is the interactive htmlwidget 'plotly'", fig.width=8}
-mtcars %>%
-  plotly::plot_ly(x = ~mpg, y = ~wt, color = ~cyl) %>%
-  plotly::add_markers()
+# If plotly is installed run:
+# p <- plotly::plot_ly(data = mtcars, x = ~mpg, y = ~wt, color = ~cyl)
+# plotly::add_markers(p)
 ```
