@@ -8,13 +8,7 @@ Anhänge müssen ähnlich wie Tabellen oder Abbildungen im Haupttext angesproche
 ## Abbildungen
 
 ```{r density-plot, fig.cap="Reichweite in der Stadt, gruppiert nach der Anzahl der Zylinder", out.width='100%'}
-theme_set(theme_classic())
-
-# Plot
-g <- ggplot(mpg, aes(cty))
-g + geom_density(aes(fill = factor(cyl)), alpha = 0.8) + 
-    labs(x = "Reichweite in der Stadt",
-         fill="# Zylinder")
+boxplot(mpg ~ cyl, mtcars, col = "orange")
 ```
 
 

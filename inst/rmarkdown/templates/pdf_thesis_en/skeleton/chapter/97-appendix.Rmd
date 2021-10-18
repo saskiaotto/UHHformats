@@ -9,13 +9,7 @@ The appendix has to be similar to figures and tables cross-referenced and should
 ## Figures
 
 ```{r density-plot, fig.cap="Fuel economy in cities, grouped by the number of cylinders", out.width='100%'}
-theme_set(theme_classic())
-
-# Plot
-g <- ggplot(mpg, aes(cty))
-g + geom_density(aes(fill = factor(cyl)), alpha = 0.8) + 
-    labs(x = "City miles per gallon",
-         fill="# cylinder")
+boxplot(mpg ~ cyl, mtcars, col = "orange")
 ```
 
 
