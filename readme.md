@@ -28,7 +28,7 @@ packages, which are mentioned below.
 
 ## Installation and usage
 
-Install the development version from Gitlab using devtools:
+Install the development version from GitHub using devtools:
 
 ``` r
 # install.packages("remotes")
@@ -173,9 +173,7 @@ To get an overview of options that can be set in the YAML header besides
 `html_simple` as well `bookdown::html_document2` or
 `rmarkdown::html_document`.
 
-Click on the image to see a real HTML output sample.
-
-<a href="https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats/-/blob/master/resources/examples/demo_html_simple.html"><img src="tools/images/img_html_simple.png" alt="demo html_simple"/></a>
+<img src="tools/images/img_html_simple.png" width="1364" />
 
 ### `html_material` - HTML output format with bootstrap design ‘Material’
 
@@ -202,9 +200,7 @@ that can be set in the YAML header besides `highlight` and
 see the help file for `html_material` as well `bookdown::html_document2`
 or `rmarkdown::html_document`.
 
-Click on the image to see a real HTML output sample.
-
-<a href="https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats/-/blob/master/resources/examples/demo_html_material.html"><img src="tools/images/img_html_material.png" alt="demo html_material"/></a>
+<img src="tools/images/img_html_material.png" width="2786" />
 
 #### Addtional features available in these HTML templates:
 
@@ -274,7 +270,7 @@ When opening your file in Jupyter Notebook, please note that
     simply open a new R notebook and write into the first cell:
     `unzip("zip_file_name.zip")`.
 
-![demo rmd\_to\_jupyter](tools/images/img_rmd_to_jupyter.png)
+<img src="tools/images/img_rmd_to_jupyter.png" width="1732" />
 
 ### `pdf_cheatsheet` - Output format for a simple cheat sheet
 
@@ -292,9 +288,7 @@ overall. However, the template .Rmd file provides several examples
 regarding the layout and syntax, which is hopefully sufficient enough
 for the inexperienced coder.
 
-Click on the image to see a real PDF output sample.
-
-<a href="https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats/-/blob/master/resources/examples/demo_pdf_cheatsheet.pdf"><img src="tools/images/img_pdf_cheatsheet.png" alt="demo pdf_cheatsheet"/></a>
+<img src="tools/images/img_pdf_cheatsheet.png" width="6685" />
 
 ### `pdf_report` - Output format for a report in English (default) or German
 
@@ -333,9 +327,7 @@ For more details on available arguments in `pdf_report` (in addition to
 `df_print` as shown here) see its help file as well as the help for
 `rmarkdown::pdf_document`.
 
-Click on the image to see a real PDF output sample.
-
-<a href="https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats/-/blob/master/resources/examples/demo_pdf_report.pdf"><img src="tools/images/img_pdf_report.png" alt="demo pdf_report"/></a>
+<img src="tools/images/img_pdf_report.png" width="10713" />
 
 ### `pdf_simple` - Output format for a simple PDF document in English (default) or German
 
@@ -350,9 +342,7 @@ In the YAML header of the R Markdown template, you can easily customize
 the logos and cover image, the language, the bibliography style or even
 add your own LaTeX style with the `include-after` option:
 
-Click on the image to see a real PDF output sample.
-
-<a href="https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats/-/blob/master/resources/examples/demo_pdf_simple.pdf"><img src="tools/images/img_pdf_simple.png" alt="demo pdf_report"/></a>
+<img src="tools/images/img_pdf_simple.png" width="600" />
 
 ### `pdf_thesis_en` and `pdf_thesis_de` - PDF output format for BSc/Msc thesis in English and German
 
@@ -386,9 +376,7 @@ chapters or sections into individual files, keeping it thereby more
 tidy. If you’ve never came across `bookdown` before, it can be helpful
 to read up on its documentation: <https://bookdown.org/yihui/bookdown/>.
 
-Click on the image to see an English thesis example.
-
-<a href="https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats/-/blob/master/resources/examples/demo_pdf_thesis_en/thesis.pdf"><img src="tools/images/img_pdf_thesis.png" alt="demo pdf_thesis_en"/></a>
+<img src="tools/images/img_pdf_thesis.png" width="5767" />
 
 #### Creating and rendering your thesis
 

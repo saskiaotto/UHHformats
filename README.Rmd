@@ -30,7 +30,7 @@ Each template was developed based on other inspiring templates and R packages, w
 
 ## Installation and usage
 
-Install the development version from Gitlab using devtools:
+Install the development version from GitHub using devtools:
 
 ```{r, eval = FALSE}
 # install.packages("remotes")
@@ -146,10 +146,9 @@ editor_options:
 
 To get an overview of options that can be set in the YAML header besides `highlight`, `code_folding`, and `number_sections` see the help file for `html_simple` as well `bookdown::html_document2` or `rmarkdown::html_document`.
 
-Click on the image to see a real HTML output sample.
-
-<a href="https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats/-/blob/master/resources/examples/demo_html_simple.html"><img src="tools/images/img_html_simple.png" alt="demo html_simple"/></a> 
-
+```{r, echo=FALSE}
+knitr::include_graphics("tools/images/img_html_simple.png")
+```
 
 
 ### `html_material` - HTML output format with bootstrap design 'Material'
@@ -168,10 +167,10 @@ program at the UHH.
 Similar to `html_simple`, the underlying function calls internally `rmarkdown::html_document` or (default) `bookdown::html_document2`. But here, the numbered section is set to `TRUE` as default and also the hyperlink
 in the cross-references works. To get an overview of options that can be set in the YAML header besides `highlight` and `code_folding`, which are shown as examples in the R Markdown template, see the help file for `html_material` as well `bookdown::html_document2` or `rmarkdown::html_document`.
 
+```{r, echo=FALSE}
+knitr::include_graphics("tools/images/img_html_material.png")
+```
 
-Click on the image to see a real HTML output sample.
-
-<a href="https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats/-/blob/master/resources/examples/demo_html_material.html"><img src="tools/images/img_html_material.png" alt="demo html_material"/></a>
 
 
 #### Addtional features available in these HTML templates:
@@ -217,8 +216,10 @@ When opening your file in Jupyter Notebook, please note that
 (e.g. the `images/` folder or any `data/` folder)
 - if you use Jupyter Notebook server you need to upload the `.ipynb` file as well as all subdirectories together as a zip file. To unzip, simply open a new R notebook and write into the first cell: `unzip("zip_file_name.zip")`.
 
+```{r, echo=FALSE}
+knitr::include_graphics("tools/images/img_rmd_to_jupyter.png")
+```
 
-![demo rmd_to_jupyter](tools/images/img_rmd_to_jupyter.png)
 
 
 ### `pdf_cheatsheet` - Output format for a simple cheat sheet
@@ -235,9 +236,9 @@ to continue coding in \LaTeX unfortunately. I didn't manage
 yet to get around \LaTeX overall. However, the template .Rmd file provides 
 several examples regarding the layout and \LaTeX  syntax, which is hopefully sufficient enough for the inexperienced coder.
 
-Click on the image to see a real PDF output sample.
-
-<a href="https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats/-/blob/master/resources/examples/demo_pdf_cheatsheet.pdf"><img src="tools/images/img_pdf_cheatsheet.png" alt="demo pdf_cheatsheet"/></a>
+```{r, echo=FALSE}
+knitr::include_graphics("tools/images/img_pdf_cheatsheet.png")
+```
 
 
 
@@ -278,9 +279,10 @@ output:
 For more details on available arguments in `pdf_report` (in addition to `df_print` as 
 shown here) see its help file as well as the  help for `rmarkdown::pdf_document`.
 
-Click on the image to see a real PDF output sample.
+```{r, echo=FALSE}
+knitr::include_graphics("tools/images/img_pdf_report.png")
+```
 
-<a href="https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats/-/blob/master/resources/examples/demo_pdf_report.pdf"><img src="tools/images/img_pdf_report.png" alt="demo pdf_report"/></a>
 
 
 ### `pdf_simple` - Output format for a simple PDF document in English (default) or German
@@ -294,9 +296,9 @@ In the YAML header of the R Markdown template, you can easily customize the
 logos and cover image, the language, the bibliography style or even add your own
 LaTeX style with the `include-after` option:
 
-Click on the image to see a real PDF output sample.
-
-<a href="https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats/-/blob/master/resources/examples/demo_pdf_simple.pdf"><img src="tools/images/img_pdf_simple.png" alt="demo pdf_report"/></a>
+```{r, echo=FALSE}
+knitr::include_graphics("tools/images/img_pdf_simple.png")
+```
 
 
 
@@ -313,10 +315,9 @@ package by Chester Ismay with adjustments to meet the UHH requirements. The unde
 documentation: https://bookdown.org/yihui/bookdown/.
 
 
-Click on the image to see an English thesis example.
-
-<a href="https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats/-/blob/master/resources/examples/demo_pdf_thesis_en/thesis.pdf"><img src="tools/images/img_pdf_thesis.png" alt="demo pdf_thesis_en"/></a>
-
+```{r, echo=FALSE}
+knitr::include_graphics("tools/images/img_pdf_thesis.png")
+```
 
 
 

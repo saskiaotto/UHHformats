@@ -140,9 +140,9 @@ editor_options:
 
 To get an overview of options that can be set in the YAML header besides `highlight`, `code_folding`, and `number_sections` see the help file for `html_simple` as well `bookdown::html_document2` or `rmarkdown::html_document`.
 
-Click on the image to see a real HTML output sample.
-
-<a href="https://gitlab.rrz.uni-hamburg.de/saskiaotto/uhhformats/-/blob/master/resources/examples/demo_html_simple.html"><img src="images/img_html_simple.png" alt="demo html_simple"/></a> 
+```{r, echo=FALSE}
+knitr::include_graphics("images/img_html_simple.png")
+```
 
 
 
