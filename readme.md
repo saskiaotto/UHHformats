@@ -28,7 +28,7 @@ packages, which are mentioned below.
 
 ## Installation and usage
 
-Install the development version from GitHub using devtools:
+Install the development version from GitHub using ‘remotes’:
 
 ``` r
 # install.packages("remotes")

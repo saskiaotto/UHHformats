@@ -30,7 +30,7 @@ Each template was developed based on other inspiring templates and R packages, w
 
 ## Installation and usage
 
-Install the development version from GitHub using devtools:
+Install the development version from GitHub using 'remotes':
 
 ```{r, eval = FALSE}
 # install.packages("remotes")
