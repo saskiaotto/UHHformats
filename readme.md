@@ -5,11 +5,10 @@
 
 This R package provides ready-to-use R Markdown templates for HTML and
 PDF output formats, which are used within the Biology Department of the
-University of Hamburg (UHH) and its [Data Science in
-Biology](https://datasciencebiology.blogs.uni-hamburg.de) program. The
-package aims to encourage reproducible research using simple Markdown
-syntax while embedding all of the R code to produce plots and analyses
-as well. Included in the package are templates for
+University of Hamburg (UHH) and its *Data Science in Biology* program.
+The package aims to encourage reproducible research using simple
+Markdown syntax while embedding all of the R code to produce plots and
+analyses as well. Included in the package are templates for
 
   - student assignments,
   - cheat sheets,
@@ -20,7 +19,7 @@ as well. Included in the package are templates for
 Most templates include the UHH logo and have adopted the UHH corporate
 design, but the logo can be easily replaced in the YAML header and also
 the style can be modified, by e.g. adding your own CSS stylesheet in the
-YAML header of the html template. Hence, these templates are not limited
+YAML header of the HTML template. Hence, these templates are not limited
 to UHH students and employees.
 
 Each template was developed based on other inspiring templates and R
@@ -186,9 +185,8 @@ from the Material design theme for Bootstrap 3 project:
 template, the HTML, JavaScript, CSS, and R code were originally
 developed by Julien Barnier in the
 [rmdformats](https://github.com/juba/rmdformats) package and only
-slightly modified here to tailor it to the [Data Science in
-Biology](https://datasciencebiology.blogs.uni-hamburg.de) program at the
-UHH.
+slightly modified here to tailor it to the *Data Science in Biology*
+program at the UHH.
 
 Similar to `html_simple`, the underlying function calls internally
 `rmarkdown::html_document` or (default) `bookdown::html_document2`. But
@@ -295,7 +293,7 @@ This template converts the R Markdown file into a PDF/LaTeX - based
 report suitable for project reports and student assignments. The
 underlying function `pdf_report` is a wrapper of
 `rmarkdown::pdf_document` and based on the
-[rticles](https://github.com/R%20Studio/rticles) package that provides
+[rticles](https://github.com/rstudio/rticles) package that provides
 templates for various journal articles. The Pandoc LaTeX template and
 the report layout are inspired by INWTlab’s
 [ireports](https://github.com/INWTlab/ireports) package.
@@ -477,12 +475,13 @@ will be included every time you render your document.
 ## Useful resources
 
   - R Markdown
-      - The official R Markdown documentation: <https://rmarkdown.R>
-        Studio.com/lesson-1.html
+      - The official [R Markdown
+        documentation](https://rmarkdown.rstudio.com/lesson-1.html) from
+        RStudio
       - R Markdown [reference
-        guide](https://www.R%20Studio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+        guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
       - R Markdown
-        [cheatsheet](https://github.com/R%20Studio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+        [cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
       - The online book [R Markdown: The Definitive
         Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J.
         J. Allaire, and Garrett Grolemund
@@ -500,13 +499,11 @@ will be included every time you render your document.
 
 1.  Julien Barnier’s [rmdformats](https://github.com/juba/rmdformats)
     package
-2.  The [slidify](https://github.com/ramnathv/slidify) package by
-    Ramnath Vaidyanathan
-3.  The [rticles](https://github.com/rstudio/rticles) package
-4.  INWTlab’s [ireports](https://github.com/INWTlab/ireports) package
-5.  Chester Ismay’s [thesisdown](https://github.com/ismayc/thesisdown)
+2.  The [rticles](https://github.com/rstudio/rticles) package
+3.  INWTlab’s [ireports](https://github.com/INWTlab/ireports) package
+4.  Chester Ismay’s [thesisdown](https://github.com/ismayc/thesisdown)
     package
-6.  Michael Kearney’s
+5.  Michael Kearney’s
     [rmd2jupyter](https://github.com/mkearney/rmd2jupyter) package
-7.  Sarah Lang’s [LaTeX template for a cheat
+6.  Sarah Lang’s [LaTeX template for a cheat
     sheet](https://www.overleaf.com/latex/templates/colourful-cheatsheet-template/qdsshbjktndd)

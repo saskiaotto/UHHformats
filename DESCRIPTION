@@ -1,8 +1,8 @@
 Package: UHHformats
 Type: Package
-Title: Templates for HTML and PDF/LaTeX output formats designed for the University Hamburg
+Title: Templates for HTML and PDF/LaTeX Output Formats Designed for the University Hamburg
 Version: 0.1.0
-Date: 2020-02-26
+Date: 2021-10-19
 Authors@R: c(person("Saskia", "Otto", email="saskia.a.otto@gmail.com",
     role=c("aut","cre")))
 Maintainer: Saskia Otto <saskia.a.otto@gmail.com>
