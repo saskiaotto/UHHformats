@@ -32,8 +32,7 @@ Install the development version from GitHub using ‘remotes’:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("saskiaotto/uhhformats",
-  dependencies = TRUE, , build_vignettes = TRUE)
+remotes::install_github("saskiaotto/uhhformats", build_vignettes = TRUE)
 ```
 
 ### Creating a new document and rendering it within R Studio
