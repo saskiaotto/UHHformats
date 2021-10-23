@@ -3,6 +3,8 @@
 
 # UHHformats <img src="tools/images/UHHformats_logo.png" align="right" width="100" height="112" />
 
+[![R-CMD-check](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml)
+
 This R package provides ready-to-use R Markdown templates for HTML and
 PDF output formats, which are used within the Biology Department of the
 University of Hamburg (UHH) and its *Data Science in Biology* program.
