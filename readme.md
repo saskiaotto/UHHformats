@@ -155,7 +155,7 @@ The current R Markdown template has in the YAML header:
     ---
     title: "Title"
     author: "Name"
-    date: "2021-10-19"
+    date: "2021-10-23"
     output:
       UHHformats::html_simple:
         highlight: kate
