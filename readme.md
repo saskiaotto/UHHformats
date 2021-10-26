@@ -3,6 +3,8 @@
 
 # UHHformats <img src="tools/images/UHHformats_logo.png" align="right" width="100" height="112" />
 
+[![R-CMD-check](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml)
+
 This R package provides ready-to-use R Markdown templates for HTML and
 PDF output formats, which are used within the Biology Department of the
 University of Hamburg (UHH) and its *Data Science in Biology* program.
@@ -65,7 +67,7 @@ fonts, LaTeX templates, etc.), with the built-in function
 Use, for instance,
 
 ``` r
-UHHformats::create.doc(dirname = "directory_and_file_name", template = "pdf_report")
+UHHformats::create_doc(dirname = "new-doc", template = "pdf_report")
 ```
 
 to generate a report-like PDF output.
@@ -73,7 +75,7 @@ to generate a report-like PDF output.
 Alternatively, use
 
 ``` r
-rmarkdown::draft("demo.Rmd", template = "html_simple", package = "UHHformats")
+rmarkdown::draft("new-doc.Rmd", template = "html_simple", package = "UHHformats")
 ```
 
 These functions will automatically place the generated .Rmd file in a
@@ -83,7 +85,8 @@ You can render your document into the HTML or PDF output format using
 the `render()` function from the `rmarkdown` package :
 
 ``` r
-rmarkdown::render("my_document.Rmd")
+setwd("./new-doc")
+rmarkdown::render("new-doc.Rmd")
 ```
 
 **Important note**: `rmarkdown::render` uses as default Pandoc to
@@ -91,7 +94,9 @@ convert the Markdown document into HTML or PDF. While R Studio uses its
 internal Pandoc installation (e.g., on a Mac located in ‘/Applications/R
 Studio.app/Contents/MacOS/pandoc/’), you need to have Pandoc and its
 citation parser also installed on your system. See
-<https://pandoc.org/installing.html> for instructions.
+<https://pandoc.org/installing.html> for instructions. This book chapter
+is also helpful:
+<https://bookdown.org/yihui/rmarkdown-cookbook/install-pandoc.html>
 
 ### Further requirements - LaTeX
 
