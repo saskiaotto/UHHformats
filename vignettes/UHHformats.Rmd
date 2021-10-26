@@ -82,6 +82,7 @@ rmarkdown::render("my_document.Rmd")
 **Important note**: `rmarkdown::render` uses as default Pandoc to convert the Markdown document into HTML or PDF. While R Studio uses its internal Pandoc installation (e.g., on a Mac located in '/Applications/R Studio.app/Contents/MacOS/pandoc/'), you need to have Pandoc and its citation parser also installed on your system. See  https://pandoc.org/installing.html for instructions.
 
 
+
 ### Further requirements - LaTeX
 
 In addition to Pandoc or R Studio being installed, you need to have [LaTeX](https://www.latex-project.org/about/) installed if you want to use the templates that convert R Markdown to PDF output formats. Depending on your operating systems there are different distributions you can use, e.g. for Mac there is [MacTeX](http://www.tug.org/mactex/), which includes [TeXShop](https://pages.uoregon.edu/koch/texshop/), a nice Mac-only editor for .tex documents. For other OS see here: https://www.latex-project.org/get/
