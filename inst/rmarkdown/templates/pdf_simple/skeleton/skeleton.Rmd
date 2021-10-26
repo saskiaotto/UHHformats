@@ -145,7 +145,7 @@ kable(df, "latex", booktabs = TRUE,
   caption = "A table produced with knitr and kableextra",
   label = "kable_tab") %>%
 kable_styling(position = "center", font_size = 9,
-latex_options = "hold_position") %>%
+latex_options = "striped") %>%
 add_header_above(c(" " = 1, "Group 1" = 2, "Group 2" = 2,
 "Group 3" = 1, "Group 4" = 1)) %>%
 add_header_above(c(" ", "Group 5" = 4, "Group 6" = 2), bold = T) %>%

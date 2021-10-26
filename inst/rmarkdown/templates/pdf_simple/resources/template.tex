@@ -37,6 +37,7 @@ $if(german)$
 $endif$
 % }}}
 
+
 % Packages {{{
 \usepackage{amssymb,amsmath}  	% for math symbols and equations
 \usepackage{array}				% extends the array and tabular environments
@@ -160,11 +161,10 @@ $endif$
 
 
 % Name definitions  {{{
-
 % Definition of pagename (so it can be changed by user
 \newcommand\pagename{Page}
-
 % }}}
+
 
 
 % Text formatting  {{{
@@ -182,38 +182,37 @@ $endif$
 \setlength{\parskip}{0.5em}             % paragraph spacing
 \renewcommand{\baselinestretch}{1.0}    % line spacing (here single)
 
+% change font size of section headers: (from titlesec package)
+\titleformat*{\section}{\Large\bfseries}
+\titleformat*{\subsection}{\large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+
 % }}}
 
 
 
 % Header and footer {{{
 \pagestyle{fancy}
- 
+
 \thispagestyle{empty}
-  
+
  $if(header_left)$
  \fancyhead[L]{$header_left$}
  $else$
  \fancyhead[L]{}
- $endif$  
+ $endif$
 
  $if(header_right)$
  \fancyhead[R]{$header_right$}
  $else$
  \fancyhead[R]{}
- $endif$  
-  
- 
+ $endif$
+
+
 % }}}
 
 
 
-
-% change font size of section headers:
-\usepackage{titlesec}
-\titleformat*{\section}{\Large\bfseries}
-\titleformat*{\subsection}{\large\bfseries}
-\titleformat*{\subsubsection}{\large\bfseries}
 
 
 % Adjust abstract section (full width and left aligned)
@@ -236,10 +235,10 @@ $endif$
 % Title
 
 \makeatletter
-\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt} 
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
 \begin{flushleft}
   \textbf{\huge\@title}
-  
+
   $if(subtitle)$
   \textbf{\large\@subtitle}
   $endif$
