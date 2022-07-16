@@ -13,10 +13,6 @@
 #' Creates a report-like PDF/LaTeX document in English (default) and German
 #' @section pdf_simple:
 #' Creates a simple PDF/LaTeX document in English (default) and German
-#' @section pdf_thesis_en:
-#' Creates a PDF/LaTeX thesis document in English
-#' @section pdf_thesis_de:
-#' Creates a PDF/LaTeX thesis document in German
 #' @docType package
 #' @name UHHformats
 NULL
