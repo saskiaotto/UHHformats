@@ -1,25 +1,24 @@
 Package: UHHformats
 Type: Package
-Title: Templates for HTML and PDF/LaTeX Output Formats Designed for the University Hamburg
-Version: 0.1.0
-Date: 2021-10-19
+Title: Templates for HTML and PDF/LaTeX Output Formats Designed for the UHH
+Version: 0.2.9000
+Date: 2022-7-16
 Authors@R: c(person("Saskia", "Otto", email="saskia.a.otto@gmail.com",
     role=c("aut","cre")))
 Maintainer: Saskia Otto <saskia.a.otto@gmail.com>
 Description: R Markdown templates for HTML and PDF documents, which are used within the 
     Biology Department of the University of Hamburg (UHH) and its 'Data Science in Biology'
-    program. These include templates for lectures, student assignments, project reports,
-    Bachelor/Master thesis and conversions to Jupyter Notebooks. The package aims to encourage
+    program. These include templates for student assignments, project reports,
+    and conversions to Jupyter Notebooks. The package aims to encourage
     reproducible research using simple Markdown syntax while embedding all of the R code to 
     produce plots and analyses as well. All templates are inspired by or based on other 
-    packages such as 'rmdformats', 'thesisdown' or 'iosp'.
+    packages such as 'rmdformats', 'ireports' or 'rmd2jupyter'.
 License: CC BY 4.0
 Encoding: UTF-8
 Depends:
     R(>= 4.0.0)
 LazyData: true
 Imports: 
-    bookdown,
     htmltools,
     knitr,
     rmarkdown (>= 2.11),
@@ -29,7 +28,7 @@ Suggests:
     jsonlite,
     kableExtra,
     xtable
-SystemRequirements: pandoc (>= 1.18) - http://pandoc.org
+SystemRequirements: pandoc (>= 2.1) - http://pandoc.org
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0

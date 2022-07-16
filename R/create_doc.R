@@ -6,8 +6,7 @@
 #'
 #' @param dirname Name of the directory to create.
 #' @param template The name of the template to use. Default is "html_simple", other
-#'   options are "html_material", "pdf_report", "pdf_thesis_en", and
-#'   "pdf_thesis_dt".
+#'   options are "html_material", and "pdf_report"
 #' @details
 #' The function is a modified version of the `create.doc` function in the
 #' \href{https://github.com/juba/rmdformats}{rmdformats} package.
@@ -19,8 +18,7 @@
 #' @export
 
 create_doc <- function(dirname = "new-doc", template = "html_simple") {
-    templates <- c("html_material", "html_simple", "pdf_report", "pdf_thesis_en",
-      "pdf_thesis_dt")
+    templates <- c("html_material", "html_simple", "pdf_report")
     template <- match.arg(template, templates)
     tmp.dir <- paste(dirname, "_tmp", sep = "")
     if (file.exists(dirname) || file.exists(tmp.dir)) {

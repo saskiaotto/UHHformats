@@ -1,3 +1,0 @@
-# Zusammenfassung {-}
-
-Die Deutsche Zusammenfassung sollte eine direkte Übersetzung des Englischen *Abstract* sein und sich inhaltlich nicht unterscheiden.
