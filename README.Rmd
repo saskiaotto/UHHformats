@@ -8,9 +8,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# UHHformats <img src="tools/images/UHHformats_logo.png" align="right" width="100" height="112" />
+# UHHformats <img src="vignettes/images/UHHformats_logo.png" align="right" width="100" height="100" />
 
-[![R-CMD-check](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml)
+<!-- [![R-CMD-check](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml) -->
 
 
 This R package provides ready-to-use R Markdown templates for HTML and PDF output formats, which are used within the Biology Department of the University of Hamburg (UHH) and its *Data Science in Biology* program. The package aims to encourage reproducible research using simple Markdown syntax while embedding all of the R code to produce plots and analyses as well. Included in the package are templates for 
@@ -45,11 +45,11 @@ remotes::install_github("saskiaotto/uhhformats", build_vignettes = TRUE)
 Once you installed the package you might need to close and re-open R Studio to see the `UHHformats` 
 templates listed.
 
-Choose `File` > `New File...` > `R Markdown...`, then select `From Template`.
+Choose **File** > **New File** > **R Markdown**, then select **From Template**.
 You should be able then to create a new document from one of the package
 templates:
 
-![demo create document](tools/images/img_create_document.png)
+![demo create document](vignettes/images/img_create_document.png)
 
 Choose the location of the directory of your document and a name (that name will be used for both the .Rmd file and the new folder in which the .Rmd file will be placed). You can use any name you like except when creating the thesis documents (see also [Creating and rendering your thesis]).
 
@@ -148,7 +148,7 @@ editor_options:
 To get an overview of options that can be set in the YAML header besides `highlight`, `code_folding`, and `number_sections` see the help file for `html_simple` as well `bookdown::html_document2` or `rmarkdown::html_document`.
 
 ```{r, echo=FALSE}
-knitr::include_graphics("tools/images/img_html_simple.png")
+knitr::include_graphics("vignettes/images/img_html_simple.png")
 ```
 
 
@@ -167,7 +167,7 @@ Similar to `html_simple`, the underlying function calls internally `rmarkdown::h
 in the cross-references works. To get an overview of options that can be set in the YAML header besides `highlight` and `code_folding`, which are shown as examples in the R Markdown template, see the help file for `html_material` as well `bookdown::html_document2` or `rmarkdown::html_document`.
 
 ```{r, echo=FALSE}
-knitr::include_graphics("tools/images/img_html_material.png")
+knitr::include_graphics("vignettes/images/img_html_material.png")
 ```
 
 
@@ -216,7 +216,7 @@ When opening your file in Jupyter Notebook, please note that
 - if you use Jupyter Notebook server you need to upload the `.ipynb` file as well as all subdirectories together as a zip file. To unzip, simply open a new R notebook and write into the first cell: `unzip("zip_file_name.zip")`.
 
 ```{r, echo=FALSE}
-knitr::include_graphics("tools/images/img_rmd_to_jupyter.png")
+knitr::include_graphics("vignettes/images/img_rmd_to_jupyter.png")
 ```
 
 
@@ -236,7 +236,7 @@ yet to get around \LaTeX overall. However, the template .Rmd file provides
 several examples regarding the layout and \LaTeX  syntax, which is hopefully sufficient enough for the inexperienced coder.
 
 ```{r, echo=FALSE}
-knitr::include_graphics("tools/images/img_pdf_cheatsheet.png")
+knitr::include_graphics("vignettes/images/img_pdf_cheatsheet.png")
 ```
 
 
@@ -279,9 +279,8 @@ For more details on available arguments in `pdf_report` (in addition to `df_prin
 shown here) see its help file as well as the  help for `rmarkdown::pdf_document`.
 
 ```{r, echo=FALSE}
-knitr::include_graphics("tools/images/img_pdf_report.png")
+knitr::include_graphics("vignettes/images/img_pdf_report.png")
 ```
-
 
 
 ### `pdf_simple` - Output format for a simple PDF document in English (default) or German
@@ -296,7 +295,7 @@ logos and cover image, the language, the bibliography style or even add your own
 LaTeX style with the `include-after` option:
 
 ```{r, echo=FALSE}
-knitr::include_graphics("tools/images/img_pdf_simple.png")
+knitr::include_graphics("vignettes/images/img_pdf_simple.png")
 ```
 
 

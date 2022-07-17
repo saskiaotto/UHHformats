@@ -19,6 +19,7 @@ Depends:
     R(>= 4.0.0)
 LazyData: true
 Imports: 
+    bookdown,
     htmltools,
     knitr,
     rmarkdown (>= 2.11),

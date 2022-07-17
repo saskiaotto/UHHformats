@@ -13,6 +13,8 @@
 #' Creates a report-like PDF/LaTeX document in English (default) and German
 #' @section pdf_simple:
 #' Creates a simple PDF/LaTeX document in English (default) and German
-#' @docType package
+#' @section pdf_cheatsheet:
+#' Creates a simple cheatsheet with box layouts
+#' #' @docType package
 #' @name UHHformats
 NULL

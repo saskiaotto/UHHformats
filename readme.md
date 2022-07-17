@@ -1,9 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# UHHformats <img src="tools/images/UHHformats_logo.png" align="right" width="100" height="112" />
+# UHHformats <img src="vignettes/images/UHHformats_logo.png" align="right" width="100" height="100" />
 
-[![R-CMD-check](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml)
+<!-- [![R-CMD-check](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml) -->
 
 This R package provides ready-to-use R Markdown templates for HTML and
 PDF output formats, which are used within the Biology Department of the
@@ -12,11 +12,10 @@ The package aims to encourage reproducible research using simple
 Markdown syntax while embedding all of the R code to produce plots and
 analyses as well. Included in the package are templates for
 
-  - student assignments,
-  - cheat sheets,
-  - project reports,
-  - Bachelor/Master thesis, and
-  - conversions to Jupyter Notebook documents.
+-   student assignments,
+-   cheat sheets,
+-   project HTML files and PDF reports, and
+-   conversions to Jupyter Notebook documents.
 
 Most templates include the UHH logo and have adopted the UHH corporate
 design, but the logo can be easily replaced in the YAML header and also
@@ -26,6 +25,10 @@ to UHH students and employees.
 
 Each template was developed based on other inspiring templates and R
 packages, which are mentioned below.
+
+**NEW in this version**: the templates for the Bachelor and Master
+thesis have been moved into a separate R package named *UHHthesis* (see
+<https://github.com/saskiaotto/UHHthesis/>).
 
 ## Installation and usage
 
@@ -41,17 +44,17 @@ remotes::install_github("saskiaotto/uhhformats", build_vignettes = TRUE)
 Once you installed the package you might need to close and re-open R
 Studio to see the `UHHformats` templates listed.
 
-Choose `File` \> `New File...` \> `R Markdown...`, then select `From
-Template`. You should be able then to create a new document from one of
+Choose **File** \> **New File** \> **R Markdown**, then select **From
+Template**. You should be able then to create a new document from one of
 the package templates:
 
-![demo create document](tools/images/img_create_document.png)
+![demo create document](vignettes/images/img_create_document.png)
 
 Choose the location of the directory of your document and a name (that
 name will be used for both the .Rmd file and the new folder in which the
 .Rmd file will be placed). You can use any name you like except when
-creating the thesis documents (see also [Creating and rendering your
-thesis](#creating-and-rendering-your-thesis)).
+creating the thesis documents (see also \[Creating and rendering your
+thesis\]).
 
 Rendering from within R Studio is also quite simple: you just click the
 `Knit` button.
@@ -136,7 +139,7 @@ If you want to know more about LaTeX, a good start is the *overleaf*
 tutorial (and its entire documentation):
 <https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes>
 
------
+------------------------------------------------------------------------
 
 ## Template gallery
 
@@ -160,7 +163,7 @@ The current R Markdown template has in the YAML header:
     ---
     title: "Title"
     author: "Name"
-    date: "2021-10-26"
+    date: "2022-07-17"
     output:
       UHHformats::html_simple:
         highlight: kate
@@ -176,13 +179,13 @@ To get an overview of options that can be set in the YAML header besides
 `html_simple` as well `bookdown::html_document2` or
 `rmarkdown::html_document`.
 
-<img src="tools/images/img_html_simple.png" width="1364" />
+![](vignettes/images/img_html_simple.png)<!-- -->
 
 ### `html_material` - HTML output format with bootstrap design ‘Material’
 
 This template converts the R Markdown file into an HTML output file that
 has a navigation bar on the left and in which the different sections
-(defined by setting header level 1 (\#)) are displayed on individual
+(defined by setting header level 1 (#)) are displayed on individual
 pages or cards. If you want all sections on a single page, add the
 `cards: false` option in the YAML header. The design is an adaptation
 from the Material design theme for Bootstrap 3 project:
@@ -202,16 +205,16 @@ that can be set in the YAML header besides `highlight` and
 see the help file for `html_material` as well `bookdown::html_document2`
 or `rmarkdown::html_document`.
 
-<img src="tools/images/img_html_material.png" width="2786" />
+![](vignettes/images/img_html_material.png)<!-- -->
 
 #### Addtional features available in these HTML templates:
 
 Some extra features were adopted from the
 [rmdformats](https://github.com/juba/rmdformats) package, i.e. 
 
-  - tabsets are supported like in the default template made with
+-   tabsets are supported like in the default template made with
     `rmarkdown::html_document()`
-  - both templates provide automatic thumbnails for figures with
+-   both templates provide automatic thumbnails for figures with
     lightbox display
 
 ### `rmd_to_jupyter` - Jupyter Notebook output format
@@ -231,12 +234,12 @@ into Jupyter Notebooks. Although I found some packages such as
 [notedown](https://github.com/aaren/notedown) (which the former depends
 on) I ran into few issues:
 
-  - you have to have Python and notedown installed and correctly setup
+-   you have to have Python and notedown installed and correctly setup
     before you can start
-  - when opening the notebooks in Jupyter Notebook locally or using a
+-   when opening the notebooks in Jupyter Notebook locally or using a
     remote server, either no or the Phyton kernel was automatically
     started as all code chunks were read as Python code
-  - when choosing the R kernel for the notebook, the `%%R` flag appeared
+-   when choosing the R kernel for the notebook, the `%%R` flag appeared
     in each code chunk and had to be removed manually
 
 So eventually I found a simpler approach in the
@@ -260,19 +263,19 @@ When selecting the *Jupyter Notebook* template in R Studio a directory
 including the `.Rmd` file and `images/` subfolder will be created. Open
 the R Markdown file and change it however you want. Once you press the
 *knit* button you should see a line telling you were the `.ipynb` file
-was saved. And you’re done\!
+was saved. And you’re done!
 
 When opening your file in Jupyter Notebook, please note that
 
-  - if you use a local installation of Jupyter Notebook, the program
+-   if you use a local installation of Jupyter Notebook, the program
     will automatically have access to all the subdirectories that your
     file links to (e.g. the `images/` folder or any `data/` folder)
-  - if you use Jupyter Notebook server you need to upload the `.ipynb`
+-   if you use Jupyter Notebook server you need to upload the `.ipynb`
     file as well as all subdirectories together as a zip file. To unzip,
     simply open a new R notebook and write into the first cell:
     `unzip("zip_file_name.zip")`.
 
-<img src="tools/images/img_rmd_to_jupyter.png" width="1732" />
+![](vignettes/images/img_rmd_to_jupyter.png)<!-- -->
 
 ### `pdf_cheatsheet` - Output format for a simple cheat sheet
 
@@ -290,7 +293,7 @@ overall. However, the template .Rmd file provides several examples
 regarding the layout and syntax, which is hopefully sufficient enough
 for the inexperienced coder.
 
-<img src="tools/images/img_pdf_cheatsheet.png" width="6685" />
+![](vignettes/images/img_pdf_cheatsheet.png)<!-- -->
 
 ### `pdf_report` - Output format for a report in English (default) or German
 
@@ -329,7 +332,7 @@ For more details on available arguments in `pdf_report` (in addition to
 `df_print` as shown here) see its help file as well as the help for
 `rmarkdown::pdf_document`.
 
-<img src="tools/images/img_pdf_report.png" width="10713" />
+![](vignettes/images/img_pdf_report.png)<!-- -->
 
 ### `pdf_simple` - Output format for a simple PDF document in English (default) or German
 
@@ -344,159 +347,28 @@ In the YAML header of the R Markdown template, you can easily customize
 the logos and cover image, the language, the bibliography style or even
 add your own LaTeX style with the `include-after` option:
 
-<img src="tools/images/img_pdf_simple.png" width="600" />
+![](vignettes/images/img_pdf_simple.png)<!-- -->
 
-### `pdf_thesis_en` and `pdf_thesis_de` - PDF output format for BSc/Msc thesis in English and German
-
-The package provides a comprehensive template for writing a Bachelor’s/
-Master’s Thesis at the UHH Biology Department and rendering those files
-in a PDF format following the official guidelines of the Department’s
-Academic office for the [Bachelor
-thesis](https://www.biologie.uni-hamburg.de/studium/download/bachelor/vorgabe-bachelorarbeit.pdf)
-as well as [Master
-thesis](https://www.biologie.uni-hamburg.de/studium/download/master/vorgaben-masterarbeit-biologie.pdf).
-The template comes in two versions, one in German (`pdf_thesis_de`) and
-one in English (`pdf_thesis_en`).
-
-The underlying LaTeX templates are based on the University templates
-provided by the [Department of
-Socioeconomics](https://www.wiso.uni-hamburg.de/fachbereich-sozoek/professuren/szimayer/lehre/wissenschaftliche-arbeiten/bachelorarbeiten/vorlagen-fuer-abschlussarbeiten-in-latex-format.html)
-as well as the Department of Informatics working groups
-[VSIS](https://vsis-www.informatik.uni-hamburg.de/vsis/teaching/templates)
-and [Security &
-Privacy](https://www.inf.uni-hamburg.de/inst/ab/snp/courses/material/templates.html).
-
-These two templates built on the
-[thesisdown](https://github.com/ismayc/thesisdown) package by Chester
-Ismay with adjustments to meet the UHH requirements. The underlying
-function wraps around the `pdf_book()` function from the
-[bookdown](https://bookdown.org/home/about/) package, which is more
-suitable for books and log-format reports and which provides additional
-features such as figure/table caption numbering, cross-references or
-inserting parts/appendices. `bookdown` also allows the splitting of
-chapters or sections into individual files, keeping it thereby more
-tidy. If you’ve never came across `bookdown` before, it can be helpful
-to read up on its documentation: <https://bookdown.org/yihui/bookdown/>.
-
-<img src="tools/images/img_pdf_thesis.png" width="5767" />
-
-#### Creating and rendering your thesis
-
-Creating the thesis document is not much different from the other
-templates in this package, with one exception, i.e. you have to name
-your .Rmd file `index.Rmd`. So there are two options:
-
-1.  When assigning a name to the thesis directory (and .Rmd file) in the
-    dialog box “New R Markdown” or in the create\_doc/draft function
-    write *index* → if you like the thesis folder to have a more
-    expressive name re-name the folder later.
-2.  Do the exactly the opposite, i.e. name your directory however you
-    like and directly after all files have been created name the .Rmd
-    file `index.Rmd`.
-
-This `index.Rmd` file is the only file in your thesis directory you’ll
-ever going to knit\! You can see this as none of the other chapter .Rmd
-files has a YAML header to tell what the output format should be like.
-Hence, you are going to press the *knit* button for these files, R
-Studio will render them as default into an HTML file.
-
-The output PDF that is rendered from the `index.Rmd` file will be placed
-in a new `thesis-output/` subdirectory along with its LaTeX file.
-
-#### Thesis components
-
-The following components are ones you should edit to customize your
-thesis. Note that the template contains in all files some dummy text to
-provide you some guidance and additional information. This should be
-deleted of course.
-
-### `index.Rmd`
-
-This file contains the [YAML](https://yaml.org/) header, i.e. all the
-meta information, which should always be at the beginning of your
-document. In fact, the file shouldn’t contain anything else than that\!
-The starting text you’ll see after creating the file is just for your
-information. Edit line 3-11 to have your name, thesis title, etc. on the
-title page.
-
-### `_bookdown.yml`
-
-This is the main configuration file for your thesis. It determines what
-.Rmd files are included in the output, and in what order. Arrange the
-order of your chapters in this file and ensure that the names match the
-names in your folders.
-
-### `prelim/`
-
-This folder contains .Rmd files for the sections that come before the
-main part of your thesis, i.e. the *Abstract*, *Zusammenfassung* (the
-German summary), and the *List of Abbreviations* (optional). The *List
-of Tables* and *List of Figures*, which are also optional, are
-automatically generated so now .Rmd file is required.
-
-### `chapter/`
-
-This contains the .Rmd files for each chapter in your dissertation
-(e.g. `01-intro.Rmd`, `02-methods.Rmd`, etc.). Write your thesis in
-these. If you’re writing in R Studio, you may find the package
-[wordcountaddin](https://github.com/benmarwick/wordcountaddin) useful
-for getting word counts and readability statistics in R Markdown
-documents.
-
-### `bib/`
-
-Store your bibliography (as .bib file(s)) and your style file (as .csl
-file) here. A good source for citation styles is this [CSL Style
-Repository](https://github.com/citation-style-language/styles#readme). A
-useful tool for easy citation insertions is the
-[citr](https://github.com/crsh/citr) add-in. If you are using the
-reference management software [Zotero](https://www.zotero.org/) the
-add-in can even access your reference database directly.
-
-### `data/` and `images/`
-
-Store your data files and all external images that are embedded in your
-thesis here and reference them in your R Markdown files. See the
-*method* chapter in the template and chapter
-[2.2.1](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#equations)
-in the bookdown online documentation for details on cross-referencing
-tables and figures in R Markdown.
-
-#### Fine-tuning the thesis format at the very last moment
-
-If you like to change some of the format and are familiar with LaTeX you
-can also open the rendered `thesis.tex` file in your system’s LaTeX
-editor, make the changes and recompile it. But note that whenever you
-*knit* your `index.Rmd` again, your changes in the LaTeX file will be
-overwritten. So this should be only done once the content of your thesis
-doesn’t change.
-
-A better way to add your personal format style is to add LaTeX code in
-the YAML header under the option `header-includes:` since that style
-will be included every time you render your document.
-
------
+------------------------------------------------------------------------
 
 ## Useful resources
 
-  - R Markdown
-      - The official [R Markdown
+-   R Markdown
+    -   The official [R Markdown
         documentation](https://rmarkdown.rstudio.com/lesson-1.html) from
         RStudio
-      - R Markdown [reference
+    -   R Markdown [reference
         guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
-      - R Markdown
+    -   R Markdown
         [cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
-      - The online book [R Markdown: The Definitive
-        Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J.
-        J. Allaire, and Garrett Grolemund
-  - The online book [bookdown: Authoring Books and Technical Documents
-    with R Markdown](https://bookdown.org/yihui/bookdown/) by Yihui Xie
-  - LaTeX
-      - The official [LaTeX help and
+    -   The online book [R Markdown: The Definitive
+        Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui
+        Xie, J. J. Allaire, and Garrett Grolemund
+-   LaTeX
+    -   The official [LaTeX help and
         documentation](https://www.latex-project.org/help/documentation/)
-      - The [overleaf](https://www.overleaf.com/learn) documentation
-  - W3Schools Online Web Tutorial for
+    -   The [overleaf](https://www.overleaf.com/learn) documentation
+-   W3Schools Online Web Tutorial for
     [HTML](https://www.w3schools.com/html/default.asp) and for
     [CSS](https://www.w3schools.com/css/default.asp).
 
@@ -506,9 +378,7 @@ will be included every time you render your document.
     package
 2.  The [rticles](https://github.com/rstudio/rticles) package
 3.  INWTlab’s [ireports](https://github.com/INWTlab/ireports) package
-4.  Chester Ismay’s [thesisdown](https://github.com/ismayc/thesisdown)
-    package
-5.  Michael Kearney’s
+4.  Michael Kearney’s
     [rmd2jupyter](https://github.com/mkearney/rmd2jupyter) package
-6.  Sarah Lang’s [LaTeX template for a cheat
+5.  Sarah Lang’s [LaTeX template for a cheat
     sheet](https://www.overleaf.com/latex/templates/colourful-cheatsheet-template/qdsshbjktndd)
