@@ -73,17 +73,6 @@ kable(tab,
 ```
 
 
-# Figures
-
-## Base graphics
-
-A base graphics histogram:
-
-```{r basehist, fig.cap="A Histogram made with the basic graphics package", out.width="50%", fig.align="center"}
-hist(rnorm(100))
-```
-
-
 # Tabbed sections
 
 Comparison between the classical tabs and the pill tabs:
@@ -128,6 +117,17 @@ Non eos ex aperiam dolor hic. Consectetur delectus placeat rerum consequuntur du
 Dolorem eius perspiciatis et veniam hic reprehenderit ipsam ut. Exercitationem rem eius quo. Nemo quis in voluptatibus ex.
 Aut nihil quo iure quia. Error quam quidem inventore. Aut est est aut atque ipsum aut repellat. Eligendi delectus aut et quia voluptas dolores. Perspiciatis et reiciendis deleniti harum nihil officiis aperiam.
 Laborum necessitatibus beatae modi aut illo. Quaerat esse eum ipsa quisquam totam. Vitae nesciunt excepturi voluptate iusto molestiae qui animi corrupti. Voluptates et illum quia.
+
+
+# Figures
+
+## Base graphics
+
+A base graphics histogram:
+
+```{r basehist, fig.cap="A Histogram made with the basic graphics package", out.width="50%", fig.align="center"}
+hist(rnorm(100))
+```
 
 
 # Plotly

@@ -5,22 +5,28 @@
 \title{Convert to simple PDF/LaTeX document in English (en)}
 \usage{
 pdf_simple(
-  highlight = "kate",
-  citation_package = "natbib",
   number_sections = TRUE,
+  highlight = "kate",
+  font = "Helvetica",
+  citation_package = "natbib",
   latex_engine = "xelatex",
   ...
 )
 }
 \arguments{
+\item{number_sections}{logical; \code{TRUE} to number section headings.}
+
 \item{highlight}{character; syntax highlighting style. Supported styles include "default",
 "tango", "pygments", "kate" (default here), "monochrome", "espresso", "zenburn", and "haddock".
 Pass \code{NULL} to prevent syntax highlighting.}
 
+\item{font}{character; default font is 'Helvetica'; for members of the UHH there is also the font
+'TheSansUHH' available. If you want to use another font, simply use the setting "other" and
+replace the .ttf files for regular, italic, bold, and bold-italic font with your own files
+(should be named EXACTLY as the template font files).}
+
 \item{citation_package}{character; the \LaTeX package to process "citations", "natbib" (default) or
 "biblatex". Use "none" if neither package is to be used.}
-
-\item{number_sections}{logical; \code{TRUE} to number section headings.}
 
 \item{latex_engine}{character; LaTeX engine for producing PDF output. Options
 are "pdflatex", "lualatex", and "xelatex" (default).}

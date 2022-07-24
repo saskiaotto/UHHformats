@@ -7,12 +7,12 @@ header_right: "Author"
 date: \today
 fontsize: 11pt
 german: false # default is English
-bibliography: bibfile.bib       
+bibliography: references.bib        
 bibliographystyle: bibstyle.bst
 abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut elit odio. Donec fermentum tellus neque, vitae fringilla orci pretium vitae. Fusce maximus finibus facilisis. Donec ut ullamcorper turpis. Donec ut porta ipsum. Nullam cursus mauris a sapien ornare pulvinar. Aenean malesuada molestie erat quis mattis. Praesent scelerisque posuere faucibus. Praesent nunc nulla, ullamcorper ut ullamcorper sed, molestie ut est. Donec consequat libero nisi, non semper velit vulputate et. Quisque eleifend tincidunt ligula, bibendum finibus massa cursus eget. Curabitur aliquet vehicula quam non pulvinar. Aliquam facilisis tortor nec purus finibus, sit amet elementum eros sodales. Ut porta porttitor vestibulum."
-output:
+output: 
   UHHformats::pdf_simple:
-    number_sections: true
+    font: "Helvetica" # alternative: "TheSansUHH"  
 ---
 
 ```{r setup, include = FALSE}
@@ -27,11 +27,10 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE,
 library(knitr)
 library(kableExtra)
 library(xtable)
-# library(tidyverse)
-# library(lubridate)
-# library(gridExtra)
+library(tidyverse)
 ```
 
+<!-- This is how you can define comments in an .Rmd file (outside the R code snippets) -->
 
 # Introduction 
 
@@ -50,12 +49,15 @@ Configure the YAML header including the following elements:
 * `bibliographystyle`: The style is provided in the bibstyle.bst file, which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style. Just leave the file as it is.
 * `abstract`: Write here your abstract or remove option if you don't want to include an abstract.
 * `output`: The nested fields for the output field are based on the arguments of the output function. Since `UHHformats::pdf_simple` is based on `rmarkdown::pdf_document`, see its help page for more options. Current default settings are
-    * `highlight: "kate"`
-    * `citation_package: "natbib"`
     * `number_sections: TRUE`
+    * `highlight: "kate"`
+    * `font = "Helvetica"`
+    * `citation_package: "natbib"`
     * `latex_engine: "xelatex"`
 * `header_includes`: Here you can add additional \LaTeX code to include in the header, before the `\\begin\{document\}` statement. 
 * If you want to add additional LaTeX code to include before the `\\end\{document\}` statement use the field `include_after`. 
+
+If you are associated to the UHH you can also use the University's own font "TheSansUHH". In that case replace `font = "Helvetica"` with `font = "TheSansUHH"`. To use another font, simply use the setting "other" and replace the 'font_XXX.ttf' files in the working directory with your own files. Please note, that you have to name these files exactly as the template font files.
 
 
 # Methods
@@ -88,9 +90,10 @@ To cross-reference sections simply put the section header in square brackets, e.
 
 ## Mathematics
 
-Use mathematics in R Markdown as usual using the dollar sign `$`; either in inline mode with one dollar sign $E = mc^2$ or in display mode with two:
+Use mathematics in R Markdown as usual using the dollar sign `$`; either in inline mode with one dollar sign, e.g. $E = mc^2$, or in display mode with two:
 
 $$E = mc^2$$
+
 Important to note: do not leave a space between the `$` and your mathematical notation.
 
 Alternatively, you can use \LaTeX for more control, e.g. for setting equation numbers that can be cross-referenced:
@@ -110,9 +113,10 @@ You may refer to this equation using `\ref{eq:label}`, e.g., see Equation \ref{e
 
 ## R output
 
-R output is typically shown in the monospace font (here an example with the `mtcars` dataset):
+R output is typically shown in the monospace font (here an example with the `mtcars` dataset in the subfolder `data/`): 
 ```{r}
-data("mtcars")
+# Import dataset from the data/folder
+mtcars <- read.csv("data/mtcars.csv")
 summary(mtcars[,1:4])
 ```
 
@@ -195,3 +199,20 @@ Link a `.bib` document via the YAML header, and the bibliography will be printed
 References can be cited directly within the document using the R Markdown equivalent of the \LaTeX citation system `[@key]`, where key is the citation key in the first line of the entry in the .bib file. Example: [@Taylor1937]. To cite multiple entries, separate the keys by semicolons (e.g., [@Knupp1999; @Kamm2000].
 
 There is also the package [citr](https://github.com/crsh/citr) which I highly recommend: *citr* provides functions and an RStudio add-in to search a BibTeX-file to create and insert formatted Markdown citations into the current document. If you are using the reference manager [Zotero](https://www.zotero.org/) the add-in can access your reference database directly.
+
+## Software
+
+If you want to include a paragraph on the software used, here is some example text/code to get the current R and package versions used and to generate the necessary references. But before, you need to run the following code chunk manually and copy the output in the console to your 'references.bib' file:
+
+```{r generate-package-refs, include=FALSE, eval=FALSE}
+# Automatically create a bib database for R packages used above
+knitr::write_bib(
+  x = c(.packages(), 'bookdown', 'rmarkdown', 
+    # Add here now all packages that are loaded above:
+    'knitr', 'kableExtra', 'xtable')
+  )
+```
+
+If the references are stored in the .bib file, uncomment and modify the following text:
+
+<!-- All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables and figures, was generated using the packages 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'knitr' (version `r packageVersion("knitr")`) [@R-knitr], 'kableExtra' (version `r packageVersion("kableExtra")`) [@R-kableExtra], and 'xtable' (version `r packageVersion("xtable")`) [@R-xtable]. -->

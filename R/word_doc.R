@@ -18,6 +18,9 @@
 #'        The 'uhh-template.docx' template implements most of the standard requirement at the UHH biology
 #'        department. If you prefer another template, pass the file name to this argument or simply use
 #'        'default' to use your standard Word template.
+#' @param font character; default font in the template file is 'Helvetica'; for members of the UHH there is also
+#'        the font 'TheSansUHH' available. If you want provide your own Word template, there is no
+#'        need to set any font here.
 #' @param language character; the document language. If set to "de" (ISO code for German), a configuration file
 #'        named '_bookdown.yml' will be copied (unless this file exists already) to the directory of the R
 #'        Markdown file, which language specification for the table and figure legends as well as for the
@@ -40,9 +43,17 @@
 #'  output: UHHthesis::word_doc
 #' }
 word_doc <- function(toc = FALSE, toc_depth = 4, number_sections = FALSE,
-  highlight = "default", reference_docx = "uhh-template", language = "en",
-  dpi = 144, pandoc_args = NULL, ...) {
+  highlight = "default", reference_docx = "uhh-template", font = "Helvetica",
+  language = "en", dpi = 144, pandoc_args = NULL, ...) {
 
+  # Font setting
+  if (!font %in% c("Helvetica", "TheSansUHH", "other")) {
+    stop('Set the font option to "Helvetica", "TheSansUHH" or "other".')
+  }
+  if (font == "Helvetica") filename = "uhh-template-helvetica.docx"
+  if (font == "TheSansUHH") filename = "uhh-template-thesansuhh.docx"
+
+  # Language setting
   if (!language %in% c("en", "de")) {
     stop('Set the language option either to English (language: "en") or German (language: "de").')
   }
@@ -57,7 +68,8 @@ word_doc <- function(toc = FALSE, toc_depth = 4, number_sections = FALSE,
 
   if (reference_docx == "uhh-template") {
     base <- word_document_format(
-      format = "word_doc",
+      format         = "word_doc",
+      filename       = filename,
       toc            = toc,
       toc_depth      = toc_depth,
       number_sections = number_sections,

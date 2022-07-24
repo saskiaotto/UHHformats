@@ -42,6 +42,7 @@ A little math formula :
 
 $$x = \sum_{i=1}^{n} \sqrt{\frac{y}{i}} $$
 
+
 # Analysis
 
 ## Tables
@@ -52,15 +53,6 @@ Here is a sample table output.
 tab <- aggregate(. ~ Species, data = iris, mean)
 kable(tab,
   caption = "Species-specific mean lengths and widths.")
-```
-
-
-## Figures
-
-A base graphics histogram (click on the figure to enlarge it):
-
-```{r basehist, fig.cap="A Histogram made with the basic graphics package"}
-hist(rnorm(100))
 ```
 
 
@@ -100,9 +92,17 @@ Non eos ex aperiam dolor hic. Consectetur delectus placeat rerum consequuntur du
 Dolorem eius perspiciatis et veniam hic reprehenderit ipsam ut. Exercitationem rem eius quo. Nemo quis in voluptatibus ex.
 
 
+## Figures
+
+A base graphics histogram (click on the figure to enlarge it):
+
+```{r basehist, fig.cap="A Histogram made with the basic graphics package"}
+hist(rnorm(100))
+```
+
+
 
 ## Plotly
-
 
 ```{r plotly1, fig.cap="This is the interactive htmlwidget 'plotly'", fig.width=8}
 # If plotly is installed run:

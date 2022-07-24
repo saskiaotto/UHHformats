@@ -1,21 +1,22 @@
 ---
-title: "Document Title"        
-subtitle: "Subtitle of Document"
-author: "Author Name" 
+title: "Document title"   
+subtitle: "Subtitle of document"
+author: "Author name(s)"
 date: "2022/07/20"
 
 ### Comment or remove the following two lines if NO references are used
 bibliography: [bib/references.bib, bib/packages.bib] # Path to bibliography files 
 csl: bib/sage-harvard.csl                            # Path to reference style file
 
-### Comment or remove the following line if NO summary should be shown after the title 
-abstract: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
+### Uncomment the following line if a summary should be shown after the title 
+# abstract: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr."
 
 ### Settings for rendering the document:
 output: 
   UHHformats::word_doc:
     toc: false
     language: "en"  # alternative: "de" for German
+    font: "Helvetica" # alternative: "TheSansUHH" 
 ### Uncomment the next line if 'language: "de" ' and 'toc: true'
 # toc-title: "Inhaltsverzeichnis"    
 ---
@@ -64,11 +65,14 @@ Configure the YAML header including the following elements:
     - *number_sections: FALSE*
     - *highlight:  "default"*
     - *reference_docx: "uhh-template"*
+    - *font = "Helvetica"*
     - *language: "en"*
     - *dpi: 144*
 * *toc-title*: If the setting is *toc: TRUE*, MS Word automatically generates a table of content with an English title. If the language is German (*language: "de"*) you should specify here a German title.
 
-By default *UHHformats::word_doc* uses a 'uhh-template.docx' template file, which is based on the [standard template file](https://www.kus.uni-hamburg.de/themen/oeffentlichkeitsarbeit/corporate-design/vorlagen.html) of the University of Hamburg (UHH). However, if you feel like using your own template or the standard Word template (i.e. the Normal.dot file) simply provide the path to your file or write 'default' for the latter case. For further options see also the documentation of the *bookdown::word_document2* function, which is internally called. 
+By default *UHHformats::word_doc* uses a 'uhh-template' template file, which is based on the [standard template file](https://www.kus.uni-hamburg.de/themen/oeffentlichkeitsarbeit/corporate-design/vorlagen.html) of the University of Hamburg (UHH) except for the font type, which is by default 'Helvetica'. If you are associated to the UHH you can also use the University's own font "TheSansUHH". In that case replace *font = "Helvetica"* with *font = "TheSansUHH"*. 
+
+However, if you feel like using your own template or the standard Word template (i.e. the Normal.dot file) simply provide the path to your file or write "default" for the latter case (*reference_docx: "default"*). For further options see also the documentation of the *bookdown::word_document2* function, which is internally called. 
 
 If you set the language to German, a configuration file named '_bookdown.yml' is copied into the working directory, which defines the labels of the figure legend and table captions. If you want to use other labels (e.g. 'Abb.' instead of 'Abbildung') feel free to modify the file.
 

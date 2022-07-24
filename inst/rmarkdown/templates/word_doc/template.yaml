@@ -1,6 +1,6 @@
 name: Simple Word document
 description: >
  Template for creating simple Microsoft Word-based document suitable for
- short reports and student asignments (in English). The underlying function
- is a wrapper of rmarkdown::word_document.
+ short reports and student asignments (in English or German). The underlying function
+ is a wrapper of bookdown::word_document2.
 create_dir: true
