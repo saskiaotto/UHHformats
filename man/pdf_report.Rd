@@ -5,28 +5,34 @@
 \title{Convert to report-like PDF/LaTeX document in English (default) or German}
 \usage{
 pdf_report(
-  highlight = "kate",
-  citation_package = "natbib",
   toc = TRUE,
   toc_depth = 5,
   number_sections = TRUE,
+  highlight = "kate",
+  font = "Helvetica",
+  citation_package = "natbib",
   latex_engine = "xelatex",
   ...
 )
 }
 \arguments{
-\item{highlight}{character; syntax highlighting style. Supported styles include "default",
-"tango", "pygments", "kate" (default here), "monochrome", "espresso", "zenburn", and "haddock".
-Pass \code{NULL} to prevent syntax highlighting.}
-
-\item{citation_package}{character; the \LaTeX package to process "citations", "natbib" (default) or
-"biblatex". Use "none" if neither package is to be used.}
-
 \item{toc}{logical; \code{TRUE} to include a table of contents in the output.}
 
 \item{toc_depth}{integer; Depth of headers to include in table of contents. Default set to 5.}
 
 \item{number_sections}{logical; \code{TRUE} to number section headings.}
+
+\item{highlight}{character; syntax highlighting style. Supported styles include "default",
+"tango", "pygments", "kate" (default here), "monochrome", "espresso", "zenburn", and "haddock".
+Pass \code{NULL} to prevent syntax highlighting.}
+
+\item{font}{character; default font is 'Helvetica'; for members of the UHH there is also the font
+'TheSansUHH' available. If you want to use another font, simply use the setting "other" and
+replace the .ttf files for regular, italic, bold, and bold-italic font with your own files
+(should be named EXACTLY as the template font files).}
+
+\item{citation_package}{character; the \LaTeX package to process "citations", "natbib" (default) or
+"biblatex". Use "none" if neither package is to be used.}
 
 \item{latex_engine}{character; LaTeX engine for producing PDF output. Options
 are "pdflatex", "lualatex", and "xelatex" (default).}

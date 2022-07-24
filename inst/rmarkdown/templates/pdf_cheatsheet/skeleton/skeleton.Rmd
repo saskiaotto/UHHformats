@@ -7,22 +7,19 @@ params:
   license: "CC-BY-SA"
   multicols: 3
   reduce_space_before_code: false
-  col_title: 8B8B83
-  col_sections: 000000
-  col_code: 014979
-  col_headerbox: FBEFCE
-  col_redbox: C34A47
-  col_whitebox: e0e0e0
-output:
-  UHHformats::pdf_cheatsheet:
-    highlight: kate
-    keep_tex: yes
-    df_print: kable
+  col_title: "8B8B83"
+  col_sections: "000000"
+  col_code: "014979"
+  col_headerbox: "FBEFCE"
+  col_redbox: "C34A47"
+  col_whitebox: "e0e0e0"
 header-includes: 
   # if you include a logo, don't remove this line!!
   - \newcommand{\logo}{`r gsub("_", "\\_", params$logo)`}
-editor_options: 
-  chunk_output_type: console
+output:
+  UHHformats::pdf_cheatsheet:
+    highlight: "kate"
+    font: "Helvetica" # alternative: "TheSansUHH"
 ---
 
 ```{r setup, include = FALSE}

@@ -10,7 +10,8 @@ create_doc(dirname = "new-doc", template = "html_simple")
 \item{dirname}{Name of the directory to create.}
 
 \item{template}{The name of the template to use. Default is "html_simple", other
-options are "html_material", and "pdf_report"}
+options are "html_material", "pdf_report", "pdf_simple", "word_doc", and
+"pdf_cheatsheet".}
 }
 \description{
 \code{create_doc} creates a new subdirectory inside the current directory, which will

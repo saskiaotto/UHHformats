@@ -6,8 +6,8 @@
 \usage{
 pdf_cheatsheet(
   highlight = "kate",
+  font = "Helvetica",
   latex_engine = "xelatex",
-  toc_depth = 4,
   ...
 )
 }
@@ -16,11 +16,13 @@ pdf_cheatsheet(
 include "default", "tango", "pygments", "kate" (default here),
 "monochrome", "espresso", "zenburn", and "haddock".}
 
+\item{font}{character; default font is 'Helvetica'; for members of the UHH there is also the font
+'TheSansUHH' available. If you want to use another font, simply use the setting "other" and
+replace the .ttf files for regular, italic, bold, and bold-italic font with your own files
+(should be named EXACTLY as the template font files).}
+
 \item{latex_engine}{character; LaTeX engine for producing PDF output. Options
 are "pdflatex", "lualatex", and "xelatex" (default).}
-
-\item{toc_depth}{integer; Depth of headers to include in table of contents.
-Default set to 5.}
 
 \item{...}{Further arguments passed to \code{\link[rmarkdown]{pdf_document}}.}
 }

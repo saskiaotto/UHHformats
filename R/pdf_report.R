@@ -8,14 +8,18 @@
 #' and report layout are inspired by INWTlab's
 #' \href{https://github.com/INWTlab/ireports}{ireports} package.
 #'
-#' @param highlight character; syntax highlighting style. Supported styles include "default",
-#'        "tango", "pygments", "kate" (default here), "monochrome", "espresso", "zenburn", and "haddock".
-#'        Pass \code{NULL} to prevent syntax highlighting.
-#' @param citation_package character; the \LaTeX package to process "citations", "natbib" (default) or
-#'        "biblatex". Use "none" if neither package is to be used.
 #' @param toc logical; \code{TRUE} to include a table of contents in the output.
 #' @param toc_depth integer; Depth of headers to include in table of contents. Default set to 5.
 #' @param number_sections logical; \code{TRUE} to number section headings.
+#' @param highlight character; syntax highlighting style. Supported styles include "default",
+#'        "tango", "pygments", "kate" (default here), "monochrome", "espresso", "zenburn", and "haddock".
+#'        Pass \code{NULL} to prevent syntax highlighting.
+#' @param font character; default font is 'Helvetica'; for members of the UHH there is also the font
+#'        'TheSansUHH' available. If you want to use another font, simply use the setting "other" and
+#'        replace the .ttf files for regular, italic, bold, and bold-italic font with your own files
+#'        (should be named EXACTLY as the template font files).
+#' @param citation_package character; the \LaTeX package to process "citations", "natbib" (default) or
+#'        "biblatex". Use "none" if neither package is to be used.
 #' @param latex_engine character; LaTeX engine for producing PDF output. Options
 #'        are "pdflatex", "lualatex", and "xelatex" (default).
 #' @param ... Further arguments passed to \code{\link[rmarkdown]{pdf_document}}.
@@ -52,10 +56,27 @@
 #' @return R Markdown output format to pass to \code{\link[rmarkdown]{render}}
 #' @export
 #'
-pdf_report <- function(highlight = "kate", citation_package = "natbib", toc = TRUE,
-  toc_depth = 5, number_sections = TRUE, latex_engine = "xelatex", ...) {
+pdf_report <- function(toc = TRUE,toc_depth = 5, number_sections = TRUE,
+  highlight = "kate", font = "Helvetica", citation_package = "natbib",
+  latex_engine = "xelatex", ...) {
+
+  # Font setting
+  if (!font %in% c("Helvetica", "TheSansUHH", "other")) {
+    stop('Set the font option to "Helvetica", "TheSansUHH" or "other".')
+  }
+  if (font %in% c("Helvetica", "TheSansUHH")) {
+    copy_font_files("pdf_report", font)
+  }
+
   pdf_document_format(
-    "pdf_report", highlight = highlight, citation_package = citation_package,
-    toc = toc, toc_depth = toc_depth, number_sections = number_sections,
-    latex_engine = latex_engine, ... )
+    "pdf_report",
+    toc = toc,
+    toc_depth = toc_depth,
+    number_sections = number_sections,
+    highlight = highlight,
+    citation_package = citation_package,
+    latex_engine = latex_engine,
+    ...
+  )
+
 }

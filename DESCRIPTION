@@ -1,7 +1,7 @@
 Package: UHHformats
 Type: Package
 Title: Templates for HTML and PDF/LaTeX Output Formats Designed for the UHH
-Version: 0.1.1.9000
+Version: 0.2.9000
 Date: 2022-7-16
 Authors@R: c(person("Saskia", "Otto", email="saskia.a.otto@gmail.com",
     role=c("aut","cre")))
