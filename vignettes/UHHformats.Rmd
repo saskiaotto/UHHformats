@@ -19,13 +19,7 @@ This R package provides ready-to-use R Markdown templates for HTML, PDF and Micr
 - cheat sheets, and 
 - conversions to Jupyter Notebook documents.
 
-Most templates include the UHH logo and have adopted the UHH corporate design, but the logo can easily be replaced in the YAML header and also the style can be modified, by e.g. adding your own CSS stylesheet in the YAML header of the HTML template. Hence, these templates are not limited to UHH students and employees. 
-
-The default font is for all templates 'Helvetica' but can be replaced with the University's own font style 'TheSans UHH'. If you are associated to the UHH you are allowed to use this font. In that case replace `font = "Helvetica"` with `font = "TheSansUHH"`. To use another font, simply use the setting "other" and replace the 'font_XXX.ttf' files in the working directory with your own files. Please note, that you have to name these files exactly as the template font files.
-
-Each template was developed based on other inspiring templates and R packages, which are mentioned below. **To help getting started, all templates contain already some example text and code** for formatting text, writing equations, creating tables and figures with cross-references and including references.
-
-**NEW in this version**: the templates for the Bachelor and Master thesis have been moved into a separate R package named *UHHthesis* (see https://github.com/saskiaotto/UHHthesis/).
+The default font for all templates is 'Helvetica' but can be replaced with the University's own font style 'TheSans UHH' in the PDF and Word templates. If you are associated to the UHH you are allowed to use this font. Most templates include further the UHH logo and have adopted the UHH corporate design, but the logo can easily be replaced in the YAML header and also the style can be modified, by e.g. adding your own CSS stylesheet in the YAML header of the HTML template. Hence, these templates are not limited to UHH students and employees. 
 
 
 ## Getting started
@@ -129,7 +123,7 @@ editor_options:
 
 To get an overview of options that can be set in the YAML header besides `highlight`, `code_folding`, and `number_sections` see the help file for `html_simple` as well `bookdown::html_document2` or `rmarkdown::html_document`.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align='center', fig.alt="demo html_simple template"}
 knitr::include_graphics("images/img_html_simple.png")
 ```
 
@@ -140,10 +134,9 @@ This template converts the R Markdown file into an HTML output file that has a n
 
 Similar to `html_simple`, the underlying function calls internally `rmarkdown::html_document` or (default) `bookdown::html_document2`. But here, the numbered section is set to `TRUE` as default and also the hyperlink in the cross-references works. To get an overview of options that can be set in the YAML header besides `highlight` and `code_folding`, which are shown as examples in the R Markdown template, see the help file for `html_material` as well `bookdown::html_document2` or `rmarkdown::html_document`.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align='center', fig.alt="demo html_material template"}
 knitr::include_graphics("images/img_html_material.png")
 ```
-
 
 
 #### Addtional features available in these HTML templates:
@@ -156,16 +149,17 @@ package, i.e.
 
 
 
-### `word-doc` - Output format for a Microsoft Word document in English (default) or German
+### `word_doc` - Output format for a Microsoft Word document in English (default) or German
 
-This template converts the R Markdown file into a simple PDF/LaTeX - based document structured as an article, which is suitable for student assignments. The underlying function `pdf_simple` is a wrapper of `rmarkdown::pdf_document`. Similar to the `pdf_report` 
-template, the YAML header offers various options to adjust the layout of the document.
+This template converts the R Markdown file into a Microsoft Word document, which is suitable for student assignments or project reports. The underlying function `word_doc` is a wrapper of `bookdown::word_document2`. By using internally *bookdown* the language settings for figure legends and table captions can be automatically changed from English to German (or any other language).
 
-In the YAML header of the R Markdown template, you can easily customize the
-logos and cover image, the language, the bibliography style or even add your own
-LaTeX style with the `include-after` option:
+In the YAML header of the R Markdown template, you can easily customize the language, font, the bibliography style or whether to include a table of content and the title of it. By default `word_doc` uses a 'uhh-template' template file, which is based on the [standard template file](https://www.kus.uni-hamburg.de/themen/oeffentlichkeitsarbeit/corporate-design/vorlagen.html) of the University of Hamburg (UHH) except for the font type, which is set to 'Helvetica'. If you are associated to the UHH you can also use the University's own font "TheSansUHH". In that case replace *font = "Helvetica"* with *font = "TheSansUHH"*. 
 
-```{r, echo=FALSE}
+If you feel like using your own template or the standard Word template (i.e. the Normal.dot file) simply provide the path to your file or write "default" for the latter case (*reference_docx: "default"*). You can also use another font by using the setting *font = "other"* and replacing the 'font_XXX.ttf' files in the working directory with your own files. Please note, that you have to name these files exactly as the template font files.
+
+If you set the language to German, a configuration file named '_bookdown.yml' is copied into the working directory, which defines the labels of the figure legend and table captions. If you want to use other labels (e.g. 'Abb.' instead of 'Abbildung') feel free to modify the file.
+
+```{r, echo=FALSE, out.width="100%", fig.align='center', fig.alt="demo word_doc template"}
 knitr::include_graphics("images/img_word_doc.png")
 ```
 
@@ -177,7 +171,7 @@ This template converts the R Markdown file into a simple PDF/LaTeX - based docum
 
 In the YAML header of the R Markdown template, you can easily customize the logos and cover image, the language, the bibliography style or even add your own LaTeX style with the `include-after` option:
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align='center', fig.alt="demo pdf_simple template"}
 knitr::include_graphics("images/img_pdf_simple.png")
 ```
 
@@ -212,7 +206,7 @@ output:
 
 For more details on available arguments in `pdf_report` (in addition to `df_print` as shown here) see its help file as well as the  help for `rmarkdown::pdf_document`.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align='center', fig.alt="demo pdf_report template"}
 knitr::include_graphics("images/img_pdf_report.png")
 ```
 
@@ -222,9 +216,9 @@ knitr::include_graphics("images/img_pdf_report.png")
 Template for creating a simple cheat sheet. The PDF output format will be A4 sized and horizontal. You can define whether the cheat sheet should have 2,3,4 or more columns. Also the text and box 
 colors and font size can be adjusted. The [LaTeX template by Sarah Lang](https://www.overleaf.com/latex/templates/colourful-cheatsheet-template/qdsshbjktndd) served here as inspiration for the layout and code.
 
-The templates includes predefined \LaTeX commands for textboxes. If you want to use them to make your cheat sheet visually more appealing, you have to continue coding in \LaTeX unfortunately. I didn't manage yet to get around \LaTeX overall. However, the template .Rmd file provides several examples regarding the layout and \LaTeX  syntax, which is hopefully sufficient enough for the inexperienced coder.
+The templates includes predefined LaTeX commands for textboxes. If you want to use them to make your cheat sheet visually more appealing, you have to continue coding in LaTeX unfortunately. I didn't manage yet to get around LaTeX overall. However, the template .Rmd file provides several examples regarding the layout and LaTeX  syntax, which is hopefully sufficient enough for the inexperienced coder.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align='center', fig.alt="demo pdf_cheatsheet template"}
 knitr::include_graphics("images/img_pdf_cheatsheet.png")
 ```
 
@@ -261,7 +255,7 @@ When opening your file in Jupyter Notebook, please note that
 (e.g. the `images/` folder or any `data/` folder)
 - if you use Jupyter Notebook server you need to upload the `.ipynb` file as well as all subdirectories together as a zip file. To unzip, simply open a new R notebook and write into the first cell: `unzip("zip_file_name.zip")`.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align='center', fig.alt="demo rmd_to_jupyter template"}
 knitr::include_graphics("images/img_rmd_to_jupyter.png")
 ```
 

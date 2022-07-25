@@ -41,10 +41,10 @@ copy_font_files <- function(template, font) {
     )
   }
   if (font == "Helvetica") {
-    file_copy(template, font, "HelveticaNeue-Light-08.ttf", "font_regular.ttf")
-    file_copy(template, font, "HelveticaNeue-LightItalic-09.ttf", "font_italic.ttf")
-    file_copy(template, font, "HelveticaNeue-Bold-02.ttf", "font_bold.ttf")
-    file_copy(template, font, "HelveticaNeue-BoldItalic-04.ttf", "font_bolditalic.ttf")
+    file_copy(template, font, "HelNeueLight8.ttf", "font_regular.ttf")
+    file_copy(template, font, "HelNeueLightItalic9.ttf", "font_italic.ttf")
+    file_copy(template, font, "HelNeueBold2.ttf", "font_bold.ttf")
+    file_copy(template, font, "HelNeueBoldItalic4.ttf", "font_bolditalic.ttf")
   }
   if (font == "TheSansUHH") {
     file_copy(template, font, "ftsr8a.ttf", "font_regular.ttf")
