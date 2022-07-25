@@ -89,7 +89,7 @@ If you are new to working with [bookdown](https://bookdown.org/) or even to [rma
 
 ## Cross-references
 
-External images and R figures can be referenced with '\@ref(fig:<label>)', where '<label>' is the name of the code chunk.. These label names should **not contain underscores** to separate words, use hyphens here instead. Note that figures need to have a caption to be numbered and for cross-referencing, The caption is also set in the chunk option with 'fig.cap="Your caption"'.
+External images and R figures can be referenced with '\@ref(fig:<label>)', where '<label>' is the name of the code chunk. These label names should **not contain underscores** to separate words, use hyphens here instead. Note that figures need to have a caption to be numbered and for cross-referencing, The caption is also set in the chunk option with 'fig.cap="Your caption"'.
 
 Cross-references to individual sections can simply be made by placing the name of the section into squared brackets, e.g. a link to the [Figures] is made via '[Figures]'.
 
