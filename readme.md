@@ -5,59 +5,73 @@
 
 <!-- [![R-CMD-check](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml) -->
 
-This R package provides ready-to-use R Markdown templates for HTML and
-PDF output formats, which are used within the Biology Department of the
-University of Hamburg (UHH) and its *Data Science in Biology* program.
-The package aims to encourage reproducible research using simple
-Markdown syntax while embedding all of the R code to produce plots and
-analyses as well. Included in the package are templates for
+This R package provides ready-to-use R Markdown templates for HTML, PDF
+and Microsoft Word output formats, which are used within the Biology
+Department of the University of Hamburg (UHH) and its *Data Science in
+Biology* program. The package aims to encourage reproducible research
+using simple Markdown syntax while embedding all of the R code to
+produce plots and analyses as well. Included in the package are
+templates for
 
+-   Word documents,
 -   student assignments,
--   cheat sheets,
--   project HTML files and PDF reports, and
+-   project HTML files and PDF reports,
+-   cheat sheets, and
 -   conversions to Jupyter Notebook documents.
 
 Most templates include the UHH logo and have adopted the UHH corporate
-design, but the logo can be easily replaced in the YAML header and also
+design, but the logo can easily be replaced in the YAML header and also
 the style can be modified, by e.g. adding your own CSS stylesheet in the
 YAML header of the HTML template. Hence, these templates are not limited
 to UHH students and employees.
 
+The default font is for all templates ‘Helvetica’ but can be replaced
+with the University’s own font style ‘TheSans UHH’. If you are
+associated to the UHH you are allowed to use this font. In that case
+replace `font = "Helvetica"` with `font = "TheSansUHH"`. To use another
+font, simply use the setting “other” and replace the ‘font_XXX.ttf’
+files in the working directory with your own files. Please note, that
+you have to name these files exactly as the template font files.
+
 Each template was developed based on other inspiring templates and R
-packages, which are mentioned below.
+packages, which are mentioned below. **To help getting started, all
+templates contain already some example text and code** for formatting
+text, writing equations, creating tables and figures with
+cross-references and including references.
 
 **NEW in this version**: the templates for the Bachelor and Master
 thesis have been moved into a separate R package named *UHHthesis* (see
 <https://github.com/saskiaotto/UHHthesis/>).
 
-## Installation and usage
+## Installation
 
-Install the development version from GitHub using ‘remotes’:
+Install the development version from GitHub using the *remotes* package:
 
 ``` r
-# install.packages("remotes")
+if (!require("remotes")) install.packages("remotes")
 remotes::install_github("saskiaotto/uhhformats", build_vignettes = TRUE)
 ```
+
+## Getting started
 
 ### Creating a new document and rendering it within R Studio
 
 Once you installed the package you might need to close and re-open R
 Studio to see the `UHHformats` templates listed.
 
-Choose **File** \> **New File** \> **R Markdown**, then select **From
-Template**. You should be able then to create a new document from one of
-the package templates:
+1.  Choose **File** \> **New File** \> **R Markdown**, then select
+    **From Template**. You should then be able to create a new document
+    from one of the package templates:
 
-![demo create document](vignettes/images/img_create_document.png)
+<img src="vignettes/images/img_create_document.png" title="demo create document" alt="demo create document" style="display: block; margin: auto;" />
 
-Choose the location of the directory of your document and a name (that
-name will be used for both the .Rmd file and the new folder in which the
-.Rmd file will be placed). You can use any name you like except when
-creating the thesis documents (see also \[Creating and rendering your
-thesis\]).
+2.  Choose the directory in which you want to save your file and provide
+    a file name (that name will be used for both the .Rmd file and the
+    new folder in which the .Rmd file will be placed).
 
-Rendering from within R Studio is also quite simple: you just click the
-`Knit` button.
+3.  If you are interested in the documentation already provided in the
+    template file for getting started, render the document once before
+    you start changing the content (click the `Knit` button).
 
 ### Without R Studio
 
@@ -84,8 +98,8 @@ rmarkdown::draft("new-doc.Rmd", template = "html_simple", package = "UHHformats"
 These functions will automatically place the generated .Rmd file in a
 new subdirectory of the same name.
 
-You can render your document into the HTML or PDF output format using
-the `render()` function from the `rmarkdown` package :
+You can render your document into the HTML, PDF or Word output format
+using the `render()` function from the `rmarkdown` package :
 
 ``` r
 setwd("./new-doc")
@@ -143,7 +157,7 @@ tutorial (and its entire documentation):
 
 ## Template gallery
 
-### `html_simple` - HTML output format
+### `html_simple` - Simple HTML output format
 
 This template converts the R Markdown file into a simple HTML file with
 a fixed table of content in the upper right corner and a code folding
@@ -163,7 +177,7 @@ The current R Markdown template has in the YAML header:
     ---
     title: "Title"
     author: "Name"
-    date: "2022-07-17"
+    date: "2022-07-24"
     output:
       UHHformats::html_simple:
         highlight: kate
@@ -216,6 +230,91 @@ Some extra features were adopted from the
     `rmarkdown::html_document()`
 -   both templates provide automatic thumbnails for figures with
     lightbox display
+
+### `word-doc` - Output format for a Microsoft Word document in English (default) or German
+
+This template converts the R Markdown file into a simple PDF/LaTeX -
+based document structured as an article, which is suitable for student
+assignments. The underlying function `pdf_simple` is a wrapper of
+`rmarkdown::pdf_document`. Similar to the `pdf_report` template, the
+YAML header offers various options to adjust the layout of the document.
+
+In the YAML header of the R Markdown template, you can easily customize
+the logos and cover image, the language, the bibliography style or even
+add your own LaTeX style with the `include-after` option:
+
+![](vignettes/images/img_word_doc.png)<!-- -->
+
+### `pdf_simple` - Output format for a simple PDF document in English (default) or German
+
+This template converts the R Markdown file into a simple PDF/LaTeX -
+based document structured as an article, which is suitable for student
+assignments. The underlying function `pdf_simple` is a wrapper of
+`rmarkdown::pdf_document`. Similar to the `pdf_report` template, the
+YAML header offers various options to adjust the layout of the document.
+
+In the YAML header of the R Markdown template, you can easily customize
+the logos and cover image, the language, the bibliography style or even
+add your own LaTeX style with the `include-after` option:
+
+![](vignettes/images/img_pdf_simple.png)<!-- -->
+
+### `pdf_report` - Output format for a PDF report in English (default) or German
+
+This template converts the R Markdown file into a PDF/LaTeX - based
+report suitable for project reports and student assignments. The
+underlying function `pdf_report` is a wrapper of
+`rmarkdown::pdf_document` and based on the
+[rticles](https://github.com/rstudio/rticles) package that provides
+templates for various journal articles. The Pandoc LaTeX template and
+the report layout are inspired by INWTlab’s
+[ireports](https://github.com/INWTlab/ireports) package.
+
+In the YAML header of the R Markdown template, you can easily customize
+the logos and cover image, the language, the bibliography style or even
+add your own LaTeX style with the `include-after` option:
+
+    ---
+    title: "Document title"
+    author: "Author name(s)"
+    date: \today
+    fontsize: 11pt
+    german: false
+    bibliography: bibfile.bib       
+    bibliographystyle: bibstyle.bst
+    params:
+      cover: images/cover.png
+      title_logo_left: images/uhh_logo.png
+      title_logo_right: images/min_logo.png
+      logo_small: images/logo_icon.png
+    output:
+      UHHformats::pdf_report:
+        df_print: kable
+    ---
+
+For more details on available arguments in `pdf_report` (in addition to
+`df_print` as shown here) see its help file as well as the help for
+`rmarkdown::pdf_document`.
+
+![](vignettes/images/img_pdf_report.png)<!-- -->
+
+### `pdf_cheatsheet` - Output format for a simple cheat sheet
+
+Template for creating a simple cheat sheet. The PDF output format will
+be A4 sized and horizontal. You can define whether the cheat sheet
+should have 2,3,4 or more columns. Also the text and box colors and font
+size can be adjusted. The [LaTeX template by Sarah
+Lang](https://www.overleaf.com/latex/templates/colourful-cheatsheet-template/qdsshbjktndd)
+served here as inspiration for the layout and code.
+
+The templates includes predefined commands for textboxes. If you want to
+use them to make your cheat sheet visually more appealing, you have to
+continue coding in unfortunately. I didn’t manage yet to get around
+overall. However, the template .Rmd file provides several examples
+regarding the layout and syntax, which is hopefully sufficient enough
+for the inexperienced coder.
+
+![](vignettes/images/img_pdf_cheatsheet.png)<!-- -->
 
 ### `rmd_to_jupyter` - Jupyter Notebook output format
 
@@ -276,78 +375,6 @@ When opening your file in Jupyter Notebook, please note that
     `unzip("zip_file_name.zip")`.
 
 ![](vignettes/images/img_rmd_to_jupyter.png)<!-- -->
-
-### `pdf_cheatsheet` - Output format for a simple cheat sheet
-
-Template for creating a simple cheat sheet. The PDF output format will
-be A4 sized and horizontal. You can define whether the cheat sheet
-should have 2,3,4 or more columns. Also the text and box colors and font
-size can be adjusted. The [LaTeX template by Sarah
-Lang](https://www.overleaf.com/latex/templates/colourful-cheatsheet-template/qdsshbjktndd)
-served here as inspiration for the layout and code.
-
-The templates includes predefined commands for textboxes. If you want to
-use them to make your cheat sheet visually more appealing, you have to
-continue coding in unfortunately. I didn’t manage yet to get around
-overall. However, the template .Rmd file provides several examples
-regarding the layout and syntax, which is hopefully sufficient enough
-for the inexperienced coder.
-
-![](vignettes/images/img_pdf_cheatsheet.png)<!-- -->
-
-### `pdf_report` - Output format for a report in English (default) or German
-
-This template converts the R Markdown file into a PDF/LaTeX - based  
-report suitable for project reports and student assignments. The
-underlying function `pdf_report` is a wrapper of
-`rmarkdown::pdf_document` and based on the
-[rticles](https://github.com/rstudio/rticles) package that provides
-templates for various journal articles. The Pandoc LaTeX template and
-the report layout are inspired by INWTlab’s
-[ireports](https://github.com/INWTlab/ireports) package.
-
-In the YAML header of the R Markdown template, you can easily customize
-the logos and cover image, the language, the bibliography style or even
-add your own LaTeX style with the `include-after` option:
-
-    ---
-    title: "Document title"
-    author: "Author name(s)"
-    date: \today
-    fontsize: 11pt
-    german: false
-    bibliography: bibfile.bib       
-    bibliographystyle: bibstyle.bst
-    params:
-      cover: images/cover.png
-      title_logo_left: images/uhh_logo.png
-      title_logo_right: images/min_logo.png
-      logo_small: images/logo_icon.png
-    output:
-      UHHformats::pdf_report:
-        df_print: kable
-    ---
-
-For more details on available arguments in `pdf_report` (in addition to
-`df_print` as shown here) see its help file as well as the help for
-`rmarkdown::pdf_document`.
-
-![](vignettes/images/img_pdf_report.png)<!-- -->
-
-### `pdf_simple` - Output format for a simple PDF document in English (default) or German
-
-This template converts the R Markdown file into a simple PDF/LaTeX -
-based  
-document structured as an article, which is suitable for student
-assignments. The underlying function `pdf_simple` is a wrapper of
-`rmarkdown::pdf_document`. Similar to the `pdf_report` template, the
-YAML header offers various options to adjust the layout of the document.
-
-In the YAML header of the R Markdown template, you can easily customize
-the logos and cover image, the language, the bibliography style or even
-add your own LaTeX style with the `include-after` option:
-
-![](vignettes/images/img_pdf_simple.png)<!-- -->
 
 ------------------------------------------------------------------------
 

@@ -51,7 +51,7 @@ templates listed.
 You should then be able to create a new document from one of the package templates:
 
 ```{r, echo=FALSE, fig.align='center', fig.alt="demo create document"}
-knitr::include_graphics("vignettes/images/img_create_document.jpg")
+knitr::include_graphics("vignettes/images/img_create_document.png")
 ```
 
 2. Choose the directory in which you want to save your file and provide a file name (that name will be used for both the .Rmd file and the new folder in which the .Rmd file will be placed). 
@@ -61,10 +61,7 @@ knitr::include_graphics("vignettes/images/img_create_document.jpg")
 
 ### Without R Studio
 
-You can create a new directory inside your current directory, including the 
-ready-to-use R Markdown file and all associated files (e.g. images, fonts, 
-LaTeX templates, etc.), with the built-in function `create_doc()`, which is 
-adopted from the [rmdformats](https://github.com/juba/rmdformats) package.
+You can create a new directory inside your current directory, including the ready-to-use R Markdown file and all associated files (e.g. images, fonts, LaTeX templates, etc.), with the built-in function `create_doc()`, which is adopted from the [rmdformats](https://github.com/juba/rmdformats) package.
 
 Use, for instance,
 
@@ -120,16 +117,9 @@ https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
 
 ### `html_simple` - Simple HTML output format
 
-This template converts the R Markdown file into a simple HTML file with a fixed table 
-of content in the upper right corner and a code folding button similar to R notebooks, 
-which is useful in student assignments.
+This template converts the R Markdown file into a simple HTML file with a fixed table of content in the upper right corner and a code folding button similar to R notebooks, which is useful in student assignments.
 
-Its function calls internally `rmarkdown::html_document` or `bookdown::html_document2`. The 
-latter is the default, hence, numbered section (set to `FALSE` as default) and automatic 
-numbering of figures and tables is supported. However, please note that the hyperlink in 
-the cross-reference does not yet work in this template. The basis for this function and the 
-HTML, CSS, and JavaScript code is the `html_clean` template developed by Julien 
-Barnier in the [rmdformats](https://github.com/juba/rmdformats) package.
+Its function calls internally `rmarkdown::html_document` or `bookdown::html_document2`. The latter is the default, hence, numbered section (set to `FALSE` as default) and automatic numbering of figures and tables is supported. However, please note that the hyperlink in the cross-reference does not yet work in this template. The basis for this function and the HTML, CSS, and JavaScript code is the `html_clean` template developed by Julien Barnier in the [rmdformats](https://github.com/juba/rmdformats) package.
 
 The current R Markdown template has in the YAML header:
 
@@ -158,17 +148,9 @@ knitr::include_graphics("vignettes/images/img_html_simple.png")
 
 ### `html_material` - HTML output format with bootstrap design 'Material'
 
-This template converts the R Markdown file into an HTML output file that has a navigation 
-bar on the left and in which the different sections (defined by setting header level 1 (#))
-are displayed on individual pages or cards. If you want all sections on a single page, add 
-the `cards: false` option in the YAML header.
-The design is an adaptation from the Material design theme for Bootstrap 3 project: https://github.com/FezVrasta/bootstrap-material-design.
-Also in this template, the HTML, JavaScript, CSS, and R code were originally developed by 
-Julien Barnier in the [rmdformats](https://github.com/juba/rmdformats) package and 
-only slightly modified here to tailor it to the *Data Science in Biology* program at the UHH.
+This template converts the R Markdown file into an HTML output file that has a navigation bar on the left and in which the different sections (defined by setting header level 1 (#)) are displayed on individual pages or cards. If you want all sections on a single page, add the `cards: false` option in the YAML header. The design is an adaptation from the Material design theme for Bootstrap 3 project: https://github.com/FezVrasta/bootstrap-material-design. Also in this template, the HTML, JavaScript, CSS, and R code were originally developed by Julien Barnier in the [rmdformats](https://github.com/juba/rmdformats) package and only slightly modified here to tailor it to the *Data Science in Biology* program at the UHH.
 
-Similar to `html_simple`, the underlying function calls internally `rmarkdown::html_document` or (default) `bookdown::html_document2`. But here, the numbered section is set to `TRUE` as default and also the hyperlink
-in the cross-references works. To get an overview of options that can be set in the YAML header besides `highlight` and `code_folding`, which are shown as examples in the R Markdown template, see the help file for `html_material` as well `bookdown::html_document2` or `rmarkdown::html_document`.
+Similar to `html_simple`, the underlying function calls internally `rmarkdown::html_document` or (default) `bookdown::html_document2`. But here, the numbered section is set to `TRUE` as default and also the hyperlink in the cross-references works. To get an overview of options that can be set in the YAML header besides `highlight` and `code_folding`, which are shown as examples in the R Markdown template, see the help file for `html_material` as well `bookdown::html_document2` or `rmarkdown::html_document`.
 
 ```{r, echo=FALSE}
 knitr::include_graphics("vignettes/images/img_html_material.png")
@@ -188,9 +170,7 @@ package, i.e.
 
 ### `word-doc` - Output format for a Microsoft Word document in English (default) or German
 
-This template converts the R Markdown file into a simple PDF/LaTeX - based  
-document structured as an article, which is suitable for student assignments. The underlying 
-function `pdf_simple` is a wrapper of `rmarkdown::pdf_document`. Similar to the `pdf_report` 
+This template converts the R Markdown file into a simple PDF/LaTeX - based document structured as an article, which is suitable for student assignments. The underlying function `pdf_simple` is a wrapper of `rmarkdown::pdf_document`. Similar to the `pdf_report` 
 template, the YAML header offers various options to adjust the layout of the document.
 
 In the YAML header of the R Markdown template, you can easily customize the
@@ -205,14 +185,9 @@ knitr::include_graphics("vignettes/images/img_word_doc.png")
 
 ### `pdf_simple` - Output format for a simple PDF document in English (default) or German
 
-This template converts the R Markdown file into a simple PDF/LaTeX - based  
-document structured as an article, which is suitable for student assignments. The underlying 
-function `pdf_simple` is a wrapper of `rmarkdown::pdf_document`. Similar to the `pdf_report` 
-template, the YAML header offers various options to adjust the layout of the document.
+This template converts the R Markdown file into a simple PDF/LaTeX - based document structured as an article, which is suitable for student assignments. The underlying function `pdf_simple` is a wrapper of `rmarkdown::pdf_document`. Similar to the `pdf_report` template, the YAML header offers various options to adjust the layout of the document.
 
-In the YAML header of the R Markdown template, you can easily customize the
-logos and cover image, the language, the bibliography style or even add your own
-LaTeX style with the `include-after` option:
+In the YAML header of the R Markdown template, you can easily customize the logos and cover image, the language, the bibliography style or even add your own LaTeX style with the `include-after` option:
 
 ```{r, echo=FALSE}
 knitr::include_graphics("vignettes/images/img_pdf_simple.png")
@@ -222,17 +197,10 @@ knitr::include_graphics("vignettes/images/img_pdf_simple.png")
 
 ### `pdf_report` - Output format for a PDF report in English (default) or German
 
-This template converts the R Markdown file into a PDF/LaTeX - based  
-report suitable for project reports and student assignments. The underlying 
-function `pdf_report` is a wrapper of `rmarkdown::pdf_document` and based on the 
-[rticles](https://github.com/rstudio/rticles) package that
-provides templates for various journal articles. The Pandoc LaTeX template
-and the report layout are inspired by INWTlab's
-[ireports](https://github.com/INWTlab/ireports) package.
+This template converts the R Markdown file into a PDF/LaTeX - based report suitable for project reports and student assignments. The underlying function `pdf_report` is a wrapper of `rmarkdown::pdf_document` and based on the [rticles](https://github.com/rstudio/rticles) package that
+provides templates for various journal articles. The Pandoc LaTeX template and the report layout are inspired by INWTlab's [ireports](https://github.com/INWTlab/ireports) package.
 
-In the YAML header of the R Markdown template, you can easily customize the
-logos and cover image, the language, the bibliography style or even add your own
-LaTeX style with the `include-after` option:
+In the YAML header of the R Markdown template, you can easily customize the logos and cover image, the language, the bibliography style or even add your own LaTeX style with the `include-after` option:
 
 ```
 ---
@@ -254,8 +222,7 @@ output:
 ---
 ```
 
-For more details on available arguments in `pdf_report` (in addition to `df_print` as 
-shown here) see its help file as well as the  help for `rmarkdown::pdf_document`.
+For more details on available arguments in `pdf_report` (in addition to `df_print` as shown here) see its help file as well as the  help for `rmarkdown::pdf_document`.
 
 ```{r, echo=FALSE}
 knitr::include_graphics("vignettes/images/img_pdf_report.png")
@@ -264,17 +231,10 @@ knitr::include_graphics("vignettes/images/img_pdf_report.png")
 
 ### `pdf_cheatsheet` - Output format for a simple cheat sheet
 
-Template for creating a simple cheat sheet. The PDF output format
-will be A4 sized and horizontal. You can define whether the
-cheat sheet should have 2,3,4 or more columns. Also the text and box 
-colors and font size can be adjusted. The [LaTeX template by Sarah
-Lang](https://www.overleaf.com/latex/templates/colourful-cheatsheet-template/qdsshbjktndd) served here as inspiration for the layout and code.
+Template for creating a simple cheat sheet. The PDF output format will be A4 sized and horizontal. You can define whether the cheat sheet should have 2,3,4 or more columns. Also the text and box 
+colors and font size can be adjusted. The [LaTeX template by Sarah Lang](https://www.overleaf.com/latex/templates/colourful-cheatsheet-template/qdsshbjktndd) served here as inspiration for the layout and code.
 
-The templates includes predefined \LaTeX commands for textboxes. If you 
-want to use them to make your cheat sheet visually more appealing, you have
-to continue coding in \LaTeX unfortunately. I didn't manage
-yet to get around \LaTeX overall. However, the template .Rmd file provides 
-several examples regarding the layout and \LaTeX  syntax, which is hopefully sufficient enough for the inexperienced coder.
+The templates includes predefined \LaTeX commands for textboxes. If you want to use them to make your cheat sheet visually more appealing, you have to continue coding in \LaTeX unfortunately. I didn't manage yet to get around \LaTeX overall. However, the template .Rmd file provides several examples regarding the layout and \LaTeX  syntax, which is hopefully sufficient enough for the inexperienced coder.
 
 ```{r, echo=FALSE}
 knitr::include_graphics("vignettes/images/img_pdf_cheatsheet.png")
@@ -305,9 +265,7 @@ knit: UHHformats::rmd_to_jupyter
 
 Since everything from the YAML header will be cut out when converting the code, any title, author name or other field will be neglected.
 
-When selecting the *Jupyter Notebook* template in R Studio a directory including the `.Rmd` file and `images/` subfolder will be created. 
-Open the R Markdown file and change it however you want. Once you press the *knit* button you should see a line telling you were the 
-`.ipynb` file was saved. And you're done!
+When selecting the *Jupyter Notebook* template in R Studio a directory including the `.Rmd` file and `images/` subfolder will be created. Open the R Markdown file and change it however you want. Once you press the *knit* button you should see a line telling you were the `.ipynb` file was saved. And you're done!
 
 When opening your file in Jupyter Notebook, please note that
 
