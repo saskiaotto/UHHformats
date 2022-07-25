@@ -137,7 +137,8 @@ print(paste("This sample has a mean of",
 
 ### Plotting example with `mtcars`
 ```{r eval=TRUE, echo=FALSE, out.width="80%", fig.height=6, fig.align='left'}
-plot(mtcars$mpg, mtcars$disp, pch = 20, cex = 2)
+plot(mtcars$mpg, mtcars$disp, pch = 20, cex = 2,
+  xlab = "Displacement (cu.in.)", ylab = "Miles/(US) gallon")
 ```
 
 \newpage
