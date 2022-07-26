@@ -1,8 +1,8 @@
 #' Create a new directory with the R Markdown template
 #'
-#' \code{create_doc} creates a new subdirectory inside the current directory, which will
+#' \code{create_rmd_doc} creates a new subdirectory inside the current directory, which will
 #' contain the ready-to-use R Markdown file and all associated files. It can be used with
-#' all UHHformats templates, except for \code{rmd_to_jupyter}.
+#' all rmarkdown-/bookdown-based templates.
 #'
 #' @param dirname Name of the directory to create.
 #' @param template The name of the template to use. Default is "html_simple", other
@@ -14,17 +14,17 @@
 #'
 #' @examples
 #' \dontrun{
-#' create_doc("my_report", template = "pdf_report")
+#' create_rmd_doc("my_report", template = "pdf_report")
 #' }
 #' @export
 
-create_doc <- function(dirname = "new-doc", template = "html_simple") {
+create_rmd_doc <- function(dirname = "new-doc", template = "html_simple") {
     templates <- c("html_material", "html_simple", "pdf_report",
       "pdf_simple", "word_doc", "pdf_cheatsheet")
     template <- match.arg(template, templates)
     tmp.dir <- paste(dirname, "_tmp", sep = "")
     if (file.exists(dirname) || file.exists(tmp.dir)) {
-        stop(paste("Cannot run create.doc() from a directory containing",
+        stop(paste("Cannot run create_rmd_doc() from a directory containing",
                    dirname, "or", tmp.dir))
     }
     dir.create(tmp.dir)

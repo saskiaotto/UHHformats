@@ -1,0 +1,298 @@
+---
+title: "HTML"
+description: |
+  Lorem ipsum
+date: 26/04/2022
+author:
+  - name: Jane Doe 
+    url: https://example.com/norajones
+    affiliation: Spacely Sprockets
+    affiliation-url: https://example.com/spacelysprokets
+citation:
+  url: https://example.com/summarizing-output
+bibliography: references.bib
+csl: sage-harvard.csl
+license: "CC BY-SA"
+format: 
+  html:
+    theme:  default # sketchy, journal
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    toc-title: Contents
+    number-sections: true
+    number-depth: 3
+    self-contained: true
+    anchor-sections: true
+    smooth-scroll: true
+    citations-hover: true
+    footnotes-hover: true
+    crossref: # so figures are now with subsections
+      chapters: false
+      fig-title: Fig     # (default is "Figure")
+      tbl-title: Tbl     # (default is "Table")
+      fig-prefix: figure   # (default is "Figure")
+      tbl-prefix: table    # (default is "Table")
+    css: styles.css
+    code-fold: true
+    code-summary: "Show the code"
+    code-overflow: wrap
+    code-tools:
+      # source: https://github.com/quarto-dev/quarto-web/blob/main/index.md
+      source: false
+      toggle: true
+      caption: "CODE"
+    code-block-bg: true
+    # code-block-border-left: true
+    code-block-border-left: "#31BAE9"
+    highlight-style: arrow # default
+    code-copy: hover # or: true, false
+    code-link: true
+execute:
+  echo: true
+editor: visual
+---
+
+```{r setup}
+#| include: false
+library(knitr)
+## Global options
+options(max.print="75")
+opts_chunk$set(cache=FALSE, echo=TRUE,
+  message=FALSE, warning=FALSE, error=FALSE)
+```
+
+## Introduction
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+Test reference to @tbl-irismeans
+
+Test reference to @fig-boxplottab.
+
+Test reference to @sec-figures.
+
+To create a reference-able code block, add a #lst- identifier along with a lst-cap attribute. For example: test reference to code chunk @lst-codeblock
+
+``` {#lst-codeblock .r lst-cap="Example for a referencable code block"}
+4+4
+```
+
+## Callout blocks
+
+::: callout-note
+Note that there are five types of callouts, including: `note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: callout-tip
+## Tip With Caption
+
+This is an example of a callout with a caption.
+:::
+
+::: {.callout-caution collapse="true"}
+## Expand To Learn About Collapse
+
+This is an example of a 'folded' caution callout that can be expanded by the user. You can use `collapse="true"` to collapse it by default or `collapse="false"` to make a collapsible callout that is expanded by default.
+:::
+
+### Mathjax
+
+A little math formula :
+
+$$x = \sum_{i=1}^{n} \sqrt{\frac{y}{i}} $$
+
+Here is a more complex example where the equation is embedded in a LaTeX equation environment including numbering and crossreferencing:
+
+If the random variable $Y$ follows a standard normal distribution, i.e. $Y \sim N(0,1)$, it's density function can be described with
+
+$$
+f_{Y}(y)=\varphi(y) \stackrel{\mathrm{def}}{=} \frac{1}{\sqrt{2 \pi}} \exp \left\{ -\frac{y^2}{2} \right\}, \quad y \in \mathbb{R}.
+$$ {#eq-density-norm}
+
+$\pi$ represents the circle number or Ludolph's number. The function
+
+$$
+  F_{Y}(y)=\Phi(y) \stackrel{\mathrm{def}}{=} \int_{-\infty}^y \varphi(x) \,\mathrm{d}x, \quad y \in \mathbb{R}
+$$ {#eq-dist-func}
+
+represents then the distribution function of @eq-density-norm.
+
+## Analysis
+
+### Tables
+
+Here is a simple table based on Markdown Syntax:
+
+| Col1 | Col2 | Col3 |
+|------|------|------|
+| A    | B    | C    |
+| E    | F    | G    |
+| A    | G    | G    |
+
+: My Caption {#tbl-letters}
+
+See @tbl-letters.
+
+Here is a sample table output using the `knitr::kable()` function.
+
+```{r}
+#| label: tbl-irismeans
+#| tbl-cap: "Species-specific mean lengths and widths."
+tab <- aggregate(. ~ Species, data = iris, mean)
+kable(tab)
+```
+
+### Tabbed sections
+
+Comparison between the classical tabs and the pill tabs:
+
+#### Classical tabs
+
+Classical tabs without fading effect.
+
+::: panel-tabset
+##### First tab
+
+```{r}
+#| fig-cap: "Boxplot made with the basic graphics package"
+#| label: fig-boxplottab
+boxplot(rnorm(100), rnorm(100))
+```
+
+##### Second tab
+
+Cum eaque dicta architecto culpa eius. Dignissimos officiis error exercitationem. Adipisci odit ad ea iusto fugiat laborum maiores. Dolore sunt et veritatis alias nesciunt maxime cumque. Culpa aut non ea. Culpa ex quia debitis sint eveniet cum.
+
+<!-- End tabset -->
+:::
+
+### Figures {#sec-figures}
+
+A base graphics histogram (click on the figure to enlarge it):
+
+```{r basehist}
+#| fig-cap: "A Histogram made with the basic graphics package"
+#| label: fig-basehist
+#| 
+hist(rnorm(100))
+```
+
+### Plotly
+
+```{r}
+#| fig-cap: "This is the interactive htmlwidget 'plotly'"
+#| fig-width: 8
+#| label: fig-plotly
+#| 
+# If plotly is installed run:
+p <- plotly::plot_ly(data = mtcars, x = ~mpg, y = ~wt, color = ~cyl)
+plotly::add_markers(p)
+```
+
+### Diagrams
+
+#### Mermaid
+
+Mermaid is a Javascript based diagramming and charting tool that uses Markdown-inspired text definitions and a renderer to create and modify complex diagrams (see @fig-mermaid-diagram).
+
+```{mermaid}
+%%| label: fig-mermaid-diagram
+%%| fig-cap: Simple flowchart based on the JS-tool Mermaid.
+%%| fig-width: 6
+
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]
+```
+
+```{mermaid}
+%%| label: fig-mermaid-diagram
+%%| fig-cap: A sequence diagram based on Mermaid.
+%%| fig-width: 6
+
+sequenceDiagram
+  participant Alice
+  participant Bob
+  Alice->>John: Hello John, how are you?
+  loop Healthcheck
+    John->>John: Fight against hypochondria
+  end
+  Note right of John: Rational thoughts <br/>prevail!
+  John-->>Alice: Great!
+  John->>Bob: How about you?
+  Bob-->>John: Jolly good!
+```
+
+Here are some links:
+
+-   https://mermaid-js.github.io/mermaid/#/
+-   https://www.amazon.com/Official-Guide-Mermaid-js-beautiful-flowcharts-dp-1801078025/dp/1801078025
+
+### Graphviz
+
+The Graphviz layout programs take descriptions of graphs in a simple text language, and make diagrams in useful formats. Graphviz has many useful features for concrete diagrams, such as options for colors, fonts, tabular node layouts, line styles, hyperlinks, and custom shapes (see @fig-dot-diagram).
+
+```{dot}
+//| label: fig-dot-diagram
+//| fig-cap: "An example for a diagram made with Graphviz."
+
+graph G {
+  layout=neato
+  run -- intr;
+  intr -- runbl;
+  runbl -- run;
+  run -- kernel;
+  kernel -- zombie;
+  kernel -- sleep;
+  kernel -- runmem;
+  sleep -- swap;
+  swap -- runswap;
+  runswap -- new;
+  runswap -- runmem;
+  new -- runmem;
+  sleep -- runmem;
+}
+```
+
+Links:
+
+-   https://graphviz.org/
+
+## Conclusions
+
+Here is a footnote reference[^1], and another[^2].
+
+[^1]: Here is the footnote.
+
+[^2]: Here's one with multiple blocks.
+
+    Subsequent paragraphs are indented to show that they belong to the previous footnote.
+
+        { some.code }
+
+    The whole paragraph can be indented, or just the first line. In this way, multi-paragraph footnotes work like multi-paragraph list items.
+
+## Adding citations and bibliography
+
+Link a `.bib` document via the YAML header, and the bibliography will be printed at the very end (as usual). The default bibliography style is provided in the `bib.bst` file (do not delete), which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style.
+
+References can be cited directly within the document using the R Markdown equivalent of the \LaTeX citation system `[@key]`, where key is the citation key in the first line of the entry in the .bib file. Example: [@Taylor1937]. To cite multiple entries, separate the keys by semicolons (e.g., [@Knupp1999; @Kamm2000]. You can also write in-text citations, as follows: @Taylor1937 say this and that.
+
+There is also the package [citr](https://github.com/crsh/citr) which I highly recommend: *citr* provides functions and an RStudio add-in to search a BibTeX-file to create and insert formatted Markdown citations into the current document. If you are using the reference manager [Zotero](https://www.zotero.org/) the add-in can access your reference database directly.
+
+<!-- Pandoc will automatically generate a list of works cited and place it in the document if the style calls for it. It will be placed in a div with the id refs if one exists: -->
+
+## References
+
+::: {#refs}
+:::
+
+## Acknowledgments {.appendix .unnumbered .unlisted}
+
+I am grateful for the insightful comments offered by the anonymous peer reviewers at Books & Texts. The generosity and expertise of one and all have improved this study in innumerable ways and saved me from many errors; those that inevitably remain are entirely my own responsibility.
+
+<!-- Footnotes -->
+
