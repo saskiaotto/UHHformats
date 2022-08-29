@@ -1,43 +1,73 @@
-#' Create a new directory with the R Markdown template
+#' Create a new directory with the Quarto template
 #'
 #' \code{create_quarto_doc} creates a new subdirectory inside the current directory, which will
-#' contain the ready-to-use R Markdown file and all associated files. It can be used with
-#' all Quarto-based templates.
+#' contain the ready-to-use Quarto file and all associated files. The Word and PDF templates are
+#' based on the standard template of the University of Hamburg.
 #'
-#' @param dirname Name of the directory to create.
-#' @param template The template type to use. Choose "html" (default), "pdf"
+#' @param dirname character; the name of the directory to create.
+#' @param template character; the template type to use. Choose "html" (default), "pdf"
 #'   or "word".
+#' @param font The font family of the document. Default is "Helvetica" (i.e. Helvetica Neue).
+#'   For members of the UHH, there is also the font "TheSansUHH" available for the PDF and Word document.
 #'
 #' @examples
 #' \dontrun{
-#' create_quarto_doc("my_word-doc", template = "word")
+#'  # Create template for HTML document
+#'  create_quarto_doc("my_html-doc", template = "html")
+#'  # Create template for PDF document using the default font 'Helvetica'
+#'  create_quarto_doc("my_pdf-doc", template = "pdf")
+#'  # Create template for Word document using the University's
+#'  # font 'TheSansUHH'
+#'  create_quarto_doc("my_word-doc", template = "word", font = "TheSansUHH")
 #' }
 #' @export
 
-create_quarto_doc <- function(dirname = "new-doc", template = "html") {
-    templates <- c("html", "pdf", "word")
-    template <- match.arg(template, templates)
-    tmp.dir <- paste(dirname, "_tmp", sep = "")
-    if (file.exists(dirname) || file.exists(tmp.dir)) {
-        stop(paste("Cannot run create_quarto_doc() from a directory containing",
-                   dirname, "or", tmp.dir))
-    }
-    dir.create(tmp.dir)
-    template_dir <- template
+create_quarto_doc <- function(dirname = "new-doc", template = "html",
+  font = "Helvetica") {
 
-    # get all file names in the template folder
-    list_of_files <- list.files(
-      system.file(file.path("quarto", "templates", template_dir),
-                          package = "UHHformats"))
+  if (!font %in% c("Helvetica", "TheSansUHH", "other")) {
+    stop('Set the font option to "Helvetica" or "TheSansUHH".')
+  }
 
-    # copy all single files and subfolders into new path
-    for (i in seq_along(list_of_files)) {
-      file.copy(system.file(file.path("quarto", "templates", template_dir, list_of_files[i]),
-                          package = "UHHformats"), file.path(tmp.dir), recursive = TRUE)
-    }
+  templates <- c("html", "pdf", "word")
+  template <- match.arg(template, templates)
+  tmp_dir <- paste(dirname, "_tmp", sep = "")
+  if (file.exists(dirname) || file.exists(tmp_dir)) {
+    stop(paste("Cannot run create_quarto_doc() from a directory containing already",
+      dirname, "or", tmp_dir))
+  }
+  dir.create(tmp_dir)
+  template_dir <- template
 
-    file.rename(tmp.dir, dirname)
-    file.rename(file.path(dirname, "skeleton.qmd"), file.path(dirname, paste0(dirname, ".qmd")))
-    unlink(tmp.dir, recursive = TRUE)
+  # Get all file names in the template folder
+  list_of_files <- list.files(
+    system.file(file.path("quarto", "templates", template_dir, "skeleton"),
+      package = "UHHformats"))
+
+  # Copy all single files and subfolders in skeleton/ into new path
+  for (i in seq_along(list_of_files)) {
+    file.copy(system.file(file.path("quarto", "templates", template_dir, "skeleton", list_of_files[i]),
+      package = "UHHformats"), file.path(tmp_dir), recursive = TRUE)
+  }
+
+
+  # Copy selected resource file into new path
+  if (template == "pdf") {
+    copy_font_files("pdf", font, type = "quarto", current_dir = tmp_dir)
+  }
+
+  if (template == "word") {
+    if (font == "Helvetica") filename = "uhh-template-helvetica.docx"
+    if (font == "TheSansUHH") filename = "uhh-template-thesansuhh.docx"
+    file.copy(
+      from = find_resource("word", file = filename, type = "quarto"),
+      to = file.path(tmp_dir, "uhh-template.docx")
+    )
+  }
+
+  file.rename(tmp_dir, dirname)
+  file.rename(file.path(dirname, "skeleton.qmd"), file.path(dirname, paste0(dirname, ".qmd")))
+  unlink(tmp_dir, recursive = TRUE)
+
 }
 
