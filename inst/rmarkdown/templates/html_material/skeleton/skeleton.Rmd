@@ -150,7 +150,7 @@ hist(rnorm(100))
 ```
 
 
-# References
+# Bibliography
 
 Link a `.bib` document via the YAML header, and the bibliography will be printed at the very end (as usual). The default bibliography style is provided in the `bib.bst` file (do not delete), which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style.
 
@@ -164,3 +164,8 @@ There is also the package [citr](https://github.com/crsh/citr), which I highly r
 If you want to include a paragraph on the software used, here is some example text/code to get the current R and package versions. The code to generate a bibiliography file including all package references has been already added at the beginning of this script (code chunk 'generate-package-refs').
 
 All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables and figures, was generated using the packages 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'knitr' (version `r packageVersion("knitr")`) [@R-knitr], and 'tidyverse' (version `r packageVersion("tidyverse")`) [@R-tidyverse].
+
+
+## References
+
+<!-- A reference list will be automatically created and added to the end. -->
