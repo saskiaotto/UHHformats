@@ -97,10 +97,10 @@ $endif$
 
 
 % Define colors for hyperlinks: {{{
-\definecolor{linkcol}{HTML}{027BCB} %lightblue
+\definecolor{linkcol}{HTML}{0271BB} %lightblue
 \definecolor{filecol}{HTML}{b70000} %darkred
 \definecolor{urlcol}{HTML}{b70000} %darkred
-\definecolor{citecol}{HTML}{027BCB} %lightblue
+\definecolor{citecol}{HTML}{0271BB} %lightblue
 % }}}
 
 
@@ -210,14 +210,15 @@ $endif$
 
 
 % Custom colors {{{
-\definecolor{mydarkblue}{HTML}{014979} % HTML stands for hexdecimal coding
+\definecolor{bluegray}{HTML}{3B515B} % HTML stands for hexdecimal coding
+\definecolor{blue}{HTML}{0271BB} 
 % }}}
 
 
 % Sections {{{
-\titleformat{\section}{\color{mydarkblue}\headingfont\Large\bfseries}{\thesection}{1em}{}[\titlerule]
-\titleformat{\subsection}{\color{mydarkblue}\headingfont\large\bfseries}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\color{mydarkblue}\headingfont\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\section}{\color{blue}\headingfont\Large\bfseries}{\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}{\color{bluegray}\headingfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\color{bluegray}\headingfont\bfseries}{\thesubsubsection}{1em}{}
 % }}}
 
 
@@ -276,9 +277,9 @@ $if(params.cover)$
 	\vspace{13cm}
 
 	\begin{tabular}[l]{@{}p{\textwidth}@{}}
-		\color{mydarkblue}\headingfont\Huge\@title\\[1em]
-		\color{mydarkblue}\headingfont\LARGE\@author\\[1em]
-		\color{mydarkblue}\headingfont\large\@date\\[1em]
+		\color{bluegray}\headingfont\Huge\@title\\[1em]
+		\color{bluegray}\headingfont\LARGE\@author\\[1em]
+		\color{bluegray}\headingfont\large\@date\\[1em]
 	\end{tabular}
 
 
@@ -292,9 +293,9 @@ $else$
 	\vspace{13cm}
 
 	\begin{tabular}[l]{@{}p{\textwidth}@{}}
-		\color{mydarkblue}\headingfont\Huge\@title\\[1em]
-		\color{mydarkblue}\headingfont\LARGE\@author\\[1em]
-		\color{mydarkblue}\headingfont\large\@date\\[1em]
+		\color{bluegray}\headingfont\Huge\@title\\[1em]
+		\color{bluegray}\headingfont\LARGE\@author\\[1em]
+		\color{bluegray}\headingfont\large\@date\\[1em]
 	\end{tabular}
 
 

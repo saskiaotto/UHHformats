@@ -15,8 +15,7 @@ options are "html_material", "pdf_report", "pdf_simple", "word_doc", and
 }
 \description{
 \code{create_rmd_doc} creates a new subdirectory inside the current directory, which will
-contain the ready-to-use R Markdown file and all associated files. It can be used with
-all rmarkdown-/bookdown-based templates.
+contain the ready-to-use R Markdown file and all associated files.
 }
 \details{
 The function is a modified version of the \code{create.doc} function in the
@@ -24,6 +23,9 @@ The function is a modified version of the \code{create.doc} function in the
 }
 \examples{
 \dontrun{
+# Create template for a simple HTML document
+create_rmd_doc("my_html_doc", template = "html_simple")
+# Create template for a PDF report document
 create_rmd_doc("my_report", template = "pdf_report")
 }
 }

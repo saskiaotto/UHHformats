@@ -16,8 +16,8 @@ pdf_cheatsheet(
 include "default", "tango", "pygments", "kate" (default here),
 "monochrome", "espresso", "zenburn", and "haddock".}
 
-\item{font}{character; default font is 'Helvetica'; for members of the UHH there is also the font
-'TheSansUHH' available. If you want to use another font, simply use the setting "other" and
+\item{font}{character; default font is "Helvetica"; for members of the UHH there is also the font
+"TheSansUHH" available. If you want to use another font, simply use the setting "other" and
 replace the .ttf files for regular, italic, bold, and bold-italic font with your own files
 (should be named EXACTLY as the template font files).}
 

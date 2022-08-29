@@ -7,11 +7,13 @@
 
 
 /*
-Red:   #b70000
-Dark-Blue: #014979
-Blue:  #027BCB
-Bright-Blue: #3495d5
-Grey:  #dedede
+Darkred: #b70000
+Red:   #E2001A
+Lightred: #F07F8C
+Bluegrey: #3B515B
+Blue:  #0271BB
+Lightblue: #80B8DD
+Grey:  #B6BFC3
 */
 
 
@@ -221,7 +223,7 @@ summary {
 
 
 .header-panel {
-  background-color: #b70000;
+  background-color: #0271BB;
   height: 75px;
   margin-bottom: 1rem;
 }
@@ -420,7 +422,7 @@ h6 {
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus,
 .nav-pills>li.active>a:hover {
-  background-color: #027BCB;
+  background-color: #0271BB;
 }
 
 /* Chi-squared results */

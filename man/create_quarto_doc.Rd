@@ -2,23 +2,32 @@
 % Please edit documentation in R/create_quarto_doc.R
 \name{create_quarto_doc}
 \alias{create_quarto_doc}
-\title{Create a new directory with the R Markdown template}
+\title{Create a new directory with the Quarto template}
 \usage{
-create_quarto_doc(dirname = "new-doc", template = "html")
+create_quarto_doc(dirname = "new-doc", template = "html", font = "Helvetica")
 }
 \arguments{
-\item{dirname}{Name of the directory to create.}
+\item{dirname}{character; the name of the directory to create.}
 
-\item{template}{The template type to use. Choose "html" (default), "pdf"
+\item{template}{character; the template type to use. Choose "html" (default), "pdf"
 or "word".}
+
+\item{font}{The font family of the document. Default is "Helvetica" (i.e. Helvetica Neue).
+For members of the UHH, there is also the font "TheSansUHH" available for the PDF and Word document.}
 }
 \description{
 \code{create_quarto_doc} creates a new subdirectory inside the current directory, which will
-contain the ready-to-use R Markdown file and all associated files. It can be used with
-all Quarto-based templates.
+contain the ready-to-use Quarto file and all associated files. The Word and PDF templates are
+based on the standard template of the University of Hamburg.
 }
 \examples{
 \dontrun{
-create_quarto_doc("my_word-doc", template = "word")
+ # Create template for HTML document
+ create_quarto_doc("my_html-doc", template = "html")
+ # Create template for PDF document using the default font 'Helvetica'
+ create_quarto_doc("my_pdf-doc", template = "pdf")
+ # Create template for Word document using the University's
+ # font 'TheSansUHH'
+ create_quarto_doc("my_word-doc", template = "word", font = "TheSansUHH")
 }
 }

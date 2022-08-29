@@ -1,0 +1,267 @@
+---
+title: "Document title"   
+subtitle: "Subtitle of document"
+author: "Author name(s)"
+date: "`r Sys.Date()`"
+lang: en # German would be 'de'
+### Comment or remove the following two lines if NO references are used
+bibliography: [bib/references.bib, bib/packages.bib] # Path to bibliography files 
+csl: bib/sage-harvard.csl                            # Path to reference style file
+### Uncomment the following line if a summary should be shown after the title 
+# abstract: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr." 
+format: 
+  docx:
+    toc: true
+    toc-depth: 3
+    toc-title: Contents
+    number-sections: true
+    reference-doc: "uhh-template.docx"
+    crossref: 
+      chapters: false        # set to 'true' if figure numbering should follow subsections
+      # fig-title: Fig.       # (default is "Figure")
+      # tbl-title: Tbl.       # (default is "Table")
+      # fig-prefix: figure   # (default is "Figure")
+      # tbl-prefix: table    # (default is "Table")
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+# Load all your packages that you need later
+library(knitr)
+if (!nzchar(system.file(package = "huxtable"))) {
+  install.package("huxtable")
+}
+library(huxtable)
+# library(tidyverse)
+```
+
+```{r}
+#| label: generate-package-refs
+#| include: false
+# Automatically create a bib database for R packages used above
+knitr::write_bib(
+  x = c(.packages(), 'rmarkdown', 
+    # Add here now all packages that are loaded above:
+    'knitr', 'huxtable'), 
+  file = 'bib/packages.bib')
+```
+
+
+# Introduction
+
+## YAML header
+
+Configure the YAML header including the following elements:
+
+-   *title*: Title
+-   *subtitle*: Subtitle; remove option completely, if you don't need a subtitle.
+-   *author*: Character of single or multiple author(s)
+-   *date*: A date
+-   *abstract*: The abstract will be shown right after the title in smaller font size.
+-   *bibliography*: A path to the bibliography file to use for references (BibTeX *.bib* file). The current file includes 3 dummy references; either insert your references into this file or replace the file with your own.
+-   *csl*: The style is provided in the 'sage-harvard.csl' file, which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style. Just leave the file as it is.
+-   *abstract*: Write here your abstract or remove option if you don't want to include an abstract.
+-   *output*: The nested fields for the output field are based on the arguments of the output function. Since *UHHformats::word_doc* is based on *bookdown::word_document2*, see its help page for more options. Current default settings are
+    -   *toc: FALSE*
+    -   *toc_depth: 4*
+    -   *number_sections: FALSE*
+    -   *highlight: "default"*
+    -   *reference_docx: "uhh-template"*
+    -   *font = "Helvetica"*
+    -   *language: "en"*
+    -   *dpi: 144*
+-   *toc-title*: If the setting is *toc: TRUE*, MS Word automatically generates a table of content with an English title. If the language is German (*language: "de"*) you should specify here a German title.
+
+By default *UHHformats::word_doc* uses a 'uhh-template' template file, which is based on the [standard template file](https://www.kus.uni-hamburg.de/themen/oeffentlichkeitsarbeit/corporate-design/vorlagen.html) of the University of Hamburg (UHH) except for the font type, which is by default 'Helvetica'. If you are associated to the UHH you can also use the University's own font "TheSansUHH". In that case replace *font = "Helvetica"* with *font = "TheSansUHH"*.
+
+However, if you feel like using your own template or the standard Word template (i.e. the Normal.dot file) simply provide the path to your file or write "default" for the latter case (*reference_docx: "default"*). For further options see also the documentation of the *bookdown::word_document2* function, which is internally called.
+
+If you set the language to German, a configuration file named '\_bookdown.yml' is copied into the working directory, which defines the labels of the figure legend and table captions. If you want to use other labels (e.g. 'Abb.' instead of 'Abbildung') feel free to modify the file.
+
+# Methods
+
+## Cross-references
+
+External images and R figures can be referenced with '\@ref(fig:<label>)', where '<label>' is the name of the code chunk. These label names should **not contain underscores** to separate words, use hyphens here instead. Note that figures need to have a caption to be numbered and for cross-referencing, The caption is also set in the chunk option with 'fig.cap="Your caption"'.
+
+Cross-references to individual sections can simply be made by placing the name of the section into squared brackets, e.g. a link to the [Figures] is made via '[Figures]'.
+
+Tables require also a label and table caption for cross-referencing as figures. But here, the cross-reference contains a 'tab:' in '\@ref(tab:<name>)') instead of a 'fig:'. Also, captions of tables produced with R cannot be set in the chunk options as for figures but in the R functions directly (see examples in the [Results]).
+
+This is for example a cross-reference to table \@ref(tab:kable1) in the [Using the *knitr* package] chapter.
+
+## Mathematical equations
+
+Use mathematics in R Markdown as usual using the dollar sign `$` at the beginning and end of the equation; either in **inline mode** with one dollar sign such as $E = mc^2$ or in **display mode** with two dollar signs: $$E = mc^2$$
+
+Important to note: do not leave a space between the '\$' and your mathematical notation.
+
+Alternatively, you can use LaTeX for more control and when equations are more complicated. LaTeX equations are also automatically numbered if you define a label within the equation environment, which is useful if you have many equations and want to cross-reference them. The equation label needs to be written with '#eq:label' before the end of the equation (see eq. @eq-mean):
+
+$$
+  \bar{X} = \frac{\sum_{i=1}^n X_i}{n}
+$$ {#eq-mean}
+
+Formulas and corresponding explanations should be integrated into the sentence and, thus, end with a comma or period. Here comes an example:
+
+If the random variable $Y$ follows a standard normal distribution, i.e. $Y \sim N(0,1)$, it's density function can be described with
+
+$$
+f_{Y}(y)=\varphi(y) \stackrel{\mathrm{def}}{=} \frac{1}{\sqrt{2 \pi}} \exp \left\{ -\frac{y^2}{2} \right\}, \quad y \in \mathbb{R}.
+$$ {#eq-density-norm}
+
+$\pi$ represents the circle number or Ludolph's number. The function
+
+$$
+  F_{Y}(y)=\Phi(y) \stackrel{\mathrm{def}}{=} \int_{-\infty}^y \varphi(x) \,\mathrm{d}x, \quad y \in \mathbb{R}
+$$ {#eq-dist-func}
+
+
+represents then the distribution function of @eq-density-norm.
+
+The numbering of equations, as in @eq-density-norm, should only be done if they are referred to in the rest of the text. Especially if there are many equations in the thesis, the use of LaTeX seems to make more sense.
+
+
+## Software
+
+Here is an example on how to get automatically versions and references:
+
+All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This thesis, including tables, was generated using the packages 'bookdown' (version `r packageVersion("bookdown")`) [@R-bookdown], 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'knitr' (version `r packageVersion("knitr")`) [@R-knitr], and 'huxtable' (version `r packageVersion("huxtable")`) [@R-huxtable].
+
+# Results
+
+## R output
+
+R output is typically shown in the monospace font (here an example with the `mtcars` dataset):
+
+```{r}
+data("mtcars")
+summary(mtcars[,1:4])
+```
+
+## Tables
+
+If the output format is Word tables are generated best using R packages instead of R Markdown syntax. The following two sections demonstrate some useful packages.
+
+### Markdown tables
+
+Here is a simple table based on Markdown Syntax (@tbl-letters).
+
+: My Caption {#tbl-letters}
+
+
+| Col1 | Col2 | Col3 |
+|------|------|------|
+| A    | B    | C    |
+| E    | F    | G    |
+| A    | G    | G    |
+
+
+
+### Using the *knitr* package
+
+@tbl-kable is an example of using *knitr::kable()* to generate the table. The function has an explicit argument named 'caption' where you can place your caption text.
+
+```{r}
+#| label: tbl-kable
+#| tbl-cap: "This is a table produced with knitr::kable()."
+# Import dataset from the data/ folder
+# mtcars <- read.csv("data/mtcars.csv")
+
+# Plot only a subset of the data
+df <- mtcars[1:5, 1:6]
+knitr::kable(
+  df, 
+  longtable = TRUE,
+  booktabs = TRUE
+) 
+# (the last two options make the table a bit more readable)
+```
+
+
+## Figures
+
+Figures can directly be produced with R and displayed here. Similar to external images, figure captions and labels are placed inside the chunk options for cross-referencing (see @fig-base).
+
+```{r}
+#| label: fig-base
+#| fig-cap: "Relationship between horsepower and fuel economy."
+#| 
+plot(mtcars$hp, mtcars$mpg,
+xlab = "Gross Horsepower",
+ylab = "Miles Per Gallon",
+pch = 19)
+abline(lm(mpg ~ hp, data = mtcars), col = "red")
+```
+
+Here for comparison a boxplot with a different image height (@fig-boxplot).
+
+```{r}
+#| label: fig-boxplot
+#| fig-cap: "Fuel differences between transmission types (0 = automatic, 1 = manual)."
+#| fig-height: 3
+#| fig-width: 3
+boxplot(mpg ~ am, mtcars)
+```
+
+By the way, illustrations, regardless of whether they are external images or diagrams created in R, are always displayed across the entire width in the Word document. Unfortunately, settings via the code chunk options 'fig.height' and 'out.width' do not currently work in Word! For external images adjust the width via the size of the image file itself.
+
+## Diagrams
+
+### Mermaid
+
+Mermaid is a Javascript based diagramming and charting tool that uses Markdown-inspired text definitions and a renderer to create and modify complex diagrams (see @fig-mermaid-diagram).
+
+```{mermaid}
+%%| label: fig-mermaid-diagram
+%%| fig-cap: Simple diagram based on the JS-tool Mermaid.
+
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]
+```
+
+
+# Adding citations and bibliography
+
+Link a '.bib' document via the YAML header, and the bibliography will be printed at the very end (as usual). The default bibliography style is provided in the 'sage-harvard.csl' file, which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style.
+
+References can be cited directly within the document using the R Markdown equivalent of the LaTeX citation system `[@key]`, where key is the citation key in the first line of the entry in the .bib file. Example: [@Taylor1937]. To cite multiple entries, separate the keys by semicolons (e.g., [@Knupp1999; @Kamm2000]. You can also write in-text citations, as follows: @Taylor1937 say this and that.
+
+There is also the package [citr](https://github.com/crsh/citr), which I highly recommend: *citr* provides functions and an RStudio add-in to search a BibTeX-file to create and insert formatted Markdown citations into the current document. If you are using the reference manager [Zotero](https://www.zotero.org/) the add-in can access your reference database directly.
+
+## Examples for footnotes
+
+Here is a footnote reference[^1], and another[^2].
+
+[^1]: Here is the footnote.
+
+[^2]: Here's one with multiple blocks.
+
+    Subsequent paragraphs are indented to show that they belong to the previous footnote.
+
+        { some.code }
+
+    The whole paragraph can be indented, or just the first line. In this way, multi-paragraph footnotes work like multi-paragraph list items.
+
+<!-- This will start a new page (LaTeX code) -->
+
+\newpage
+
+# References
+
+::: {#refs}
+:::
+
+# Acknowledgments {.unnumbered .unlisted}
+
+I am grateful for the insightful comments offered by the anonymous peer reviewers at Books & Texts. The generosity and expertise of one and all have improved this study in innumerable ways and saved me from many errors; those that inevitably remain are entirely my own responsibility.
+
+

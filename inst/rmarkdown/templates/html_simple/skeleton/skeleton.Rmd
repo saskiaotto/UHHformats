@@ -3,6 +3,8 @@ title: "Title"
 author: "Name"
 date: "`r Sys.Date()`"
 logo: "images/logo.svg"
+bibliography: [bib/references.bib, bib/packages.bib]
+bibliographystyle: bib/bibstyle.bst
 output:
   UHHformats::html_simple:
     highlight: kate
@@ -20,12 +22,21 @@ opts_chunk$set(cache=FALSE, echo=TRUE,
   message=FALSE, warning=FALSE, error=FALSE)
 ```
 
-```{r load_libraries, echo=FALSE}
-# library(tidyverse)
-# library(lubridate)
-# library(gridExtra)
-# ..
+```{r load-packages, include = FALSE}
+# packages
+library(knitr)
+library(tidyverse)
 ```
+
+```{r generate-package-refs, include=FALSE}
+# Automatically create a bib database for R packages loaded above
+knitr::write_bib(
+  x = c(.packages(), 'rmarkdown', 
+    # Add here now all packages that are loaded above:
+    'knitr', 'tidyverse'), 
+  file = 'bib/packages.bib')
+```
+
 
 # Introduction
 
@@ -112,4 +123,20 @@ hist(rnorm(100))
 
 # Conclusions
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+
+# References
+
+Link a `.bib` document via the YAML header, and the bibliography will be printed at the very end (as usual). The default bibliography style is provided in the `bib.bst` file (do not delete), which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style.
+
+References can be cited directly within the document using the R Markdown equivalent of the \LaTeX citation system `[@key]`, where key is the citation key in the first line of the entry in the .bib file. Example: [@Taylor1937]. To cite multiple entries, separate the keys by semicolons, e.g. [@Knupp1999; @Kamm2000].
+
+There is also the package [citr](https://github.com/crsh/citr), which I highly recommend: *citr* provides functions and an RStudio add-in to search a BibTeX-file to create and insert formatted Markdown citations into the current document. If you are using the reference manager [Zotero](https://www.zotero.org/) the add-in can access your reference database directly. 
+
+
+## Software
+
+If you want to include a paragraph on the software used, here is some example text/code to get the current R and package versions. The code to generate a bibiliography file including all package references has been already added at the beginning of this script (code chunk 'generate-package-refs').
+
+All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables and figures, was generated using the packages 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'knitr' (version `r packageVersion("knitr")`) [@R-knitr], and 'tidyverse' (version `r packageVersion("tidyverse")`) [@R-tidyverse].

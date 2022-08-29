@@ -1,49 +1,67 @@
 ---
-title: "Untitled"
-subtitle: "Subtitle"
+title: "Document title"
+description: |
+  Lorem ipsum
 date: 26/04/2022
-author: "Jane Doe"
-abstract: "Lorem ipsum"
-thanks: "Ipsum lorem"
-bibliography: references.bib
-csl: sage-harvard.csl
-lang: de
+author:
+  - name: Jane Doe 
+    url: https://www.biologie.uni-hamburg.de/en.html
+    affiliation: Universität Hamburg
+    affiliation-url: https://www.uni-hamburg.de/en.html
+citation:
+  url: https://example.com/summarizing-output
+bibliography: bib/references.bib, bib/packages.bib
+csl: bib/sage-harvard.csl
+license: "CC BY-SA"
 format: 
-  pdf:
-    documentclass: scrartcl  #  report
-    mainfont: Helvetica Neue Light
-    toc: true
+  html:
+    theme:  default # sketchy, journal
+    # include-in-header: script.html
+    # include-before-body: styles/header.html
+    include-after-body: styles/js_logo.html
+    # toc: false
     toc-depth: 3
+    toc-location: left
     toc-title: Contents
     number-sections: true
     number-depth: 3
-    lof: false
-    lot: false
-    geometry:
-      - top=30mm
-      - left=20mm
-      - heightrounded
-    highlight-style: github
-    colorlinks: true
+    self-contained: true
+    anchor-sections: true
+    smooth-scroll: true
+    citations-hover: true
+    footnotes-hover: true
     crossref: # so figures are now with subsections
       chapters: false
-      # fig-title: Fig     # (default is "Figure")
-      # tbl-title: Tbl     # (default is "Table")
-      # fig-prefix: figure   # (default is "Figure")
-      # tbl-prefix: table    # (default is "Table")
+      fig-title: Fig     # (default is "Figure")
+      tbl-title: Tbl     # (default is "Table")
+      fig-prefix: figure   # (default is "Figure")
+      tbl-prefix: table    # (default is "Table")
+    css: styles/styles.css
+    code-fold: true
+    code-summary: "Show the code"
+    code-overflow: wrap
+    code-tools:
+      # source: https://github.com/quarto-dev/quarto-web/blob/main/index.md
+      source: false
+      toggle: true
+      caption: "CODE"
+    code-block-bg: true
+    # code-block-border-left: true
+    code-block-border-left: "#31BAE9"
+    highlight-style: arrow # default
+    code-copy: hover # or: true, false
+    code-link: true
 execute:
   echo: true
-  warning: false
-  message: false
-fig-align: center
-editor: visual
 ---
 
-```{r}
+```{r setup}
 #| include: false
-#| label: setup
-
 library(knitr)
+## Global options
+options(max.print="75")
+opts_chunk$set(cache=FALSE, echo=TRUE,
+  message=FALSE, warning=FALSE, error=FALSE)
 ```
 
 ## Introduction
@@ -52,7 +70,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 Test reference to @tbl-irismeans
 
-Test reference to @fig-basehist.
+Test reference to @fig-boxplottab.
 
 Test reference to @sec-figures.
 
@@ -127,6 +145,30 @@ tab <- aggregate(. ~ Species, data = iris, mean)
 kable(tab)
 ```
 
+### Tabbed sections
+
+Comparison between the classical tabs and the pill tabs:
+
+#### Classical tabs
+
+Classical tabs without fading effect.
+
+::: panel-tabset
+##### First tab
+
+```{r}
+#| fig-cap: "Boxplot made with the basic graphics package"
+#| label: fig-boxplottab
+boxplot(rnorm(100), rnorm(100))
+```
+
+##### Second tab
+
+Cum eaque dicta architecto culpa eius. Dignissimos officiis error exercitationem. Adipisci odit ad ea iusto fugiat laborum maiores. Dolore sunt et veritatis alias nesciunt maxime cumque. Culpa aut non ea. Culpa ex quia debitis sint eveniet cum.
+
+<!-- End tabset -->
+:::
+
 ### Figures {#sec-figures}
 
 A base graphics histogram (click on the figure to enlarge it):
@@ -138,13 +180,29 @@ A base graphics histogram (click on the figure to enlarge it):
 hist(rnorm(100))
 ```
 
-## Diagrams
+### Plotly
 
-### Mermaid
+```{r}
+#| fig-cap: "This is the interactive htmlwidget 'plotly'"
+#| fig-width: 8
+#| label: fig-plotly
+#| 
+# If plotly is installed run:
+p <- plotly::plot_ly(data = mtcars, x = ~mpg, y = ~wt, color = ~cyl)
+plotly::add_markers(p)
+```
 
-Mermaid is a Javascript based diagramming and charting tool that uses Markdown-inspired text definitions and a renderer to create and modify complex diagrams.
+### Diagrams
+
+#### Mermaid
+
+Mermaid is a Javascript based diagramming and charting tool that uses Markdown-inspired text definitions and a renderer to create and modify complex diagrams (see @fig-mermaid-diagram).
 
 ```{mermaid}
+%%| label: fig-mermaid-diagram
+%%| fig-cap: Simple flowchart based on the JS-tool Mermaid.
+%%| fig-width: 6
+
 flowchart LR
   A[Hard edge] --> B(Round edge)
   B --> C{Decision}
@@ -152,7 +210,23 @@ flowchart LR
   C --> E[Result two]
 ```
 
+
 ```{mermaid}
+%%| label: fig-mermaid-diagram
+%%| fig-cap: Git workflow.
+
+flowchart LR
+    id1(Start)-->id2(Stop)
+    style id1 fill:#f9f,stroke:#333,stroke-width:4px
+    style id2 fill:#bbf,stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
+```
+
+
+```{mermaid}
+%%| label: fig-mermaid-diagram
+%%| fig-cap: A sequence diagram based on Mermaid.
+%%| fig-width: 6
+
 sequenceDiagram
   participant Alice
   participant Bob
@@ -173,9 +247,12 @@ Here are some links:
 
 ### Graphviz
 
-The Graphviz layout programs take descriptions of graphs in a simple text language, and make diagrams in useful formats. Graphviz has many useful features for concrete diagrams, such as options for colors, fonts, tabular node layouts, line styles, hyperlinks, and custom shapes.
+The Graphviz layout programs take descriptions of graphs in a simple text language, and make diagrams in useful formats. Graphviz has many useful features for concrete diagrams, such as options for colors, fonts, tabular node layouts, line styles, hyperlinks, and custom shapes (see @fig-dot-diagram).
 
 ```{dot}
+//| label: fig-dot-diagram
+//| fig-cap: "An example for a diagram made with Graphviz."
+
 graph G {
   layout=neato
   run -- intr;
@@ -232,5 +309,3 @@ There is also the package [citr](https://github.com/crsh/citr) which I highly re
 I am grateful for the insightful comments offered by the anonymous peer reviewers at Books & Texts. The generosity and expertise of one and all have improved this study in innumerable ways and saved me from many errors; those that inevitably remain are entirely my own responsibility.
 
 <!-- Footnotes -->
-
-This paragraph won't be part of the note, because it isn't indented.

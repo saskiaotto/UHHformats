@@ -2,7 +2,7 @@
 title: "Document title"   
 subtitle: "Subtitle of document"
 author: "Author name(s)"
-date: "2022/07/20"
+date: "`r Sys.Date()`"
 
 ### Comment or remove the following two lines if NO references are used
 bibliography: [bib/references.bib, bib/packages.bib] # Path to bibliography files 
@@ -31,8 +31,10 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE,
 ```{r load-packages, include = FALSE}
 # Load all your packages that you need later
 library(knitr)
+if (!nzchar(system.file(package = "huxtable"))) {
+  install.package("huxtable")
+}
 library(huxtable)
-# library(tidyverse)
 ```
 
 ```{r generate-package-refs, include=FALSE}
@@ -134,7 +136,7 @@ The numbering of equations, as in \@ref(eq:density-norm), should only be done if
 
 ## Software
 
-Here is an example on how to get automatically versions and references:
+Here is an example of how to get automatically versions and references:
 
 All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This thesis, including tables, was generated using the packages 'bookdown' (version `r packageVersion("bookdown")`) [@R-bookdown], 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'knitr' (version `r packageVersion("knitr")`) [@R-knitr], and 'huxtable' (version `r packageVersion("huxtable")`) [@R-huxtable]. 
 

@@ -1,29 +1,48 @@
 ---
-title: "Document title"   
-subtitle: "Subtitle of document"
+title: "Document title"
+subtitle: "Subtitle"
 author: "Author name(s)"
-date: "2022/07/20"
-bibliography: [bib/references.bib, bib/packages.bib] # Path to bibliography files
-csl: bib/sage-harvard.csl    
-lang: de
+date: "`r Sys.Date()`"
+# abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut elit odio. Donec fermentum tellus neque, vitae fringilla orci pretium vitae. Fusce maximus finibus facilisis. Donec ut ullamcorper turpis. Donec ut porta ipsum. Nullam cursus mauris a sapien ornare pulvinar. Aenean malesuada molestie erat quis mattis. Praesent scelerisque posuere faucibus. Praesent nunc nulla, ullamcorper ut ullamcorper sed, molestie ut est. Donec consequat libero nisi, non semper velit vulputate et. Quisque eleifend tincidunt ligula, bibendum finibus massa cursus eget. Curabitur aliquet vehicula quam non pulvinar. Aliquam facilisis tortor nec purus finibus, sit amet elementum eros sodales. Ut porta porttitor vestibulum."
+
+### Comment or remove the following two lines if NO references are used
+bibliography: [bib/references.bib, bib/packages.bib] # Path to bibliography files 
+csl: bib/sage-harvard.csl                            # Path to reference style file
+
+# language: custom.yml  # if German language use this
 format: 
-  docx:
-    toc: true
+  pdf:
+    documentclass: scrartcl 
+    # documentclass: scrbook 
+    toc: false
     toc-depth: 3
-    # toc-title: Contents
+    toc-title: Content
     number-sections: true
-    reference-doc: "uhh-template-helvetica.docx"
+    number-depth: 3
+    lof: false
+    lot: false
+    geometry:
+      - top=25mm
+      - bottom=35mm
+      - left=25mm
+      - right=25mm
+      - heightrounded
+    highlight-style: github
+    colorlinks: true
     crossref: # so figures are now with subsections
       chapters: false
       # fig-title: Fig     # (default is "Figure")
       # tbl-title: Tbl     # (default is "Table")
       # fig-prefix: figure   # (default is "Figure")
       # tbl-prefix: table    # (default is "Table")
+    include-in-header:
+      - styles/scrartcl.tex
+      # - styles/scrbook.tex
 execute:
-  echo: false
+  echo: true
   warning: false
   message: false
-# editor: visual
+fig-align: center
 ---
 
 ```{r}
@@ -41,12 +60,11 @@ library(knitr)
 #| 
 # Automatically create a bib database for R packages used above
 knitr::write_bib(
-  x = c(.packages(), 'bookdown', 'rmarkdown', 
+  x = c(.packages(), 'rmarkdown', 
     # Add here now all packages that are loaded above:
-    'knitr', 'huxtable'), 
+    'knitr'), 
   file = 'bib/packages.bib')
 ```
-
 
 # Introduction
 
@@ -78,6 +96,18 @@ By default *UHHformats::word_doc* uses a 'uhh-template' template file, which is 
 However, if you feel like using your own template or the standard Word template (i.e. the Normal.dot file) simply provide the path to your file or write "default" for the latter case (*reference_docx: "default"*). For further options see also the documentation of the *bookdown::word_document2* function, which is internally called.
 
 If you set the language to German, a configuration file named '\_bookdown.yml' is copied into the working directory, which defines the labels of the figure legend and table captions. If you want to use other labels (e.g. 'Abb.' instead of 'Abbildung') feel free to modify the file.
+
+## Callout blocks
+
+::: callout-note
+Note that there are five types of callouts, including: `note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: callout-tip
+### Tip With Caption
+
+This is an example of a callout with a caption.
+:::
 
 # Methods
 
@@ -117,17 +147,15 @@ $$
   F_{Y}(y)=\Phi(y) \stackrel{\mathrm{def}}{=} \int_{-\infty}^y \varphi(x) \,\mathrm{d}x, \quad y \in \mathbb{R}
 $$ {#eq-dist-func}
 
-
 represents then the distribution function of @eq-density-norm.
 
 The numbering of equations, as in @eq-density-norm, should only be done if they are referred to in the rest of the text. Especially if there are many equations in the thesis, the use of LaTeX seems to make more sense.
-
 
 ## Software
 
 Here is an example on how to get automatically versions and references:
 
-All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This thesis, including tables, was generated using the packages 'bookdown' (version `r packageVersion("bookdown")`) [@R-bookdown], 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'knitr' (version `r packageVersion("knitr")`) [@R-knitr], and 'huxtable' (version `r packageVersion("huxtable")`) [@R-huxtable].
+All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This thesis, including tables, was generated using the packages 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'knitr' (version `r packageVersion("knitr")`) [@R-knitr], and ...
 
 # Results
 
@@ -148,16 +176,13 @@ If the output format is Word tables are generated best using R packages instead 
 
 Here is a simple table based on Markdown Syntax (@tbl-letters).
 
-: My Caption {#tbl-letters}
-
-
 | Col1 | Col2 | Col3 |
 |------|------|------|
 | A    | B    | C    |
 | E    | F    | G    |
 | A    | G    | G    |
 
-
+: My Caption {#tbl-letters}
 
 ### Using the *knitr* package
 
@@ -178,7 +203,6 @@ knitr::kable(
 ) 
 # (the last two options make the table a bit more readable)
 ```
-
 
 ## Figures
 
@@ -224,7 +248,6 @@ flowchart LR
   C --> E[Result two]
 ```
 
-
 # Adding citations and bibliography
 
 Link a '.bib' document via the YAML header, and the bibliography will be printed at the very end (as usual). The default bibliography style is provided in the 'sage-harvard.csl' file, which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style.
@@ -259,5 +282,3 @@ Here is a footnote reference[^1], and another[^2].
 # Acknowledgments {.unnumbered .unlisted}
 
 I am grateful for the insightful comments offered by the anonymous peer reviewers at Books & Texts. The generosity and expertise of one and all have improved this study in innumerable ways and saved me from many errors; those that inevitably remain are entirely my own responsibility.
-
-

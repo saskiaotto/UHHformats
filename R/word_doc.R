@@ -18,8 +18,8 @@
 #'        The 'uhh-template.docx' template implements most of the standard requirement at the UHH biology
 #'        department. If you prefer another template, pass the file name to this argument or simply use
 #'        'default' to use your standard Word template.
-#' @param font character; default font in the template file is 'Helvetica'; for members of the UHH there is also
-#'        the font 'TheSansUHH' available. If you want provide your own Word template, there is no
+#' @param font character; default font in the template file is "Helvetica"; for members of the UHH there is also
+#'        the font "TheSansUHH" available. If you want to provide your own Word template, there is no
 #'        need to set any font here.
 #' @param language character; the document language. If set to "de" (ISO code for German), a configuration file
 #'        named '_bookdown.yml' will be copied (unless this file exists already) to the directory of the R
@@ -67,7 +67,7 @@ word_doc <- function(toc = FALSE, toc_depth = 4, number_sections = FALSE,
   }
 
   if (reference_docx == "uhh-template") {
-    base <- word_document_format(
+    base <- rmd_word_document_format(
       format         = "word_doc",
       filename       = filename,
       toc            = toc,
