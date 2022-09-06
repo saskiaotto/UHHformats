@@ -5,20 +5,20 @@
 #' based on the standard template of the University of Hamburg.
 #'
 #' @param dirname character; the name of the directory to create.
-#' @param template character; the template type to use. Choose "html" (default), "pdf"
-#'   or "word".
+#' @param template character; the template type to use. Choose "html" (default),
+#'   "pdf_simple", "pdf_report", or "word".
 #' @param font The font family of the document. Default is "Helvetica" (i.e. Helvetica Neue).
 #'   For members of the UHH, there is also the font "TheSansUHH" available for the PDF and Word document.
 #'
 #' @examples
 #' \dontrun{
 #'  # Create template for HTML document
-#'  create_quarto_doc("my_html-doc", template = "html")
-#'  # Create template for PDF document using the default font 'Helvetica'
-#'  create_quarto_doc("my_pdf-doc", template = "pdf")
+#'  create_quarto_doc(dirname = "my_html_doc", template = "html")
+#'  # Create template for simple PDF document using the default font 'Helvetica'
+#'  create_quarto_doc(dirname = "my_pdf_doc", template = "pdf_simple")
 #'  # Create template for Word document using the University's
 #'  # font 'TheSansUHH'
-#'  create_quarto_doc("my_word-doc", template = "word", font = "TheSansUHH")
+#'  create_quarto_doc(dirname = "my_word_doc", template = "word", font = "TheSansUHH")
 #' }
 #' @export
 
@@ -29,7 +29,7 @@ create_quarto_doc <- function(dirname = "new-doc", template = "html",
     stop('Set the font option to "Helvetica" or "TheSansUHH".')
   }
 
-  templates <- c("html", "pdf", "word")
+  templates <- c("html", "pdf_simple", "pdf_report", "word")
   template <- match.arg(template, templates)
   tmp_dir <- paste(dirname, "_tmp", sep = "")
   if (file.exists(dirname) || file.exists(tmp_dir)) {
@@ -52,8 +52,8 @@ create_quarto_doc <- function(dirname = "new-doc", template = "html",
 
 
   # Copy selected resource file into new path
-  if (template == "pdf") {
-    copy_font_files("pdf", font, type = "quarto", current_dir = tmp_dir)
+  if (template %in% c("pdf_simple", "pdf_report")) {
+    copy_font_files(template, font, type = "quarto", current_dir = tmp_dir)
   }
 
   if (template == "word") {

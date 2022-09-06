@@ -49,7 +49,7 @@ copy_font_files <- function(template, font, type = "rmarkdown", current_dir = ".
 }
 
 
-### RMarkdown-specific functions
+### R Markdown-specific functions
 
 # Helper function to create a custom format derived from rmarkdown::pdf_document
 # that includes a custom LaTeX template

@@ -9,8 +9,8 @@ create_quarto_doc(dirname = "new-doc", template = "html", font = "Helvetica")
 \arguments{
 \item{dirname}{character; the name of the directory to create.}
 
-\item{template}{character; the template type to use. Choose "html" (default), "pdf"
-or "word".}
+\item{template}{character; the template type to use. Choose "html" (default),
+"pdf_simple", "pdf_report", or "word".}
 
 \item{font}{The font family of the document. Default is "Helvetica" (i.e. Helvetica Neue).
 For members of the UHH, there is also the font "TheSansUHH" available for the PDF and Word document.}
@@ -23,11 +23,11 @@ based on the standard template of the University of Hamburg.
 \examples{
 \dontrun{
  # Create template for HTML document
- create_quarto_doc("my_html-doc", template = "html")
- # Create template for PDF document using the default font 'Helvetica'
- create_quarto_doc("my_pdf-doc", template = "pdf")
+ create_quarto_doc(dirname = "my_html_doc", template = "html")
+ # Create template for simple PDF document using the default font 'Helvetica'
+ create_quarto_doc(dirname = "my_pdf_doc", template = "pdf_simple")
  # Create template for Word document using the University's
  # font 'TheSansUHH'
- create_quarto_doc("my_word-doc", template = "word", font = "TheSansUHH")
+ create_quarto_doc(dirname = "my_word_doc", template = "word", font = "TheSansUHH")
 }
 }

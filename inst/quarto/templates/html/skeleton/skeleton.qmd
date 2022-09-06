@@ -1,89 +1,109 @@
 ---
 title: "Document title"
+subtitle: "Subtitle"
 description: |
-  Lorem ipsum
-date: 26/04/2022
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut elit odio. Donec fermentum tellus neque, vitae fringilla orci pretium vitae. Fusce maximus finibus facilisis. Donec ut ullamcorper turpis.
+date: "01/04/2022"
 author:
-  - name: Jane Doe 
+  - name: Author name 
     url: https://www.biologie.uni-hamburg.de/en.html
     affiliation: Universität Hamburg
     affiliation-url: https://www.uni-hamburg.de/en.html
 citation:
   url: https://example.com/summarizing-output
-bibliography: bib/references.bib, bib/packages.bib
-csl: bib/sage-harvard.csl
-license: "CC BY-SA"
+license: "CC BY-SA" 
+### Uncomment the following line if the document language is German
+# language: custom_lang.yml
+### Comment or remove the following two lines if NO references are used
+bibliography: [bib/references.bib, bib/packages.bib] # Path to bibliography files 
+csl: bib/sage-harvard.csl                            # Path to reference style file
+### Settings for rendering the document:
 format: 
   html:
-    theme:  default # sketchy, journal
-    # include-in-header: script.html
-    # include-before-body: styles/header.html
-    include-after-body: styles/js_logo.html
-    # toc: false
+    theme:  default 
+    include-after-body: styles/js_logo.html # adds a logo to navbar
+    css: styles/styles.css                  # modifies layout style
+    self-contained: true
+    toc: true
     toc-depth: 3
     toc-location: left
-    toc-title: Contents
+    toc-title: Contents   # remove line or adjust if language is German
     number-sections: true
     number-depth: 3
-    self-contained: true
     anchor-sections: true
     smooth-scroll: true
     citations-hover: true
     footnotes-hover: true
-    crossref: # so figures are now with subsections
-      chapters: false
-      fig-title: Fig     # (default is "Figure")
-      tbl-title: Tbl     # (default is "Table")
-      fig-prefix: figure   # (default is "Figure")
-      tbl-prefix: table    # (default is "Table")
-    css: styles/styles.css
+    crossref: 
+      chapters: false     # set to 'true' if figure numbering should follow subsections
+      fig-prefix: Fig.    # (default is 'Figure'; adjust if language is German)
+    # Code options:
+    highlight-style: arrow # default
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
     code-fold: true
     code-summary: "Show the code"
     code-overflow: wrap
+    code-copy: hover
+    code-link: true
     code-tools:
-      # source: https://github.com/quarto-dev/quarto-web/blob/main/index.md
       source: false
       toggle: true
       caption: "CODE"
-    code-block-bg: true
-    # code-block-border-left: true
-    code-block-border-left: "#31BAE9"
-    highlight-style: arrow # default
-    code-copy: hover # or: true, false
-    code-link: true
 execute:
   echo: true
+  warning: false
+  message: false
 ---
 
-```{r setup}
+```{r}
+#| label: load-packages
 #| include: false
+# Load all your packages that you need later
 library(knitr)
-## Global options
-options(max.print="75")
-opts_chunk$set(cache=FALSE, echo=TRUE,
-  message=FALSE, warning=FALSE, error=FALSE)
 ```
 
-## Introduction
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-
-Test reference to @tbl-irismeans
-
-Test reference to @fig-boxplottab.
-
-Test reference to @sec-figures.
-
-To create a reference-able code block, add a #lst- identifier along with a lst-cap attribute. For example: test reference to code chunk @lst-codeblock
-
-``` {#lst-codeblock .r lst-cap="Example for a referencable code block"}
-4+4
+```{r}
+#| label: generate-package-refs
+#| include: false
+# Automatically create a bib database for R packages used above
+knitr::write_bib(
+  x = c(.packages(), 'rmarkdown', 
+    # Add here now all packages that are loaded above:
+    'knitr'), 
+  file = 'bib/packages.bib')
 ```
+
+
+# Introduction
+
+## YAML header
+
+In this template many of the Quarto options for HTML output are listed in the YAML header. If you want to know more about these settings I recommend the [HTML format reference](https://quarto.org/docs/reference/formats/html.html) for a complete list of available options.
+
+Quarto offers also extensive YAML intelligence (completion and diagnostics) in the RStudio IDE and in VS Code for project files, YAML front matter, and executable cell options. Just start with some letters and press the tab key on the keyboard. You will see a small dialog box with a list of available options.
+
+
+## Code blocks
+
+Code blocks in Quarto documents are treated in similar way as in Markdown documents. One important difference is that code chunk options (in Quarto also called 'cell level options') are typically included in special comments using `#|` at the top of code chunks rather than within the line that begins the chunk:
+
+```{r}
+#| eval: false
+summary(cars)
+```
+
+Please note that individual words are separated with a hyphen, not a dot, followed by a colon, not an equal sign as in R Markdown documents. Quarto uses this approach to both better accommodate longer options like `fig-cap`, `fig-subcap`, and `fig-alt` as well as to make it straightforward to edit chunk options within more structured editors that don’t have an easy way to edit chunk metadata (e.g. most traditional notebook UIs).
+
+However, if you prefer it is still possible to include chunk options on the first line (e.g. ```{r, echo = FALSE}) as in R Markdown documents. 
+
 
 ## Callout blocks
 
+Quarto provides five different types of callouts that are an excellent way to draw extra attention to certain concepts. 
+
 ::: callout-note
-Note that there are five types of callouts, including: `note`, `warning`, `important`, `tip`, and `caution`.
+The color and icon will be different depending upon the type that you select. You can choose between: `note`, `warning`, `important`, `tip`, and `caution`.
 :::
 
 ::: callout-tip
@@ -98,7 +118,27 @@ This is an example of a callout with a caption.
 This is an example of a 'folded' caution callout that can be expanded by the user. You can use `collapse="true"` to collapse it by default or `collapse="false"` to make a collapsible callout that is expanded by default.
 :::
 
-### Mathjax
+
+# Methods
+
+## Cross-referencing
+
+External images and R figures can be referenced with `@fig-label`, where 'label' is the name of the code chunk. These label names should not contain underscores to separate words, use hyphens here instead. Note that figures need to have a caption to be numbered and for cross-referencing, The caption is also set in the chunk option with `#| fig-cap: "Your caption"`.
+
+Tables require similarly a label and table caption for cross-referencing. But here, the cross-reference contains the prefix 'tbl': `@tbl-label`. 
+
+Cross-references to individual sections can simply be made with the prefix 'sec' and by adding a '{#sec-identifier}' to any heading.
+
+This is for example a cross-reference to @tbl-irismeans in @sec-tables and a cross-reference to @fig-boxplottab in @sec-figures.
+
+To create a reference-able code block, add a #lst-identifier along with a lst-cap attribute inside the curly braces (see code chunk example @lst-codeblock). Note that the indication of the programming language requires for this static code block a dot set before the 'r'.
+
+``` {.r #lst-codeblock lst-cap="Example for a referenceable code block"}
+4+4
+```
+
+
+## Mathjax
 
 A little math formula :
 
@@ -120,21 +160,62 @@ $$ {#eq-dist-func}
 
 represents then the distribution function of @eq-density-norm.
 
-## Analysis
 
-### Tables
+## Images
 
-Here is a simple table based on Markdown Syntax:
+Quarto includes several features aimed at making it easier to work with figures and subfigures, as well as for laying out panels that contain multiple figures, tables, or other content.
 
-| Col1 | Col2 | Col3 |
-|------|------|------|
-| A    | B    | C    |
-| E    | F    | G    |
-| A    | G    | G    |
+[![Single image of Iris setosa with URL link but no cross-reference.](images/wikipedia_iris_setosa.jpg)](https://en.wikipedia.org/wiki/Iris_setosa){fig-align="left" fig-alt="Wikipedia image of Iris setosa."}
 
-: My Caption {#tbl-letters}
+For instance, if you have several figures that appear as a group, you can create a figure div to enclose them (see @fig-versicolor and @fig-virginica).
 
-See @tbl-letters.
+::: {layout-ncol=2 layout-valign="bottom"}
+
+![Iris versicolor](images/wikipedia_iris_versicolor.jpg){#fig-versicolor}
+
+![Iris virginica](images/wikipedia_iris_virginica.jpg){#fig-virginica}
+
+:::
+
+The layout attribute enables the creation of much more complex layouts. @fig-custom-layout provides an example with a common figure caption and one identifier for all three.
+
+::: {#fig-custom-layout layout="[20,-2,46,-2,30]" layout-valign="bottom"}
+
+![Iris setosa](images/wikipedia_iris_setosa.jpg)
+
+![Iris versicolor](images/wikipedia_iris_versicolor.jpg)
+
+![Iris virginica](images/wikipedia_iris_virginica.jpg)
+
+Custom layout of images
+:::
+
+
+
+# Analysis
+
+## R output
+
+R output is typically shown in the monospace font (here an example with the `mtcars` dataset in the subfolder `data/`): 
+```{r}
+# Import dataset from the data/ folder
+mtcars <- read.csv("data/mtcars.csv")
+summary(mtcars[,1:4])
+```
+
+
+## Tables {#sec-tables}
+
+Here is a simple table based on Markdown Syntax (@tbl-markdown).
+
+| A            | New              | Table          |
+|:-------------|:----------------:|---------------:|
+|left-aligned  |center-aligned    |right-aligned   |
+|$123          |$456              |$789            |
+|*italics*     |~~strikethrough~~ |**boldface**    |
+
+: My Caption {#tbl-markdown}
+
 
 Here is a sample table output using the `knitr::kable()` function.
 
@@ -145,16 +226,35 @@ tab <- aggregate(. ~ Species, data = iris, mean)
 kable(tab)
 ```
 
-### Tabbed sections
 
-Comparison between the classical tabs and the pill tabs:
+## Figures {#sec-figures}
 
-#### Classical tabs
+A base graphics histogram (@fig-basehist).
 
-Classical tabs without fading effect.
+```{r basehist}
+#| fig-cap: "A Histogram made with the basic graphics package"
+#| label: fig-basehist
+hist(rnorm(100))
+```
 
-::: panel-tabset
-##### First tab
+Here for comparison a boxplot with a different image height (@fig-boxplot).
+
+```{r}
+#| label: fig-boxplot
+#| fig-cap: "Fuel differences between transmission types (0 = automatic, 1 = manual)."
+#| fig-height: 3
+#| fig-width: 3
+boxplot(mpg ~ am, mtcars)
+```
+
+
+## Tabbed sections
+
+You can create a tabset via a markdown div with the class name *panel-tabset*. Each top-level heading within the div creates a new tab as shown below:
+
+::: {.panel-tabset}
+
+#### First tab
 
 ```{r}
 #| fig-cap: "Boxplot made with the basic graphics package"
@@ -162,39 +262,32 @@ Classical tabs without fading effect.
 boxplot(rnorm(100), rnorm(100))
 ```
 
-##### Second tab
+#### Second tab
 
 Cum eaque dicta architecto culpa eius. Dignissimos officiis error exercitationem. Adipisci odit ad ea iusto fugiat laborum maiores. Dolore sunt et veritatis alias nesciunt maxime cumque. Culpa aut non ea. Culpa ex quia debitis sint eveniet cum.
 
+:::  
 <!-- End tabset -->
-:::
 
-### Figures {#sec-figures}
+## Interactive figures with plotly
 
-A base graphics histogram (click on the figure to enlarge it):
-
-```{r basehist}
-#| fig-cap: "A Histogram made with the basic graphics package"
-#| label: fig-basehist
-#| 
-hist(rnorm(100))
-```
-
-### Plotly
+If the package 'plotly' is installed, the following code block will be executed:
 
 ```{r}
+#| eval: !expr ifelse(nzchar(system.file(package = "plotly")), "true", "false")
 #| fig-cap: "This is the interactive htmlwidget 'plotly'"
 #| fig-width: 8
 #| label: fig-plotly
-#| 
-# If plotly is installed run:
 p <- plotly::plot_ly(data = mtcars, x = ~mpg, y = ~wt, color = ~cyl)
 plotly::add_markers(p)
 ```
 
-### Diagrams
 
-#### Mermaid
+## Diagrams
+
+Quarto has native support for embedding *Mermaid* and *Graphviz* diagrams. This enables you to create flowcharts, sequence diagrams, state diagrams, gnatt charts, and more using a plain text syntax inspired by markdown.
+
+### Mermaid
 
 Mermaid is a Javascript based diagramming and charting tool that uses Markdown-inspired text definitions and a renderer to create and modify complex diagrams (see @fig-mermaid-diagram).
 
@@ -202,25 +295,18 @@ Mermaid is a Javascript based diagramming and charting tool that uses Markdown-i
 %%| label: fig-mermaid-diagram
 %%| fig-cap: Simple flowchart based on the JS-tool Mermaid.
 %%| fig-width: 6
-
 flowchart LR
   A[Hard edge] --> B(Round edge)
   B --> C{Decision}
   C --> D[Result one]
   C --> E[Result two]
+  style C fill:#f9f,stroke:#333,stroke-width:4px
+  style E fill:#bbf,stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
 ```
 
-
-```{mermaid}
-%%| label: fig-mermaid-diagram
-%%| fig-cap: Git workflow.
-
-flowchart LR
-    id1(Start)-->id2(Stop)
-    style id1 fill:#f9f,stroke:#333,stroke-width:4px
-    style id2 fill:#bbf,stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
-```
-
+::: callout-note
+Cell level options are here indicated with `%%|` instead of `#|`!
+:::
 
 ```{mermaid}
 %%| label: fig-mermaid-diagram
@@ -240,14 +326,15 @@ sequenceDiagram
   Bob-->>John: Jolly good!
 ```
 
-Here are some links:
+Useful links:
 
--   https://mermaid-js.github.io/mermaid/#/
--   https://www.amazon.com/Official-Guide-Mermaid-js-beautiful-flowcharts-dp-1801078025/dp/1801078025
+- [https://mermaid-js.github.io/mermaid/#/](https://mermaid-js.github.io/mermaid/#/)
+- [https://mermaid.live](https://mermaid.live)
+
 
 ### Graphviz
 
-The Graphviz layout programs take descriptions of graphs in a simple text language, and make diagrams in useful formats. Graphviz has many useful features for concrete diagrams, such as options for colors, fonts, tabular node layouts, line styles, hyperlinks, and custom shapes (see @fig-dot-diagram).
+The [Graphviz](https://graphviz.org/) layout programs take descriptions of graphs in a simple text language and make diagrams in useful formats. Graphviz has many useful features for concrete diagrams, such as options for colors, fonts, tabular node layouts, line styles, hyperlinks, and custom shapes (see @fig-dot-diagram).
 
 ```{dot}
 //| label: fig-dot-diagram
@@ -271,13 +358,16 @@ graph G {
 }
 ```
 
-Links:
+::: callout-note
+Cell level options are here indicated with `//|`!
+:::
 
--   https://graphviz.org/
 
-## Conclusions
+# Footnotes
 
 Here is a footnote reference[^1], and another[^2].
+
+<!-- The following text will be displayed at the very end of the page. -->
 
 [^1]: Here is the footnote.
 
@@ -288,24 +378,33 @@ Here is a footnote reference[^1], and another[^2].
         { some.code }
 
     The whole paragraph can be indented, or just the first line. In this way, multi-paragraph footnotes work like multi-paragraph list items.
+    
 
-## Adding citations and bibliography
+# Adding citations and bibliography
 
-Link a `.bib` document via the YAML header, and the bibliography will be printed at the very end (as usual). The default bibliography style is provided in the `bib.bst` file (do not delete), which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style.
+Link a `.bib` document via the YAML header, and the bibliography will be printed at the end. The default bibliography style is provided in the `sage-harvard.csl` file (do not delete), which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style.
 
-References can be cited directly within the document using the R Markdown equivalent of the \LaTeX citation system `[@key]`, where key is the citation key in the first line of the entry in the .bib file. Example: [@Taylor1937]. To cite multiple entries, separate the keys by semicolons (e.g., [@Knupp1999; @Kamm2000]. You can also write in-text citations, as follows: @Taylor1937 say this and that.
+References can be cited directly within the document using the Quarto equivalent of the \LaTeX citation system `[@key]`, where key is the citation key in the first line of the entry in the .csl file. Example: [@Taylor1937]. To cite multiple entries, separate the keys by semicolons (e.g., [@Knupp1999; @Kamm2000]. You can also write in-text citations, as follows: @Taylor1937 say this and that.
 
 There is also the package [citr](https://github.com/crsh/citr) which I highly recommend: *citr* provides functions and an RStudio add-in to search a BibTeX-file to create and insert formatted Markdown citations into the current document. If you are using the reference manager [Zotero](https://www.zotero.org/) the add-in can access your reference database directly.
 
+## Software
+
+If you want to include a paragraph on the software used, here is some example text/code to get the current R and package versions. The code to generate a bibliography file including all package references has been already added at the beginning of this script (code chunk 'generate-package-refs').
+
+All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables and figures, was generated using the R packages 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown] and 'knitr' (version `r packageVersion("knitr")`) [@R-knitr].
+
+
 <!-- Pandoc will automatically generate a list of works cited and place it in the document if the style calls for it. It will be placed in a div with the id refs if one exists: -->
 
-## References
+# References
 
 ::: {#refs}
 :::
 
-## Acknowledgments {.appendix .unnumbered .unlisted}
 
-I am grateful for the insightful comments offered by the anonymous peer reviewers at Books & Texts. The generosity and expertise of one and all have improved this study in innumerable ways and saved me from many errors; those that inevitably remain are entirely my own responsibility.
+# Acknowledgments {.appendix .unnumbered .unlisted}
 
-<!-- Footnotes -->
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut elit odio. Donec fermentum tellus neque, vitae fringilla orci pretium vitae. Fusce maximus finibus facilisis. Donec ut ullamcorper turpis.
+
+

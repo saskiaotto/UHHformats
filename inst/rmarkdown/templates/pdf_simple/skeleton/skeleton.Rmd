@@ -68,7 +68,7 @@ Configure the YAML header including the following elements:
 * `header_includes`: Here you can add additional \LaTeX code to include in the header, before the `\\begin\{document\}` statement. 
 * If you want to add additional LaTeX code to include before the `\\end\{document\}` statement use the field `include_after`. 
 
-If you are associated to the UHH you can also use the University's own font "TheSansUHH". In that case replace `font = "Helvetica"` with `font = "TheSansUHH"`. To use another font, simply use the setting "other" and replace the 'font_XXX.ttf' files in the working directory with your own files. Please note, that you have to name these files exactly as the template font files.
+If you are associated with the UHH you can also use the University's own font "TheSansUHH". In that case replace `font = "Helvetica"` with `font = "TheSansUHH"`. To use another font, simply use the setting "other" and replace the 'font_XXX.ttf' files in the working directory with your own files. Please note, that you have to name these files exactly as the template font files.
 
 
 # Methods
@@ -101,7 +101,7 @@ To cross-reference sections simply put the section header in square brackets, e.
 
 ## Mathematics
 
-Use mathematics in R Markdown as usual using the dollar sign `$`; either in inline mode with one dollar sign, e.g. $E = mc^2$, or in display mode with two:
+Use mathematics as usual with the dollar sign `$`; either in inline mode with one dollar sign, e.g. $E = mc^2$, or in display mode with two:
 
 $$E = mc^2$$
 
@@ -125,8 +125,9 @@ You may refer to this equation using `\ref{eq:label}`, e.g., see Equation \ref{e
 ## R output
 
 R output is typically shown in the monospace font (here an example with the `mtcars` dataset in the subfolder `data/`): 
+
 ```{r}
-# Import dataset from the data/folder
+# Import dataset from the data/ folder
 mtcars <- read.csv("data/mtcars.csv")
 summary(mtcars[,1:4])
 ```
@@ -168,12 +169,10 @@ footnote(general = "Your comments go here.")
 
 #### The *xtable* package
 
-Table \ref{tab:xtable_tab} is an example when using this package. Note that the label set in `xtable()` has to include the `tab:` for properly rendering the cross-reference (I haven't yet figured out why).
+Another useful package for tables for PDF output is [xtable](https://cran.r-project.org/web/packages/xtable/vignettes/xtableGallery.pdf). The following code will produce an example table if the *xtable* package is installed. Note that you need to add the chunk option `results = "asis"` inside `{r}` otherwise the PDF will contain the \LaTeX code of the table!
 
-Here, it is important that you add the chunk option `results = "asis"` inside `{r}` otherwise the PDF will contain the \LaTeX code of the table!
-
-```{r, results = "asis"}
-xt <- xtable(head(cars), caption = "A table made with xtable",
+```{r, results = "asis", eval=ifelse(nzchar(system.file(package = "xtable")), TRUE, FALSE)}
+xt <- xtable(df, caption = "A table made with xtable", 
   label = "tab:xtable_tab")
 print(xt, comment = FALSE, caption.placement = "top", booktabs = TRUE)
 ```
@@ -214,6 +213,6 @@ There is also the package [citr](https://github.com/crsh/citr), which I highly r
 
 ## Software
 
-If you want to include a paragraph on the software used, here is some example text/code to get the current R and package versions. The code to create a separate bibiliography file named 'packages.bib'with all package references has already been added at the beginning of this script (code chunk 'generate-package-refs').
+If you want to include a paragraph on the software used, here is some example text/code to get the current R and package versions. The code to create a separate bibliography file named 'packages.bib' with all package references has already been added at the beginning of this script (code chunk 'generate-package-refs').
 
 All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables and figures, was generated using the packages 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'knitr' (version `r packageVersion("knitr")`) [@R-knitr], 'kableExtra' (version `r packageVersion("kableExtra")`) [@R-kableExtra], 'xtable' (version `r packageVersion("xtable")`) [@R-xtable], and 'tidyverse' (version `r packageVersion("tidyverse")`) [@R-tidyverse.]
