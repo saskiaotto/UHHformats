@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# UHHformats <img src="vignettes/images/UHHformats_logo.png" align="right" width="100" height="100" />
+# UHHformats <img src="vignettes/images/UHHformats_logo.png" align="right" width="90" height="100" />
 
 <!-- [![R-CMD-check](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml) -->
 
@@ -118,7 +118,7 @@ Studio to see the `UHHformats` templates listed.
     **From Template**. You should then be able to create a new document
     from one of the package templates:
 
-<img src="vignettes/images/img_create_document.png" title="demo create document" alt="demo create document" style="display: block; margin: auto;" />
+<img src="vignettes/images/img_create_document.png" alt="demo create document" style="display: block; margin: auto;" />
 
 2.  Choose the directory in which you want to save your file and provide
     a file name (that name will be used for both the .Rmd file and the
@@ -267,7 +267,7 @@ The current R Markdown template has in the YAML header:
     ---
     title: "Title"
     author: "Name"
-    date: "2022-09-06"
+    date: "2022-09-08"
     output:
       UHHformats::html_simple:
         highlight: kate
@@ -283,7 +283,7 @@ To get an overview of options that can be set in the YAML header besides
 `html_simple` as well `bookdown::html_document2` or
 `rmarkdown::html_document`.
 
-<img src="vignettes/images/img_rmd_html_simple.png" title="RMarkdown demo html_simple template" alt="RMarkdown demo html_simple template" style="display: block; margin: auto;" />
+<img src="vignettes/images/img_rmd_html_simple.png" alt="RMarkdown demo html_simple template" style="display: block; margin: auto;" />
 
 ### R Markdown: HTML document (with bootstrap design ‘Material’) - `html_material`
 
@@ -312,7 +312,7 @@ that can be set in the YAML header besides `highlight` and
 see the help file for `html_material` as well `bookdown::html_document2`
 or `rmarkdown::html_document`.
 
-<img src="vignettes/images/img_rmd_html_material.png" title="RMarkdown demo html_material template" alt="RMarkdown demo html_material template" style="display: block; margin: auto;" />
+<img src="vignettes/images/img_rmd_html_material.png" alt="RMarkdown demo html_material template" style="display: block; margin: auto;" />
 
 #### Addtional features available in these HTML templates:
 
@@ -360,7 +360,7 @@ labels of the figure legend and table captions. If you want to use other
 labels (e.g. ‘Abb.’ instead of ‘Abbildung’) feel free to modify the
 file.
 
-<img src="vignettes/images/img_rmd_word_doc.png" title="RMarkdown demo word_doc template" alt="RMarkdown demo word_doc template" style="display: block; margin: auto;" />
+<img src="vignettes/images/img_rmd_word_doc.png" alt="RMarkdown demo word_doc template" style="display: block; margin: auto;" />
 
 ### R Markdown: Simple PDF document in English (default) or German - `pdf_simple`
 
@@ -377,7 +377,7 @@ In the YAML header of the R Markdown template, you can easily customize
 the logos and cover image, the language, the bibliography style or even
 add your own LaTeX style with the `include-after` option:
 
-<img src="vignettes/images/img_rmd_pdf_simple.png" title="RMarkdown demo pdf_simple template" alt="RMarkdown demo pdf_simple template" style="display: block; margin: auto;" />
+<img src="vignettes/images/img_rmd_pdf_simple.png" alt="RMarkdown demo pdf_simple template" style="display: block; margin: auto;" />
 
 ### R Markdown: UHH report in in English (default) or German - `pdf_report`
 
@@ -419,7 +419,7 @@ For more details on available arguments in `pdf_report` (in addition to
 `df_print` as shown here) see its help file as well as the help for
 `rmarkdown::pdf_document`.
 
-<img src="vignettes/images/img_rmd_pdf_report.png" title="RMarkdown demo pdf_report template" alt="RMarkdown demo pdf_report template" style="display: block; margin: auto;" />
+<img src="vignettes/images/img_rmd_pdf_report.png" alt="RMarkdown demo pdf_report template" style="display: block; margin: auto;" />
 
 ### R Markdown: Output format for a simple cheat sheet (PDF) - `pdf_cheatsheet`
 
@@ -440,7 +440,7 @@ get around LaTeX overall. However, the template .Rmd file provides
 several examples regarding the layout and LaTeX syntax, which is
 hopefully sufficient enough for the inexperienced coder.
 
-<img src="vignettes/images/img_rmd_pdf_cheatsheet.png" title="RMarkdown demo pdf_cheatsheet template" alt="RMarkdown demo pdf_cheatsheet template" style="display: block; margin: auto;" />
+<img src="vignettes/images/img_rmd_pdf_cheatsheet.png" alt="RMarkdown demo pdf_cheatsheet template" style="display: block; margin: auto;" />
 
 ### R Markdown: Jupyter Notebook output format - `rmd_to_jupyter`
 
@@ -503,7 +503,7 @@ When opening your file in Jupyter Notebook, please note that
     simply open a new R notebook and write into the first cell:
     `unzip("zip_file_name.zip")`.
 
-<img src="vignettes/images/img_rmd_to_jupyter.png" title="RMarkdown demo rmd_to_jupyter template" alt="RMarkdown demo rmd_to_jupyter template" style="display: block; margin: auto;" />
+<img src="vignettes/images/img_rmd_to_jupyter.png" alt="RMarkdown demo rmd_to_jupyter template" style="display: block; margin: auto;" />
 
 ------------------------------------------------------------------------
 
@@ -540,7 +540,7 @@ adding citations in Quarto. If you need more help, go to Quarto’s HTML
 documentation:
 <https://quarto.org/docs/output-formats/html-basics.html>.
 
-<img src="vignettes/images/img_quarto_html.png" title="Quarto demo template for HTML output" alt="Quarto demo template for HTML output" style="display: block; margin: auto;" />
+<img src="vignettes/images/img_quarto_html.png" alt="Quarto demo template for HTML output" style="display: block; margin: auto;" />
 
 ### Quarto: Simple Microsoft Word output format - `word`
 
@@ -567,7 +567,7 @@ using your own template or the standard Word template (i.e. the
 Normal.dot file), simply provide the path to your file under
 `reference-doc:` or comment/delete this line, respectively.
 
-<img src="vignettes/images/img_quarto_word.png" title="Quarto demo template for MS Word output" alt="Quarto demo template for MS Word output" style="display: block; margin: auto;" />
+<img src="vignettes/images/img_quarto_word.png" alt="Quarto demo template for MS Word output" style="display: block; margin: auto;" />
 
 ### Quarto: Output format for a simple PDF document in English (default) or German - `pdf_simple`
 
@@ -589,7 +589,7 @@ More information is provided in the .qmd file. If you need additional
 help, go to Quarto’s PDF documentation:
 <https://quarto.org/docs/output-formats/pdf-basics.html>.
 
-<img src="vignettes/images/img_quarto_pdf_simple.png" title="Quarto demo template for a simple PDF document" alt="Quarto demo template for a simple PDF document" style="display: block; margin: auto;" />
+<img src="vignettes/images/img_quarto_pdf_simple.png" alt="Quarto demo template for a simple PDF document" style="display: block; margin: auto;" />
 
 ### Quarto: Output format for a PDF report in English (default) or German - `pdf_report`
 
@@ -614,7 +614,7 @@ More information is provided in the .qmd file. If you need additional
 help, go to Quarto’s PDF documentation:
 <https://quarto.org/docs/output-formats/pdf-basics.html>.
 
-<img src="vignettes/images/img_quarto_pdf_report.png" title="Quarto demo template for a PDF report" alt="Quarto demo template for a PDF report" style="display: block; margin: auto;" />
+<img src="vignettes/images/img_quarto_pdf_report.png" alt="Quarto demo template for a PDF report" style="display: block; margin: auto;" />
 
 ------------------------------------------------------------------------
 
