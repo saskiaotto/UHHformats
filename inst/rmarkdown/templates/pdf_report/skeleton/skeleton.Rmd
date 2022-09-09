@@ -4,8 +4,8 @@ author: "Author name(s)"
 date: \today
 fontsize: 11pt
 german: false # default is English
-bibliography: references.bib     
-bibliographystyle: bibstyle.bst
+bibliography: bib/references.bib, bib/packages.bib
+bibliographystyle: bib/bibstyle.bst
 params:
   # replace path to images or remove lines (one has to be kept in!)
   cover: images/cover.png
@@ -38,6 +38,16 @@ library(xtable)
 library(tidyverse)
 ```
 
+```{r generate-package-refs, include=FALSE}
+# Create a bib database for R packages used above
+# NOTE: RUN THIS CODE CHUNK MANUALLY TO CREATE FILE BEFORE KNITTING
+knitr::write_bib(
+  x = c(.packages(), 'bookdown', 'rmarkdown', 
+    # Add here now all packages that are loaded above:
+    'knitr', 'kableExtra', 'xtable', 'tidyverse'), 
+  file = 'bib/packages.bib'
+)
+```
 
 <!-- This is how you can define comments in an .Rmd file (outside the R code snippets) -->
 
@@ -52,7 +62,7 @@ Configure the YAML header including the following elements:
 * `german`: If option is set to `true`, the table and figure caption, the page information, as well as the ToC and reference header will be in German; default is `false` (i.e., English).
 * `linkcolor`, `filecolor`, `citecolor`, `urlcolor`: Specify here colors for internal links (incl. ToC), external links, citation links, and linked URLs, respectively, if you don't want the default colors; use options allowed by xcolor, including the dvipsnames, svgnames, and x11names lists.
 * `classoption`: Further options for the document class `article` (used for this report); specify here whether report should be 'onesided' (default) or 'twosided'.
-* `bibliography`: A path to the bibliography file to use for references (BibTeX *.bib* file). This template uses the bibliography-related package [natbib](https://ctan.org/pkg/natbib). The current file includes 3 dummy references; either insert your references into this file or replace the file with your own.
+* `bibliography`: A path to the bibliography file(s) to use for references (BibTeX *.bib* file). This template uses the bibliography-related package [natbib](https://ctan.org/pkg/natbib). The current file 'references.bib' in the 'bib/' folder includes 3 dummy references; either insert your references into this file or replace the file with your own.
 * `bibliographystyle`: The style is provided in the bibstyle.bst file, which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style. Just leave the file as it is.
 * `params`: The cover and logo image directories for the front page are specified here.
 * `header_includes`: Here you can add additional \LaTeX code to include in the header, before the `\\begin\{document\}` statement. 
@@ -66,7 +76,7 @@ Configure the YAML header including the following elements:
     * `citation_package = "natbib"`
     * `latex_engine = "xelatex"`
     
-If you are associated to the UHH you can also use the University's own font "TheSansUHH". In that case replace `font = "Helvetica"` with `font = "TheSansUHH"`. To use another font, simply use the setting "other" and replace the 'font_XXX.ttf' files in the working directory with your own files. Please note, that you have to name these files exactly as the template font files.
+If you are associated with the UHH you can also use the University's own font "TheSansUHH". In that case replace `font = "Helvetica"` with `font = "TheSansUHH"`. To use another font, simply use the setting "other" and replace the 'font_XXX.ttf' files in the working directory with your own files. Please note, that you have to name these files exactly as the template font files.
 
 
 # The Body of the Article
@@ -167,19 +177,17 @@ footnote(general = "Your comments go here.")
 
 #### The *xtable* package
 
-Table \ref{tab:xtable_tab} is an example when using this package. Note that the label set in `xtable()` has to include the `tab:` for properly rendering the cross-reference (I haven't yet figured out why).
+Another useful package for tables for PDF output is [xtable](https://cran.r-project.org/web/packages/xtable/vignettes/xtableGallery.pdf). The following code will produce an example table if the *xtable* package is installed. Note that you need to add the chunk option `results = "asis"` inside `{r}` otherwise the PDF will contain the \LaTeX code of the table!
 
-Here, it is important that you add the chunk option `results = "asis"` inside `{r}` otherwise the PDF will contain the \LaTeX code of the table!
-
-```{r, results = "asis"}
-xt <- xtable(head(cars), caption = "A table made with xtable", 
+```{r, results = "asis", eval=ifelse(nzchar(system.file(package = "xtable")), TRUE, FALSE)}
+xt <- xtable(df, caption = "A table made with xtable", 
   label = "tab:xtable_tab")
 print(xt, comment = FALSE, caption.placement = "top", booktabs = TRUE)
 ```
 
 You can also use \LaTeX in the R code chunk:
 
-```{r, results = "asis"}
+```{r, results = "asis", eval=ifelse(nzchar(system.file(package = "xtable")), TRUE, FALSE)}
 tab <- xtable(head(iris, n = 20), align = "|C|C|C|C|C|C|")
 
 addtorow <- list()
@@ -218,26 +226,15 @@ boxplot(mpg ~ am, mtcars)
 
 # Adding citations and bibliography
 
-Link a `.bib` document via the YAML header, and the bibliography will be printed at the very end (as usual). The default bibliography style is provided in the `bib.bst` file (do not delete), which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style.
+Link a `.bib` document via the YAML header and the bibliography will be printed at the very end (as usual). The default bibliography style is provided in the `bib.bst` file (do not delete), which adopts the [SAGE Harvard](https://uk.sagepub.com/sites/default/files/sage_harvard_reference_style_0.pdf) reference style.
 
 References can be cited directly within the document using the R Markdown equivalent of the \LaTeX citation system `[@key]`, where key is the citation key in the first line of the entry in the .bib file. Example: [@Taylor1937]. To cite multiple entries, separate the keys by semicolons, e.g. [@Knupp1999; @Kamm2000].
 
-There is also the package [citr](https://github.com/crsh/citr) which I highly recommend: *citr* provides functions and an RStudio add-in to search a BibTeX-file to create and insert formatted Markdown citations into the current document. If you are using the reference manager [Zotero](https://www.zotero.org/) the add-in can access your reference database directly. 
+There is also the package [citr](https://github.com/crsh/citr), which I highly recommend: *citr* provides functions and an RStudio add-in to search a BibTeX-file to create and insert formatted Markdown citations into the current document. If you are using the reference manager [Zotero](https://www.zotero.org/) the add-in can access your reference database directly. 
 
 
 ## Software
 
-If you want to include a paragraph on the software used, here is some example text/code to get the current R and package versions used and to generate the necessary references. But before, you need to run the following code chunk manually and copy the output in the console to your 'references.bib' file:
+If you want to include a paragraph on the software used, here is some example text/code to get the current R and package versions. The code to create a separate bibiliography file named 'packages.bib' with all package references has already been added at the beginning of this script (code chunk 'generate-package-refs').
 
-```{r generate-package-refs, include=FALSE, eval=FALSE}
-# Automatically create a bib database for R packages used above
-knitr::write_bib(
-  x = c(.packages(), 'bookdown', 'rmarkdown', 
-    # Add here now all packages that are loaded above:
-    'knitr', 'kableExtra', 'xtable')
-  )
-```
-
-If the references are stored in the .bib file, uncomment and modify the following text:
-
-<!-- All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables and figures, was generated using the packages 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'knitr' (version `r packageVersion("knitr")`) [@R-knitr], 'kableExtra' (version `r packageVersion("kableExtra")`) [@R-kableExtra], and 'xtable' (version `r packageVersion("xtable")`) [@R-xtable]. -->
+All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables and figures, was generated using the packages 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'knitr' (version `r packageVersion("knitr")`) [@R-knitr], 'kableExtra' (version `r packageVersion("kableExtra")`) [@R-kableExtra], 'xtable' (version `r packageVersion("xtable")`) [@R-xtable], and 'tidyverse' (version `r packageVersion("tidyverse")`) [@R-tidyverse.]

@@ -96,10 +96,10 @@ $endif$
 
 
 % Define colors for hyperlinks: {{{
-\definecolor{linkcol}{HTML}{013d65} %darkblue (027BCB)
-\definecolor{filecol}{HTML}{013d65} %darkred (b70000)
-\definecolor{urlcol}{HTML}{013d65} %darkred (b70000)
-\definecolor{citecol}{HTML}{013d65} %darkblue (027BCB)
+\definecolor{linkcol}{HTML}{0271BB} %darkblue (027BCB)
+\definecolor{filecol}{HTML}{b70000} %darkred (b70000)
+\definecolor{urlcol}{HTML}{b70000} %darkred (b70000)
+\definecolor{citecol}{HTML}{0271BB} %darkblue (027BCB)
 % }}}
 
 
@@ -182,10 +182,14 @@ $endif$
 \setlength{\parskip}{0.5em}             % paragraph spacing
 \renewcommand{\baselinestretch}{1.0}    % line spacing (here single)
 
-% change font size of section headers: (from titlesec package)
-\titleformat*{\section}{\Large\bfseries}
-\titleformat*{\subsection}{\large\bfseries}
-\titleformat*{\subsubsection}{\large\bfseries}
+% Custom colors for headers
+\definecolor{bluegray}{HTML}{3B515B} 
+\definecolor{blue}{HTML}{0271BB} 
+
+% change font size and colors of section headers: 
+\titleformat*{\section}{\Large\bfseries\color{blue}}
+\titleformat*{\subsection}{\large\bfseries\color{bluegray}}
+\titleformat*{\subsubsection}{\large\bfseries\color{bluegray}}
 
 % setting head hight
 \setlength{\headheight}{13.59999pt}
@@ -211,17 +215,17 @@ $endfor$
 \makeatletter
 \renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
 \begin{flushleft}
-  \textbf{\huge\@title}
+  \textbf{\color{bluegray}\huge\@title}
   \vskip 0.25em%
   $if(subtitle)$
-  \textbf{\large $subtitle$}
+  \textbf{\color{bluegray}\large $subtitle$}
   $endif$
 
   \vskip 0.5em%
   $if(author)$
-  \large $author$\par
+  \large\color{bluegray} $author$\par
   $endif$
-  \@date
+  \color{bluegray}\@date
 \end{flushleft}\egroup
 }
 \makeatother

@@ -6,8 +6,8 @@
 #' @param highlight character; syntax highlighting style. Supported styles
 #'   include "default", "tango", "pygments", "kate" (default here),
 #'   "monochrome", "espresso", "zenburn", and "haddock".
-#' @param font character; default font is 'Helvetica'; for members of the UHH there is also the font
-#'        'TheSansUHH' available. If you want to use another font, simply use the setting "other" and
+#' @param font character; default font is "Helvetica"; for members of the UHH there is also the font
+#'        "TheSansUHH" available. If you want to use another font, simply use the setting "other" and
 #'        replace the .ttf files for regular, italic, bold, and bold-italic font with your own files
 #'        (should be named EXACTLY as the template font files).
 #' @param latex_engine character; LaTeX engine for producing PDF output. Options
@@ -68,7 +68,7 @@ pdf_cheatsheet <- function(highlight = "kate", font = "Helvetica",
     copy_font_files("pdf_cheatsheet", font)
   }
 
-  pdf_document_format(
+  rmd_pdf_document_format(
     "pdf_cheatsheet",
     highlight = highlight,
     latex_engine = latex_engine,

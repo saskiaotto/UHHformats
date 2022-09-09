@@ -7,11 +7,13 @@
 
 
 /*
-Red:   #b70000
-Dark-Blue: #014979
-Blue:  #027BCB
-Bright-Blue: #3495d5
-Grey:  #dedede
+Darkred: #b70000
+Red:   #E2001A
+Lightred: #F07F8C
+Bluegrey: #3B515B
+Blue:  #0271BB
+Lightblue: #80B8DD
+Grey:  #B6BFC3
 */
 
 
@@ -236,7 +238,7 @@ h2, h3, h4 {
 /* =============== Header =============== */
 
 .header-panel {
-    background-color: #b70000;
+    background-color: #0271BB;
     min-height: 100px;
     position: relative;
     z-index: 3;

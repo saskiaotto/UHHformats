@@ -37,8 +37,8 @@ The 'uhh-template.docx' template implements most of the standard requirement at 
 department. If you prefer another template, pass the file name to this argument or simply use
 'default' to use your standard Word template.}
 
-\item{font}{character; default font in the template file is 'Helvetica'; for members of the UHH there is also
-the font 'TheSansUHH' available. If you want provide your own Word template, there is no
+\item{font}{character; default font in the template file is "Helvetica"; for members of the UHH there is also
+the font "TheSansUHH" available. If you want to provide your own Word template, there is no
 need to set any font here.}
 
 \item{language}{character; the document language. If set to "de" (ISO code for German), a configuration file

@@ -1,13 +1,13 @@
 Package: UHHformats
 Type: Package
 Title: Templates for HTML and PDF/LaTeX Output Formats Designed for the UHH
-Version: 0.2.9000
-Date: 2022-7-16
+Version: 1.0.0.9000
+Date: 2022-9-06
 Authors@R: c(person("Saskia", "Otto", email="saskia.a.otto@gmail.com",
     role=c("aut","cre")))
 Maintainer: Saskia Otto <saskia.a.otto@gmail.com>
-Description: R Markdown templates for HTML and PDF documents, which are used within the 
-    Biology Department of the University of Hamburg (UHH) and its 'Data Science in Biology'
+Description: R Markdown and Quarto templates for HTML, PDF, and MS Word documents, which are used 
+    within the Biology Department of the University of Hamburg (UHH) and its 'Data Science in Biology'
     program. These include templates for student assignments, project reports,
     and conversions to Jupyter Notebooks. The package aims to encourage
     reproducible research using simple Markdown syntax while embedding all of the R code to 
@@ -26,8 +26,11 @@ Imports:
     tinytex (>= 0.33),
     utils
 Suggests:
+    huxtable,
     jsonlite,
     kableExtra,
+    plotly,
+    quarto,
     xtable
 SystemRequirements: pandoc (>= 2.1) - http://pandoc.org
 Roxygen: list(markdown = TRUE)
