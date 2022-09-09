@@ -11,7 +11,7 @@ Description: R Markdown and Quarto templates for HTML, PDF, and MS Word document
     program. These include templates for student assignments, project reports,
     and conversions to Jupyter Notebooks. The package aims to encourage
     reproducible research using simple Markdown syntax while embedding all of the R code to 
-    produce plots and analyses as well. All templates are inspired by or based on other 
+    produce plots and analyses as well. Many templates are inspired by or based on other 
     packages such as 'rmdformats', 'ireports' or 'rmd2jupyter'.
 License: CC BY 4.0
 Encoding: UTF-8
