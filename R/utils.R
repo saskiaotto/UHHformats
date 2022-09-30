@@ -53,8 +53,8 @@ copy_font_files <- function(template, font, type = "rmarkdown", current_dir = ".
 
 # Helper function to create a custom format derived from rmarkdown::pdf_document
 # that includes a custom LaTeX template
-rmd_pdf_document_format <- function(
-    format, template = find_resource(format, file = 'template.tex'), ...) {
+rmd_pdf_document_format <- function(format,
+    template = find_resource(format, file = 'template.tex'), ...) {
   fmt <- rmarkdown::pdf_document(..., template = template)
   fmt$inherits <- "pdf_document"
   return(fmt)
@@ -64,7 +64,7 @@ rmd_pdf_document_format <- function(
 # Helper function to create a custom format derived from bookdown::word_document2
 # that includes a custom UHH Word template
 rmd_word_document_format <- function(format, filename, ...) {
-  template = find_resource(format, file = filename)
+  template <- find_resource(format, file = filename)
   fmt <- bookdown::word_document2(..., reference_docx = template)
   return(fmt)
 }

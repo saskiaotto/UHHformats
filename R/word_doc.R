@@ -50,8 +50,8 @@ word_doc <- function(toc = FALSE, toc_depth = 4, number_sections = FALSE,
   if (!font %in% c("Helvetica", "TheSansUHH", "other")) {
     stop('Set the font option to "Helvetica", "TheSansUHH" or "other".')
   }
-  if (font == "Helvetica") filename = "uhh-template-helvetica.docx"
-  if (font == "TheSansUHH") filename = "uhh-template-thesansuhh.docx"
+  if (font == "Helvetica") filename <- "uhh-template-helvetica.docx"
+  if (font == "TheSansUHH") filename <- "uhh-template-thesansuhh.docx"
 
   # Language setting
   if (!language %in% c("en", "de")) {

@@ -57,8 +57,8 @@ create_quarto_doc <- function(dirname = "new-doc", template = "html",
   }
 
   if (template == "word") {
-    if (font == "Helvetica") filename = "uhh-template-helvetica.docx"
-    if (font == "TheSansUHH") filename = "uhh-template-thesansuhh.docx"
+    if (font == "Helvetica") filename <- "uhh-template-helvetica.docx"
+    if (font == "TheSansUHH") filename <- "uhh-template-thesansuhh.docx"
     file.copy(
       from = find_resource("word", file = filename, type = "quarto"),
       to = file.path(tmp_dir, "uhh-template.docx")
