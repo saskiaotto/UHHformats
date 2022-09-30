@@ -42,7 +42,7 @@ library(tidyverse)
 # Create a bib database for R packages used above
 # NOTE: RUN THIS CODE CHUNK MANUALLY TO CREATE FILE BEFORE KNITTING
 knitr::write_bib(
-  x = c(.packages(), 'bookdown', 'rmarkdown', 
+  x = c(.packages(), 'bookdown', 'rmarkdown', 'UHHformats',
     # Add here now all packages that are loaded above:
     'knitr', 'kableExtra', 'xtable', 'tidyverse'), 
   file = 'bib/packages.bib'
@@ -237,4 +237,4 @@ There is also the package [citr](https://github.com/crsh/citr), which I highly r
 
 If you want to include a paragraph on the software used, here is some example text/code to get the current R and package versions. The code to create a separate bibiliography file named 'packages.bib' with all package references has already been added at the beginning of this script (code chunk 'generate-package-refs').
 
-All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables and figures, was generated using the packages 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'knitr' (version `r packageVersion("knitr")`) [@R-knitr], 'kableExtra' (version `r packageVersion("kableExtra")`) [@R-kableExtra], 'xtable' (version `r packageVersion("xtable")`) [@R-xtable], and 'tidyverse' (version `r packageVersion("tidyverse")`) [@R-tidyverse.]
+All analyses were performed using the statistical software R (version `r paste(R.Version()$major, R.Version()$minor, sep = ".")`) [@R-base]. This report, including tables and figures, was generated using the packages 'rmarkdown' (version `r packageVersion("rmarkdown")`) [@R-rmarkdown], 'bookdown' (version `r packageVersion("bookdown")`) [@R-bookdown], 'UHHformats' (version `r packageVersion("UHHformats")`) [@R-UHHformats], 'knitr' (version `r packageVersion("knitr")`) [@R-knitr], 'kableExtra' (version `r packageVersion("kableExtra")`) [@R-kableExtra], 'xtable' (version `r packageVersion("xtable")`) [@R-xtable], and 'tidyverse' (version `r packageVersion("tidyverse")`) [@R-tidyverse.]
