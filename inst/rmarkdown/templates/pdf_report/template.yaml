@@ -1,7 +1,0 @@
-name: UHH report in English/German (PDF)
-description: >
- Template for creating simple PDF/LaTeX-based report suitable for
- project reports and student asignments (in English (default) and German).
- The underlying function is a wrapper of rmarkdown::pdf_document with
- functionality adopted from the 'rticles' and the 'ireports' packages.
-create_dir: true

@@ -10,9 +10,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # UHHformats <img src="vignettes/images/UHHformats_logo.png" align="right" width="90" height="100" />
 
-<!-- [![R-CMD-check](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/saskiaotto/UHHformats/actions/workflows/check-standard.yaml) -->
-
-
 This R package provides ready-to-use R Markdown and **now also Quarto templates** for HTML, PDF and Microsoft Word output formats, which are used within the Biology Department of the University of Hamburg (UHH) and its *Data Science in Biology* program. The package aims to encourage reproducible research using simple Markdown syntax while embedding all of the R code to produce plots and analyses as well. Included in the package are templates for 
 
 - student assignments
@@ -47,11 +44,13 @@ Many templates were developed based on other inspiring templates and R packages,
 
 ## Installation
 
+**NEW: The package repository has been moved to the new GitHub account of the Department of Biology, University of Hamburg: [github.com/uham-bio](https://github.com/uham-bio) !!!!!!**
+
 Install the development version from GitHub using the *remotes* package:
 
 ```{r, eval = FALSE}
 if (!require("remotes")) install.packages("remotes")
-remotes::install_github("saskiaotto/uhhformats", build_vignettes = TRUE)
+remotes::install_github("uham-bio/UHHformats", build_vignettes = TRUE)
 ```
 
 Make sure that you also have the latest versions of the R packages *rmarkdown* and *knitr* installed. For some R Markdown templates you also need the R package *bookdown*. 
